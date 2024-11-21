@@ -47,33 +47,39 @@ export const Sample = () =>{
     }
 
     return(
-        <div>
+        <div className="sample">
             <button type="button" onClick={handleGetData}>데이터 호출하기</button>
             {shopData ? (
             <div>
                 <h1>NPC 상점 정보</h1>
                 <p>탭 개수: {shopData.shop_tab_count}</p>
-                {shopData.shop.map((tab, index) => (
-                    <div key={index}>
-                    <h2>탭 이름: {tab.tab_name}</h2>
-                    {tab.item.map((item, itemIndex) => (
-                        <div key={itemIndex}>
-                            <img src={item.image_url} alt="" />
-                            <p>아이템 이름: {item.item_display_name}</p>
-                            <p>가격: {item.price[0].price_value} {item.price[0].price_type}</p>
-                            {item.item_option.map((val, idx) => (
-                                <div key={idx}>
-                                    <p>{val.option_type}</p>
-                                    <p>{val.option_sub_type}</p>
-                                    <p>{val.option_value}</p>
-                                    <p>{val.option_value2}</p>
-                                    <p>{val.option_desc}</p>
-                                </div>
-                            ))}
+                <div className="inner">
+                    {shopData.shop.map((tab, index) => (
+                        <div key={index} className="tabs">
+                            <h2 className="tab-title">{tab.tab_name} 탭</h2>
+                            <div className="wrap">
+                                {tab.item.map((item, itemIndex) => (
+                                    <div className="item" key={itemIndex}>
+                                        <div className="img-wrap">
+                                            <img src={item.image_url} className="" alt="" />
+                                        </div>
+                                        <p className="name">{item.item_display_name}</p>
+                                        <p className="price">{item.price[0].price_value} <span>{item.price[0].price_type}</span></p>
+                                        {item.item_option.map((val, idx) => (
+                                            <div className="options" key={idx}>
+                                                <p>{val.option_type}</p>
+                                                <p>{val.option_sub_type}</p>
+                                                <p>{val.option_value}</p>
+                                                <p>{val.option_value2}</p>
+                                                <p>{val.option_desc}</p>
+                                            </div>
+                                        ))}
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     ))}
-                    </div>
-                ))}
+                </div>
             </div>
             ) : (
                 <p>Loading...</p>

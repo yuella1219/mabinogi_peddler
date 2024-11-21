@@ -3,8 +3,90 @@
 body{width:100%}
 
 
-nav{position:sticky;top:0;left:0;background:#fff;}
-.sample01{width:100%;height:150vh;background:rgb(114, 0, 0);}
-.sample02{width:100%;height:150vh;background:rgb(56, 56, 56);}
+nav{position:sticky;top:0;left:0;padding:12px;background:#fff;border-bottom:1px solid #ddd;}
+.sample01{background:rgb(114, 0, 0);}
+.sample02{background:rgb(56, 56, 56);}
 h1{color:#fff;}
 .nav-btn{display:inline-flex;align-items:center;justify-content:center;margin-right:12px;padding:12px;border:1px solid #333;border-radius:8px;}
+
+.inner{
+    padding:24px;
+    .tab-title{
+        margin-bottom:36px;
+        padding:8px 16px;
+        text-align:center;
+        border-radius:50px;
+        background:#fff;
+    }
+}
+.tabs{
+    margin:0 0 42px;
+    padding:52px;
+    background:#ececef;
+    border:1px solid #999;
+    border-radius:12px;
+    .wrap{
+        display:flex;
+        flex-wrap:wrap;
+        align-items:flex-start;
+        justify-content:flex-start;
+        gap:32px;
+    }
+}
+.item{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-start;
+    padding:12px 24px;
+    background:#fff;
+    border-radius:12px;
+    box-shadow:4px 4px 12px rgba(0, 0, 0, 0.1);
+    .img-wrap{
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        overflow:hidden;
+        margin-bottom:12px;
+        width:120px;
+        height:120px;
+        border-radius:8px;
+        border:1px solid #ddd;
+        box-sizing:border-box;
+        img{
+            display:block;
+            width:100%;
+            height:100%;
+            object-fit:contain;
+        }
+    }  
+    .price{
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        gap:8px;
+        &::before{
+            display:inline-flex;
+            align-items:center;
+            justify-content:center;
+            content:'G';
+            font-size:14px;
+            padding-left:2px;
+            width:26px;
+            height:28px;
+            font-weight:900;
+            color:#e6c000;
+            border-radius:100%;
+            border:4px solid #fffb83;
+            background:rgb(255, 250, 103);
+            box-shadow:2px 1px 0px #ffe015, inset 2px 3px 2px #ffe015;
+            box-sizing:border-box;
+        }
+    }
+    .options{
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        gap:8px;
+    }
+}
