@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  font-family: "Mabinogi_Classic";
 }
 
 body {
@@ -21,6 +22,7 @@ nav {
 }
 
 .sample02 {
+  min-height: 80vh;
   background: rgb(56, 56, 56);
 }
 
@@ -42,8 +44,9 @@ h1 {
   padding: 24px;
 }
 .inner .tab-title {
+  display: inline-block;
   margin-bottom: 36px;
-  padding: 8px 16px;
+  padding: 16px 36px;
   text-align: center;
   border-radius: 50px;
   background: #fff;
@@ -52,8 +55,8 @@ h1 {
 .tabs {
   margin: 0 0 42px;
   padding: 52px;
-  background: #ececef;
-  border: 1px solid #999;
+  background: var(--bg-lbgr);
+  border: 1px solid var(--brd-div);
   border-radius: 12px;
 }
 .tabs .wrap {
@@ -69,10 +72,16 @@ h1 {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding: 12px 24px;
+  padding: 24px 36px;
   background: #fff;
   border-radius: 12px;
   box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  transition: box-shadow 0.1s;
+  cursor: grab;
+}
+.item:hover {
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.1), 0px 0px 6px var(--brd-dgr);
 }
 .item .img-wrap {
   display: flex;
@@ -92,21 +101,31 @@ h1 {
   height: 100%;
   object-fit: contain;
 }
+.item .name {
+  line-height: 1.5;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--txt-bk);
+}
 .item .price {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
+  margin-top: 8px;
+  font-size: 16px;
+  color: var(--txt-dark);
 }
 .item .price::before {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   content: "G";
+  font-family: initial;
   font-size: 14px;
   padding-left: 2px;
   width: 26px;
-  height: 28px;
+  height: 26px;
   font-weight: 900;
   color: #e6c000;
   border-radius: 100%;
@@ -120,4 +139,54 @@ h1 {
   align-items: center;
   justify-content: center;
   gap: 8px;
+  margin: 20px 0 0;
+}
+
+.npc-wrap {
+  padding: 24px 24px 48px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 24px;
+  box-sizing: border-box;
+  background: var(--bg-hl);
+}
+
+.btn-press {
+  appearance: none;
+  position: relative;
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: initial;
+  border-style: none;
+}
+.btn-press::before {
+  position: absolute;
+  bottom: -12px;
+  left: 0;
+  z-index: -1;
+  display: block;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: var(--brd-dgr);
+  border-radius: 8px;
+}
+.btn-press:active span {
+  transform: translateY(8px);
+}
+.btn-press span {
+  display: block;
+  padding: 8px 18px;
+  font-size: 18px;
+  font-weight: 700;
+  border-radius: 8px;
+  background: #fff;
+  transition: all 0.05s;
+  transform: translateY(0);
 }

@@ -1,0 +1,6 @@
+@charset "utf-8";
+@font-face {
+	font-family:'Mabinogi_Classic'; 
+	font-style:normal; 
+	src:url("../font/mabinogi_classic/Mabinogi_Classic_TTF.ttf") format('truetype');
+}

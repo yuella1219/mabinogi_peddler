@@ -1,4 +1,4 @@
-import '../src/assets/css/App.css';
+import '../src/assets/css/styles.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import {Sample, Sample2, Gnb} from './components';
 
