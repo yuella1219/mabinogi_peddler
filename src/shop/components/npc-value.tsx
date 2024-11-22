@@ -1,7 +1,7 @@
 import React from 'react';
 import {useRef} from 'react';
 import {NpcButton} from './npc-button'
-import {NpcData} from './npc-data';
+import {NpcData} from '../../data/npc-data';
 
 interface Props {
     getNpc : (props:string) => void;

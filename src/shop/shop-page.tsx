@@ -1,10 +1,10 @@
 import React from 'react';
 import {useState, useEffect, useRef} from 'react';
-import {NpcShopProps, getData} from '../../api/api'
-import {Item} from './item';
-import {NpcValue} from './npc-value';
+import {NpcShopProps, getData} from '../api/api'
+import {Item} from './components';
+import {NpcValue} from './components/npc-value';
 
-export const Sample = () =>{
+export const ShopPage = () =>{
     const [shopData, setShopData] = useState<NpcShopProps | null>(null);
     const [getName, setGetName] = useState('');
     const [getNpc, setGetNpc] = useState('');
