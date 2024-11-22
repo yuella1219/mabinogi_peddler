@@ -1,7 +1,8 @@
 import React from 'react';
 import {useState, useEffect, useRef} from 'react';
 import {NpcShopProps, getData} from '../../api/api'
-import {Item, NpcValue} from '../../components';
+import {Item} from './item';
+import {NpcValue} from './npc-value';
 
 export const Sample = () =>{
     const [shopData, setShopData] = useState<NpcShopProps | null>(null);

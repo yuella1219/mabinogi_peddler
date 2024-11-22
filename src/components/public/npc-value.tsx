@@ -1,6 +1,6 @@
 import React from 'react';
 import {useRef} from 'react';
-import {NpcButton} from '../../components'
+import {NpcButton} from './npc-button'
 import {NpcData} from './npc-data';
 
 interface Props {
