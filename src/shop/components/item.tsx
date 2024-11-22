@@ -7,7 +7,7 @@ export type itemData = NpcShopProps['shop'][number]['item'][number];
 
 interface itemProps {
     item : itemData;
-    sendItemNm : (props:string) => void;
+    sendItemNm: (props:string) => void;
 }
 
 export const Item = ({item, sendItemNm} :itemProps) =>{

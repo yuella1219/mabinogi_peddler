@@ -1,13 +1,16 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
 import {NpcShopProps, getData} from '../api/api'
-import {Item} from './components';
+import {Item, Baggage} from './components';
 import {NpcValue} from './components/npc-value';
+import {itemData} from './components';
 
 export const ShopPage = () =>{
     const [shopData, setShopData] = useState<NpcShopProps | null>(null);
     const [getName, setGetName] = useState('');
     const [getNpc, setGetNpc] = useState('');
+    const [baggage, setBaggage] = useState<itemData[] | []>([]);
+    const [showBaggage, setShowBaggage] = useState(false);
     
     // 실제 통신은 api.ts 파일에서 진행, 
     // 여기서는 getData 실행 후 응답받은 데이터 상태에 저장해서 출력하는 용도
@@ -35,7 +38,13 @@ export const ShopPage = () =>{
     }, [getNpc])
     // 아이템 담기
     useEffect(()=>{
-        console.log(getName)
+        const _pushItem = shopData?.shop?.[0]?.item?.find(
+          (item) => item.item_display_name === getName
+        );
+        if (_pushItem) {
+          setBaggage((state) => [...state, _pushItem]); // 기존 상태 배열에 _pushItem 추가
+        }
+        console.log(baggage)
     }, [getName])
 
     return(
@@ -43,6 +52,7 @@ export const ShopPage = () =>{
             <NpcValue getNpc={getNpcName}/>
             {shopData ? (
             <div>
+                <Baggage data={baggage}/>
                 <h1>NPC 상점 정보</h1>
                 <p>탭 개수: {shopData.shop_tab_count}</p>
                 <div className="inner">

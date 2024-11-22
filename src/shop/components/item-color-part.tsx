@@ -1,20 +1,23 @@
 import React from 'react';
 import{styled} from 'styled-components';
 
-interface Props{
+interface getProps{
     color:string;
 }
 
+interface Props{
+    $color:string;
+}
+
 const ColorCode = styled.div<Props>`
-    width:12px;
-    height:12px;
-    background:${(props) => (props.color ? `rgb(${props.color})` : null)}
+    width:20px;
+    height:20px;
+    background:${(props) => (props.$color ? `rgb(${props.$color})` : null)};
+    transform:translateY(-3px);
 `
 
-export const ItemColorPart = ({color} : Props) => {
+export const ItemColorPart = ({color} : getProps) => {
     return(
-        color ? 
-        <ColorCode color={color}/>
-        : null
+        <ColorCode $color={color}/>
     )
 }
