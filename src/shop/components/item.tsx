@@ -1,6 +1,7 @@
 import React from 'react';
-import {useState, useEffect, useRef} from 'react';
+import {useRef} from 'react';
 import {NpcShopProps} from '../../api/api'
+import { ItemColorPart } from './item-color-part';
 
 export type itemData = NpcShopProps['shop'][number]['item'][number];
 
@@ -20,17 +21,25 @@ export const Item = ({item, sendItemNm} :itemProps) =>{
     }
 
     return(
-        <a role="button" className="item" onClick={addToCart} ref={thisItem}>
+        <a role="button" href='javascript:void(0)' className="item" onClick={addToCart} ref={thisItem}>
             <div className="img-wrap">
                 <img src={item.image_url} className="" alt="" />
             </div>
             <p className="name">{item.item_display_name}</p>
+            {item.item_count > 1 ? (<p className="cnt">{item.item_count}개 묶음</p>) : null}
+            {item.limit_value ? (<p className="limit">구매 가능 횟수 {item.limit_value}회</p>) : null}
             <p className="price">{item.price[0].price_value} <span>{item.price[0].price_type}</span></p>
             {item.item_option.map((val, idx) => (
                 <div className="options" key={idx}>
                     <p>{val.option_type}</p>
                     <p>{val.option_sub_type}</p>
-                    <p>{val.option_value}</p>
+                    {val.option_type === '아이템 색상' ? 
+                    (
+                        <div className="with-color">
+                            <p>{val.option_value}</p>
+                            <ItemColorPart color={val.option_value} />
+                        </div>
+                    ) : (<p>{val.option_value}</p>)}
                     <p>{val.option_value2}</p>
                     <p>{val.option_desc}</p>
                 </div>

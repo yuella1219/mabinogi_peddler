@@ -1,5 +1,4 @@
 import React from 'react';
-import {NpcValue} from '../shop/components/npc-value'
 
 export const Sample2 = () =>{
     return(

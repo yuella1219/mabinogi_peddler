@@ -1,5 +1,5 @@
 import React from 'react';
-import {useState, useEffect, useRef} from 'react';
+import {useState, useEffect} from 'react';
 import {NpcShopProps, getData} from '../api/api'
 import {Item} from './components';
 import {NpcValue} from './components/npc-value';
@@ -26,11 +26,17 @@ export const ShopPage = () =>{
     const getNpcName = (nm : string) =>{
         setGetNpc(nm);
     }
-
+    useEffect(()=>{
+        console.log(shopData)
+    }, [shopData])
+    //npc 탭
     useEffect(()=>{
         handleGetData(getNpc)
-        console.log(getNpc)
     }, [getNpc])
+    // 아이템 담기
+    useEffect(()=>{
+        console.log(getName)
+    }, [getName])
 
     return(
         <div className="sample">
