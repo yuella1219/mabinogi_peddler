@@ -8,6 +8,11 @@ nav{position:sticky;top:0;left:0;z-index:99;padding:12px;background:#fff;border-
 h1{color:#fff;}
 .nav-btn{display:inline-flex;align-items:center;justify-content:center;margin-right:12px;padding:12px;border:1px solid #333;border-radius:8px;}
 a{text-decoration:none;color:initial;}
+.todo{position:fixed;top:12px;left:8%;z-index:999;width:40px;height:40px;background:darkcyan;border-radius:100%;text-indent:-9999px;overflow:hidden;cursor:pointer;transition:all .1s}
+.todo.expanded{width:520px;height:auto;border-radius:24px;padding:12px;background:#ffffffd7;border:2px solid var(--brd-gr);box-shadow:0px 0px 15px rgba(0, 0, 0, 0.4);backdrop-filter:blur(12px);text-indent:0}
+.todo.expanded p{font-size:20px;line-height:1.5;}
+.todo.expanded .complete{text-decoration:line-through;color:var(--btn-dis)}
+.todo.expanded p:not(:first-child){padding-top:8px;margin-top:8px;border-top:1px solid var(--brd-gr)}
 
 .inner{
     padding:24px;
@@ -222,7 +227,7 @@ a{text-decoration:none;color:initial;}
         gap:12px;
         padding:24px 12px;
         width:100%;
-        height:fit-content;
+        max-height:calc(100vh - 50px - 24px);
         overflow-y:auto;
         background:#ffffff7d;
         backdrop-filter:blur(8px);

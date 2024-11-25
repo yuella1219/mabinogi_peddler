@@ -1,13 +1,16 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
-import {NpcShopProps, getData} from '../../data'
-import {Item, Baggage} from '../../screens';
-import {NpcValue} from './components/npc-value';
-import {itemData} from './components';
+import {NpcShopProps, getData} from '../../datas'
+import {Item, Baggage, NpcValue, itemData, Todo} from 'screens';
+
+interface GetNameProps {
+    nm : string;
+    cnt? : number;
+}
 
 export const ShopPage = () =>{
     const [shopData, setShopData] = useState<NpcShopProps | null>(null);
-    const [getName, setGetName] = useState('');
+    const [getName, setGetName] = useState<GetNameProps | null>(null);
     const [getNpc, setGetNpc] = useState('');
     const [baggage, setBaggage] = useState<itemData[] | []>([]);
     const [showBaggage, setShowBaggage] = useState(false);
@@ -22,34 +25,47 @@ export const ShopPage = () =>{
           })
           .catch((error) => console.error('Fetch error:', error));
     }
-    const getAddItemName = (nm : string) =>{
-        setGetName(nm);
+    const getAddItemName = (nm:string, cnt?:number) =>{
+        setGetName({nm:nm, cnt:cnt});
     }
 
     const getNpcName = (nm : string) =>{
         setGetNpc(nm);
     }
-    useEffect(()=>{
-        console.log(shopData)
-    }, [shopData])
+
+    // useEffect(()=>{
+    //     console.log(shopData)
+    // }, [shopData])
+
     //npc 탭
     useEffect(()=>{
         handleGetData(getNpc)
     }, [getNpc])
     // 아이템 담기
     useEffect(()=>{
-        const _pushItem = shopData?.shop?.[0]?.item?.find(
-          (item) => item.item_display_name === getName
-        );
+        let _pushItem:any = null;
+        
+        if(getName?.cnt){
+            _pushItem = shopData?.shop?.flatMap((shop) => shop.item)
+            .find((item) => 
+                item.item_display_name === getName?.nm && 
+                item.item_count === getName?.cnt);
+        }else{
+            _pushItem = shopData?.shop?.flatMap((shop) => shop.item)
+            .find((item) => 
+                item.item_display_name === getName?.nm);
+        }
+        
         if (_pushItem) {
           setBaggage((state) => [...state, _pushItem]); // 기존 상태 배열에 _pushItem 추가
         }
-        console.log(baggage)
+        // console.log(baggage)
     }, [getName])
 
     return(
         <div className="sample">
             <NpcValue getNpc={getNpcName}/>
+            <Todo />
             {shopData ? (
             <div>
                 <Baggage data={baggage}/>

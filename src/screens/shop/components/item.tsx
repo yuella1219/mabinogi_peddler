@@ -1,6 +1,6 @@
 import React from 'react';
 import {useRef} from 'react';
-import {NpcShopProps} from '../../../data/api'
+import {NpcShopProps} from '../../../datas'
 import { ItemColorPart } from './item-color-part';
 
 export type itemData = NpcShopProps['shop'][number]['item'][number];
@@ -8,7 +8,7 @@ export type itemData = NpcShopProps['shop'][number]['item'][number];
 interface itemProps {
     item : itemData;
     type? : string;
-    sendItemNm: (props:string) => void;
+    sendItemNm: (nm:string, cnt?:number) => void;
 }
 
 export const Item = ({item, sendItemNm, type="default"} :itemProps) =>{
@@ -16,8 +16,15 @@ export const Item = ({item, sendItemNm, type="default"} :itemProps) =>{
 
     const addToCart = () =>{
         if(thisItem.current){
-            const nm = thisItem.current.querySelector('.name') as HTMLParagraphElement;
-            sendItemNm(nm.innerText);
+            const nm = thisItem.current.querySelector('.name') as HTMLSpanElement;
+            const cnt = thisItem.current.querySelector('.cnt') as HTMLSpanElement;
+            
+            if(cnt){
+                sendItemNm(nm.innerText, item.item_count);
+            }else{
+                sendItemNm(nm.innerText);
+            }
+            
         }
     }
 
