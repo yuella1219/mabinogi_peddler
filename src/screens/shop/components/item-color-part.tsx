@@ -9,11 +9,12 @@ interface Props{
     $color:string;
 }
 
-const ColorCode = styled.div<Props>`
+const ColorCode = styled.span<Props>`
+    display:block;
     width:20px;
     height:20px;
     background:${(props) => (props.$color ? `rgb(${props.$color})` : null)};
-    transform:translateY(-3px);
+    transform:translateY(-2px);
 `
 
 export const ItemColorPart = ({color} : getProps) => {

@@ -84,6 +84,7 @@ a {
   box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
   transition: box-shadow 0.1s;
+  border-style: none;
   cursor: pointer;
 }
 .item:hover {
@@ -150,12 +151,12 @@ a {
 .item .with-color {
   position: relative;
 }
-.item .with-color:hover p {
+.item .with-color:hover .color-code {
   z-index: 1;
   opacity: 1;
   transform: translate(110%, -50%);
 }
-.item .with-color p {
+.item .with-color .color-code {
   position: absolute;
   top: 50%;
   right: 0;
@@ -168,7 +169,7 @@ a {
   transform: translate(80%, -50%);
   opacity: 0;
 }
-.item .with-color p::before {
+.item .with-color .color-code::before {
   position: absolute;
   top: 50%;
   left: 0;
@@ -179,7 +180,7 @@ a {
   border-color: var(--brd-gr) transparent transparent transparent;
   transform: translate(-80%, -50%) rotate(90deg);
 }
-.item .with-color p::after {
+.item .with-color .color-code::after {
   position: absolute;
   top: 50%;
   left: 0;

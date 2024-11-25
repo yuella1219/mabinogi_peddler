@@ -45,6 +45,7 @@ a{text-decoration:none;color:initial;}
     box-shadow:4px 4px 12px rgba(0, 0, 0, 0.1);
     box-sizing:border-box;
     transition: box-shadow .1s;
+    border-style:none;
     cursor:pointer;
     &:hover{
         box-shadow:4px 4px 12px rgba(0, 0, 0, 0.1), 0px 0px 6px var(--brd-dgr);
@@ -110,13 +111,13 @@ a{text-decoration:none;color:initial;}
     .with-color{
         position:relative;
         &:hover{
-            p{
+            .color-code{
                 z-index:1;
                 opacity:1;
                 transform:translate(110%, -50%);
             }
         }
-        p{
+        .color-code{
             position:absolute;
             top:50%;
             right:0;

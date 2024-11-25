@@ -1,7 +1,7 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
-import {NpcShopProps, getData} from '../api/api'
-import {Item, Baggage} from './components';
+import {NpcShopProps, getData} from '../../data'
+import {Item, Baggage} from '../../screens';
 import {NpcValue} from './components/npc-value';
 import {itemData} from './components';
 
@@ -16,7 +16,7 @@ export const ShopPage = () =>{
     // 여기서는 getData 실행 후 응답받은 데이터 상태에 저장해서 출력하는 용도
     const handleGetData = (nm : string) =>{        
         // 필요한 매개변수 전달
-        getData({chaNm:nm, serNm : '만돌린', chnNum : 3}) // npcName, serverName, channel 값을 전달
+        getData({chaNm : nm, serNm : '만돌린', chnNum : 3}) // npcName, serverName, channel 값을 전달
           .then((fetchedData) => {
             setShopData(fetchedData);
           })

@@ -1,6 +1,6 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
-import {itemData} from './item';
+import {itemData} from '../../../screens';
 
 interface BasketData {
     data : itemData;

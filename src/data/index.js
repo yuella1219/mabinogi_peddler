@@ -1,1 +1,2 @@
-export * from './npc-data.ts'
+export * from './api'
+export * from './local'

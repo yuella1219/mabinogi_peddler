@@ -1,6 +1,6 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
-import {itemData, Item} from './item'
+import {itemData, Item} from '../../../screens'
 
 interface Props{
     data : itemData[];
