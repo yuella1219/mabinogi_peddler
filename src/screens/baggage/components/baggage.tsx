@@ -21,7 +21,7 @@ export const Baggage = ({data} : Props) =>{
     return(
         <div className="baggage-wrap">
             <button type="button" className="btn-baggage" onClick={handleShowList}>물건 목록 보기</button>
-            <div className="inner">
+            <div className={showList ? `inner expanded` : 'inner'}>
                 {showList && baggageList?.map((val, idx)=>(
                     <div key={idx} className="minimal">
                         <Item item={val} sendItemNm={()=>{}} />

@@ -1,14 +1,14 @@
 import React from 'react';
-import {useRef} from 'react';
+import {useEffect, useRef} from 'react';
 import {NpcShopProps} from '../../../datas'
-import { ItemColorPart } from './item-color-part';
+import { ItemColorPart } from 'screens';
 
 export type itemData = NpcShopProps['shop'][number]['item'][number];
 
 interface itemProps {
     item : itemData;
     type? : string;
-    sendItemNm: (nm:string, cnt?:number) => void;
+    sendItemNm: (nm:string, cnt?:number, color?:string) => void;
 }
 
 export const Item = ({item, sendItemNm, type="default"} :itemProps) =>{
@@ -18,10 +18,15 @@ export const Item = ({item, sendItemNm, type="default"} :itemProps) =>{
         if(thisItem.current){
             const nm = thisItem.current.querySelector('.name') as HTMLSpanElement;
             const cnt = thisItem.current.querySelector('.cnt') as HTMLSpanElement;
+            const col = item?.item_option.find((txt) => txt.option_type === '아이템 색상');
             
             if(cnt){
                 sendItemNm(nm.innerText, item.item_count);
-            }else{
+            }else if(col){
+                const val = col?.option_value;
+                sendItemNm(nm.innerText, undefined, val);
+            }
+            else{
                 sendItemNm(nm.innerText);
             }
             
