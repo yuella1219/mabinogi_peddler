@@ -92,23 +92,52 @@ a{text-decoration:none;color:initial;}
         margin-top:8px;
         font-size:16px;
         color:var(--txt-dark);
-        &::before{
+        span::after{
             display:inline-flex;
             align-items:center;
             justify-content:center;
-            content:'G';
             font-family:initial;
             font-size:14px;
             padding-left:2px;
             width:26px;
             height:26px;
             font-weight:900;
-            color:#e6c000;
             border-radius:100%;
+            box-sizing:border-box;            
+        }
+        span{
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            gap:4px;
+        }
+        .gold::after{
+            content:'G';
+            color:#e6c000;
             border:4px solid #fffb83;
             background:rgb(255, 250, 103);
             box-shadow:2px 1px 0px #ffe015, inset 2px 3px 2px #ffe015;
-            box-sizing:border-box;
+        }
+        .ducat::after{
+            content:'D';
+            color:#9e1200;
+            border:4px solid #ff7e67;
+            background:#ff7e67;
+            box-shadow:2px 1px 0px #b80000, inset 2px 3px 2px #e01a00;
+        }
+        .pinecone::after{
+            content:'';
+            background:url(/public/img/gold-plated-pine-con.png) no-repeat center center / contain;
+        }
+        .adv-seal::after{
+            content:'A';
+            font-family:initial;
+            font-size:20px;
+            font-weight:200;
+            color:#be7f36;
+            border:1px solid #ebe4c5;
+            background:#fdf290;
+            box-shadow:2px 1px 0px #cc8f5d, inset 3px 3px 4px #fff7db;
         }
     }
     .options{
