@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/mabinogi_peddler/static/css/main.d6d28cf5.css",
-    "main.js": "/mabinogi_peddler/static/js/main.9c680541.js",
+    "main.css": "/mabinogi_peddler/static/css/main.b2f2ec5a.css",
+    "main.js": "/mabinogi_peddler/static/js/main.80639d46.js",
     "static/js/453.ed3810f9.chunk.js": "/mabinogi_peddler/static/js/453.ed3810f9.chunk.js",
     "static/media/Mabinogi_Classic_TTF.ttf": "/mabinogi_peddler/static/media/Mabinogi_Classic_TTF.29cfc6b1788dec2cb6bc.ttf",
     "index.html": "/mabinogi_peddler/index.html",
-    "main.d6d28cf5.css.map": "/mabinogi_peddler/static/css/main.d6d28cf5.css.map",
-    "main.9c680541.js.map": "/mabinogi_peddler/static/js/main.9c680541.js.map",
+    "main.b2f2ec5a.css.map": "/mabinogi_peddler/static/css/main.b2f2ec5a.css.map",
+    "main.80639d46.js.map": "/mabinogi_peddler/static/js/main.80639d46.js.map",
     "453.ed3810f9.chunk.js.map": "/mabinogi_peddler/static/js/453.ed3810f9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d6d28cf5.css",
-    "static/js/main.9c680541.js"
+    "static/css/main.b2f2ec5a.css",
+    "static/js/main.80639d46.js"
   ]
 }
