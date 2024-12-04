@@ -9,7 +9,7 @@ function App() {
       <Router>
         <Gnb />
         <Routes>
-          <Route path="/" element={<ShopPage />} />
+          <Route path="/mabinogi_peddler" element={<ShopPage />} />
           <Route path="/page02" element={<Sample2 />} />
         </Routes>
       </Router>
