@@ -1,4 +1,4 @@
-const API_KEY = process.env.REACT_APP_API_KEY;
+const API_KEY = process.env.REACT_APP_API_KEY || 'test_7b7212e431fec3f52116b14619810636201e32488e76c577955ca1d9f1a5e3acefe8d04e6d233bd35cf2fabdeb93fb0d';
 const API_URL = process.env.REACT_APP_API_URL || 'https://open.api.nexon.com/mabinogi/v1/npcshop/list';
 
 export type ParamProps  = {
