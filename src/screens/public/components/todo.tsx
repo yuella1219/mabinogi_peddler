@@ -23,10 +23,12 @@ export const Todo = () =>{
             <p className="complete">와인재료 1개 이상의 묶음 선택했을 시 동일한 가격의 아이템 장바구니에 담기</p>
             <p className="complete">아이템 이름 외 선택지 필요 - ex) 델, 델렌 꽃이름 동일하여 첫번째 배열 아이템밖에 담기지 않음<br />컬러코드 등으로 구분 필요</p>
             <p className="complete">스토리지에 데이터 저장 - 타임 데이터 체크 후 갱신 필요 시 갱신하여 스토리지에 재저장</p>
-            <p>
+            <p className="complete">
                 잔고
-                <span>골드, 금박 솔방울, 두카트, 모험가의 인장</span>
+                <span className="complete">골드, 금박 솔방울, 두카트, 모험가의 인장</span>
+                <span>전역상태로 생성 완료</span>
             </p>
+            <p>아이템 카탈로그에 화폐 종류 구분</p>
             <p>무게, 슬롯
                 <span>이동수단 및 교역 규모 선택</span>
             </p>
