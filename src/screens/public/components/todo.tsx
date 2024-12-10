@@ -48,6 +48,7 @@ export const Todo = () =>{
                 판매 시스템<br />
                 <span>NPC 비주얼 더미데이터 필요</span>
                 <span>판매버튼 필요</span>
+                <span>금액 계산할 때 innerHtml로 계산하지 않기</span>
             </p>
             <p>짐 꾸러미 내부에 동일한 이름을 가진 아이템이 있을 경우, 어떤 아이템을 판매할건지 선택</p>
             <p>
