@@ -28,9 +28,16 @@ export const Todo = () =>{
                 <span className="complete">골드, 금박 솔방울, 두카트, 모험가의 인장</span>
                 <span>전역상태로 생성 완료</span>
             </p>
-            <p>아이템 카탈로그에 화폐 종류 구분</p>
+            <p className="complete">아이템 카탈로그에 화폐 종류 구분</p>
             <p>무게, 슬롯
                 <span>이동수단 및 교역 규모 선택</span>
+                <span>장바구니가 있고</span>
+                <span>이동수단에 이미 실은 짐이 있고</span>
+                <span>이걸 구분해야 하고</span>
+                <span>장바구니에 아이템을 담을 때 상점 갱신이 필요하고</span>
+                <span>장바구니에 담아서 결제한 아이템은 갱신되지 않고 스토리지에 저장해야 하고</span>
+                <span>할거 개많네</span>
+                <span>이동수단 차등화 - 단순 슬롯과 무게만으로 구분지어 사용하기에 다른 이동수단을 구매 할 필요가 없음</span>
             </p>
             <p>
                 판매 시스템<br />
@@ -43,6 +50,12 @@ export const Todo = () =>{
                 <span>구매수량 제한 아이템 구매갯수 체크 필요</span>
                 <span>친밀도에 따른 할인률 적용</span>
                 <span>NPC 필수 매입 아이템 업데이트</span>
+                <span>파트너 유무</span>
+                <span>알파카 펫 보유 여부</span>
+                <span>이벤트 상인</span>
+                <span>밀수꾼</span>
+                <span>약탈단 - 미니게임으로 쫓아내기</span>
+                <span>경호원 고용</span>
             </p>
         </div>
     )
