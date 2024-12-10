@@ -6,7 +6,6 @@ export const Todo = () =>{
     const [expanded, setExpanded] = useState(false);
     
     const handleTodo = () =>{
-        setExpanded(!expanded);
         if(_todo.current){
             if(expanded) {
                 _todo.current.classList.add('expanded');
@@ -14,6 +13,7 @@ export const Todo = () =>{
                 _todo.current.classList.remove('expanded');
             }
         }
+        setExpanded(!expanded);
     }
 
     return(
@@ -35,7 +35,11 @@ export const Todo = () =>{
                 <span>이동수단에 이미 실은 짐이 있고</span>
                 <span>이걸 구분해야 하고</span>
                 <span>장바구니에 아이템을 담을 때 상점 갱신이 필요하고</span>
-                <span>장바구니에 담아서 결제한 아이템은 갱신되지 않고 스토리지에 저장해야 하고</span>
+                <span>구매한 아이템(baggage)는 전역 또는 스토리지로 관리되어야 하지만</span>
+                <span>이동수단(transport)는 굳이 전역으로 관리되어야 할 필요가 없다</span>
+                <span>단, 현재 내 이동수단의 사용중인 무게/슬롯은 계산되어야 할 필요가 있다.</span>
+                <span>이를 위해 구매목록(baggage)가 전역으로 관리되고 스토리지에 저장되어야 할 필요가 있음.</span>
+                <span>이 모든 동작들이 수행되는 데 짐 상태가 방해받지 않고 데이터를 온전히 보존할 수 있게 전역상태로 관리하고</span>
                 <span>할거 개많네</span>
                 <span>이동수단 차등화 - 단순 슬롯과 무게만으로 구분지어 사용하기에 다른 이동수단을 구매 할 필요가 없음</span>
             </p>

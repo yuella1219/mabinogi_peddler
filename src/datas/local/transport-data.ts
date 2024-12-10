@@ -1,6 +1,6 @@
-import { TransPortType } from "type"
+import { TransportType } from "type"
 
-export const TransportData:TransPortType [] = [
+export const TransportData:TransportType [] = [
     {
         type : '등짐',
         slot : 4,
