@@ -1,19 +1,22 @@
-import { WalletProvider } from 'core';
-import './assets/css/styles.css'
+import { WalletProvider, Baggageprovider } from 'core';
+import './assets/css/styles.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Sample2, Gnb, ShopPage } from 'screens';
 
 function App() {
   return (
     <WalletProvider>
-      <Router>
-        <Gnb />
-        <Routes>
-          <Route path="/mabinogi_peddler" element={<ShopPage />} />
-          <Route path="/page02" element={<Sample2 />} />
-        </Routes>
-      </Router>
+      <Baggageprovider>
+        <Router>
+          <Gnb />
+          <Routes>
+            <Route path="/mabinogi_peddler" element={<ShopPage />} />
+            <Route path="/page02" element={<Sample2 />} />
+          </Routes>
+        </Router>
+      </Baggageprovider>
     </WalletProvider>
   );
 }
+
 export default App;
