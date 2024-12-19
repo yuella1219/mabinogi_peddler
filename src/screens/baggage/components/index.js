@@ -1,3 +1,3 @@
 export * from './baggage'
-export * from './basket'
+export * from './cart'
 export * from './wallet'

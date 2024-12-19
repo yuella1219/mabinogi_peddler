@@ -12,7 +12,7 @@ export const WalletProvider = ({ children }: { children: ReactNode }) => {
     const [wallet, setWallet] = useState<WalletProps | null>(null);
 
     const _init: WalletProps = {
-        gold: 50000,
+        gold: 5000000,
         ducat: 100000,
         pinecone: 30,
         seal: 50,

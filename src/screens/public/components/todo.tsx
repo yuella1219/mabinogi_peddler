@@ -29,7 +29,9 @@ export const Todo = () =>{
                 <span>전역상태로 생성 완료</span>
             </p>
             <p className="complete">아이템 카탈로그에 화폐 종류 구분</p>
-            <p>구매한 목록(baggage) 구현</p>
+            <p>구매한 목록(baggage) 구현
+                <span>구매시스테에에에에엠</span>
+            </p>
             <p>무게, 슬롯
                 <span>이동수단 및 교역 규모 선택</span>
                 <span>장바구니가 있고</span>

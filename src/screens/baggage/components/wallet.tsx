@@ -1,5 +1,5 @@
 import React from 'react'
-import { useWallet } from 'core';
+import { numberReplace, useWallet } from 'core';
 
 export const Wallet = () =>{
     const {wallet, setWallet} = useWallet();
@@ -8,16 +8,16 @@ export const Wallet = () =>{
         <div className="wallet">
             <div className="wrap">
                 <div className="gold">
-                    <span>{wallet?.gold ?? 0}</span>
+                    <span>{numberReplace(wallet?.gold ?? 0)}</span>
                 </div>
                 <div className="ducat">
-                    <span>{wallet?.ducat ?? 0}</span>
+                    <span>{numberReplace(wallet?.ducat ?? 0)}</span>
                 </div>
                 <div className="pinecon">
-                    <span>{wallet?.pinecone ?? 0}</span>
+                    <span>{numberReplace(wallet?.pinecone ?? 0)}</span>
                 </div>
                 <div className="adv-seal">
-                    <span>{wallet?.seal ?? 0}</span>
+                    <span>{numberReplace(wallet?.seal ?? 0)}</span>
                 </div>
             </div>
         </div>

@@ -1,7 +1,8 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
 import {NpcShopProps, getData} from '../../datas'
-import {Item, Baggage, NpcValue, itemData, Todo, Wallet} from 'screens';
+import {usePopup} from 'core'
+import {Item, Baggage, Cart, NpcValue, itemData, Todo, Wallet} from 'screens';
 
 interface GetNameProps {
     nm : string;
@@ -13,7 +14,8 @@ export const ShopPage = () =>{
     const [shopData, setShopData] = useState<NpcShopProps | null>(null); // 요청받은 데이터 or 로컬 데이터
     const [getName, setGetName] = useState<GetNameProps | null>(null); // 탭에서 선택한 아이템
     const [getNpc, setGetNpc] = useState<string | null>(null); // 엔피씨 선택
-    const [baggage, setBaggage] = useState<itemData[] | []>([]); // 짐 목록 업데이트
+    const [cart, setCart] = useState<itemData[] | []>([]); // 짐 목록 업데이트
+    const {callPopup} = usePopup();
     
     // 실제 통신은 api.ts 파일에서 진행, 
     // 여기서는 getData 실행 후 응답받은 데이터 상태에 저장해서 출력하는 용도
@@ -89,7 +91,7 @@ export const ShopPage = () =>{
                 item.item_display_name === getName?.nm);
         }
         if (_pushItem) {
-          setBaggage((state) => [...state, _pushItem]); // 기존 상태 배열에 _pushItem 추가
+          setCart((state) => [...state, _pushItem]); // 기존 상태 배열에 _pushItem 추가
         }
     }
     useEffect(()=>{
@@ -100,14 +102,22 @@ export const ShopPage = () =>{
         }
     }, [getName])
 
+    const samplePopup = () => {
+        callPopup({
+            mainTxt : '야호',
+            subTxt : '호우',
+            handleFunc : ()=>{console.log('야호호우')},
+        })
+    }
     return(
         <div className="sample">
             <NpcValue getNpc={getNpcName}/>
             <Wallet />
             <Todo />
+            <button onClick={samplePopup}>팝업 써보기</button>
             {shopData ? (
                 <div>
-                    <Baggage data={baggage}/>
+                    <Cart data={cart}/>
                     <h1>NPC 상점 정보</h1>
                     <p>탭 개수: {shopData.shop_tab_count}</p>
                     <div className="inner">
