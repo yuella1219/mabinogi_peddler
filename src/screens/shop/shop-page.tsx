@@ -2,7 +2,7 @@ import React from 'react';
 import {useState, useEffect} from 'react';
 import {NpcShopProps, getData} from '../../datas'
 import {usePopup} from 'core'
-import {Item, Baggage, Cart, NpcValue, itemData, Todo, Wallet} from 'screens';
+import {Item, BtnPress, Cart, NpcValue, itemData, Todo, Wallet} from 'screens';
 
 interface GetNameProps {
     nm : string;
@@ -114,7 +114,7 @@ export const ShopPage = () =>{
             <NpcValue getNpc={getNpcName}/>
             <Wallet />
             <Todo />
-            <button onClick={samplePopup}>팝업 써보기</button>
+            <BtnPress func={samplePopup} btnTxt='팝업 써보기'/>
             {shopData ? (
                 <div>
                     <Cart data={cart}/>

@@ -1,6 +1,7 @@
 import React from 'react'
 import {usePopup} from 'core';
 import {PopupProps} from 'type';
+import { BtnPress } from 'screens';
 
 export const Popup = ({mainTxt, subTxt, handleFunc, btnTxt = "확인"} : PopupProps) =>{
     const {setPopupData} = usePopup();
@@ -20,17 +21,18 @@ export const Popup = ({mainTxt, subTxt, handleFunc, btnTxt = "확인"} : PopupPr
                     <h5 className="main-txt">{mainTxt}</h5>
                 </div>
                 {subTxt !== null ? (
-                    <div className="popup-innner">
+                    <div className="popup-inner">
                         <p>{subTxt}</p>
                     </div>) 
                 : null}
                 <div className="popup-bot">
                     <div className="btn-wrap">
-                        <button className="btn" onClick={handlePopupNextAction}>{btnTxt}</button>
-                        <button className="btn" onClick={handlePopupInit}>취소</button>
+                        <BtnPress btnTxt={btnTxt} func={handlePopupNextAction} />
+                        <BtnPress btnTxt={'취소'} func={handlePopupInit}/>
                     </div>
                 </div>
             </div>
+            <div className="dim" onClick={handlePopupInit}></div>
         </div>
     )
 }
