@@ -251,13 +251,11 @@ a{text-decoration:none;color:initial;}
     top:12px;
     right:12px;
     z-index:100;
-    .btn-baggage{
-        padding:12px;
-        font-size:20px;
-        border:2px solid var(--brd-gr);
-        appearance:none;
-        border-radius:8px;
-        float:right;
+    .btn-wrap{
+        display:flex;
+        align-items:center;
+        justify-content:flex-end;
+        gap:12px;
     }
     .inner{
         display:grid;

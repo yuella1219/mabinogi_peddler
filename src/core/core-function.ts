@@ -1,5 +1,3 @@
-import {PopupProps} from 'type'
-import {usePopup} from 'core'
 
 export const numberReplace = (num: number): string | number => {
     if (num < 1000) {
