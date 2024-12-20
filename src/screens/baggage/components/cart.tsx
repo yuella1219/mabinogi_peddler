@@ -1,15 +1,18 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
 import {itemData, Item, BtnPress} from 'screens'
-import {useWallet, usePopup} from 'core';
+import {useWallet, usePopup, useBaggage} from 'core';
 
 interface Props{
+    shopNm : string | null;
     data : itemData[];
 }
 
-export const Cart = ({data} : Props) =>{
+export const Cart = ({shopNm, data} : Props) =>{
     const {wallet, setWallet} = useWallet();
     const {callPopup} = usePopup();
+    const {handleBuyItem} = useBaggage();
+    const [shopName, setShopName] = useState('');
     const [cartList, setCartList] = useState<itemData[] | null>([]);
     const [showList, setShowList] = useState(false);
 
@@ -18,16 +21,37 @@ export const Cart = ({data} : Props) =>{
     }
 
     useEffect(()=>{
+        if(shopNm){
+            setShopName(shopNm);
+            console.log(shopName)
+        }
+    }, [shopNm])
+
+    useEffect(()=>{
         setCartList(data)
+        console.log('카트에 담긴거')
+        console.log(cartList)
     }, [data])
 
     const handleCartBuyPopup = () => {
-        callPopup({
-            mainTxt : '구매하기',
-            subTxt: '구매하시겠습니까?',
-            handleFunc : ()=>{},
-            btnTxt : '구매하기',   
-        })
+        if(cartList){
+            callPopup({
+                popType : 'alert',
+                mainTxt : '장바구니에 담긴 아이템이 없어요',
+                handleFunc:()=>{},
+                btnTxt:'확인'
+            })
+        }else{
+            // callPopup({
+            //     mainTxt : '구매',
+            //     subTxt: '구매하시겠습니까?',
+            //     handleFunc : ()=>{handleBuyItem({
+            //         shopNm : shopName,
+            //         itemList : cartList,
+            //     })},
+            //     btnTxt : '구매하기',   
+            // })
+        }
     }
 
     return(

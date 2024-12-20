@@ -31,6 +31,19 @@ export const Todo = () =>{
             <p className="complete">아이템 카탈로그에 화폐 종류 구분</p>
             <p>구매한 목록(baggage) 구현
                 <span>구매시스테에에에에엠</span>
+                <span>구매 시 저장되어야 하는 정보는?</span>
+                <span>판매 엔피시</span>
+                <span>어떤 탭인가</span>
+                <span>아이템 밸류에 재화랑 정보 등등은 다 포함되어 있으니 상관없음</span>
+                <span>컬러코드 같이 시간에 따라 리셋되는 정보들도 포함되어 있으니 따로 저장필요 x<br /><br /></span>
+                <span>그럼 로직 순서는</span>
+                <span>구매 시도 &gt; </span>
+                <span>구매아이템 총액 확인 &gt;</span>
+                <span>구매가능 시 다음 스텝 &gt;</span>
+                <span>무게 확인 &gt;</span>
+                <span>무게 허용치 내 구매 시 다음 스텝</span>
+                <span>슬롯 할 거야? 아이템 갯수 너무 많은데 &gt;</span>
+                <span>모든 로직 통과하면 로컬에 구매목록 저장</span>
             </p>
             <p>무게, 슬롯
                 <span>이동수단 및 교역 규모 선택</span>

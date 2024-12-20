@@ -1,15 +1,20 @@
 import React, { ReactNode, useState, useEffect, createContext, useContext } from 'react';
-import {NpcShopProps} from '../datas/api'
 import {Baggage, itemData} from 'screens'
 
 export type BaggageContextType = {
     baggage: BaggageProps[] | null;
     setBaggage: React.Dispatch<React.SetStateAction<BaggageProps[] | null>>;
+    handleBuyItem:(shopNm:BuyItemProps) => void;
   };
 
 export type BaggageProps = {
     npcName : string;
     items : itemData[]
+}
+
+export type BuyItemProps = {
+    shopNm : string;
+    itemList : itemData[];
 }
 
 const BaggageContext = createContext<BaggageContextType|null>(null);
@@ -62,6 +67,11 @@ export const Baggageprovider = ({children} : {children : ReactNode}) =>{
         }
     }, []); // 초기화는 한 번만 실행
     
+    // 구매 로직
+    const handleBuyItem = ({shopNm} : BuyItemProps) =>{
+        const _getBuyList = shopNm;
+        console.log(_getBuyList)
+    }
 
       useEffect(()=>{
         if(baggage){
@@ -70,7 +80,7 @@ export const Baggageprovider = ({children} : {children : ReactNode}) =>{
       }, [baggage])
     
       return(
-        <BaggageContext.Provider value={{baggage, setBaggage}}>
+        <BaggageContext.Provider value={{baggage, setBaggage, handleBuyItem}}>
             {children}
         </BaggageContext.Provider>
       )

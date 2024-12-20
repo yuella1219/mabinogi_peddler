@@ -3,7 +3,7 @@ import {usePopup} from 'core';
 import {PopupProps} from 'type';
 import { BtnPress } from 'screens';
 
-export const Popup = ({mainTxt, subTxt, handleFunc, btnTxt = "확인"} : PopupProps) =>{
+export const Popup = ({popType="default", mainTxt, subTxt, handleFunc, btnTxt = "확인"} : PopupProps) =>{
     const {setPopupData} = usePopup();
 
     const handlePopupNextAction = () =>{
@@ -17,18 +17,32 @@ export const Popup = ({mainTxt, subTxt, handleFunc, btnTxt = "확인"} : PopupPr
     return(
         <div className="popup">
             <div className="popup-wrap">
-                <div className="popup-header">
-                    <h5 className="main-txt">{mainTxt}</h5>
-                </div>
-                {subTxt !== null ? (
-                    <div className="popup-inner">
-                        <p>{subTxt}</p>
-                    </div>) 
-                : null}
+                {popType === 'alert' ? (
+                    <div className="popup-alert">
+                        <p className="alert-txt">{mainTxt}</p>
+                    </div>                   
+                    ) 
+                : (
+                    <>
+                        <div className="popup-header">
+                            <h5 className="main-txt">{mainTxt}</h5>
+                        </div>
+                        <div className="popup-inner">
+                            <p>{subTxt}</p>
+                        </div>
+                    </>
+                )
+                }
                 <div className="popup-bot">
                     <div className="btn-wrap">
-                        <BtnPress btnTxt={btnTxt} func={handlePopupNextAction} />
-                        <BtnPress btnTxt={'취소'} func={handlePopupInit}/>
+                        {popType === 'alert' ? (
+                            <BtnPress btnTxt={'확인'} func={handlePopupInit}/>
+                        ) : (
+                            <>
+                                <BtnPress btnTxt={btnTxt} func={handlePopupNextAction} />
+                                <BtnPress btnTxt={'취소'} func={handlePopupInit}/>
+                            </>
+                        )}
                     </div>
                 </div>
             </div>

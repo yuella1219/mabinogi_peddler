@@ -63,7 +63,6 @@ export const ShopPage = () =>{
     }
     //npc 탭
     useEffect(()=>{
-        console.log(getNpc)
         if(getNpc){
             handleGetData(getNpc!)
         }
@@ -101,23 +100,14 @@ export const ShopPage = () =>{
             getItemInBaggage(getName!)      
         }
     }, [getName])
-
-    const samplePopup = () => {
-        callPopup({
-            mainTxt : '야호',
-            subTxt : '호우',
-            handleFunc : ()=>{console.log('야호호우')},
-        })
-    }
     return(
         <div className="sample">
             <NpcValue getNpc={getNpcName}/>
             <Wallet />
             <Todo />
-            <BtnPress func={samplePopup} btnTxt='팝업 써보기'/>
             {shopData ? (
                 <div>
-                    <Cart data={cart}/>
+                    <Cart shopNm={getNpc} data={cart}/>
                     <h1>NPC 상점 정보</h1>
                     <p>탭 개수: {shopData.shop_tab_count}</p>
                     <div className="inner">

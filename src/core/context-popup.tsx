@@ -1,18 +1,11 @@
-import React, { ReactNode, useState, useEffect, createContext, useContext } from 'react';
+import React, { ReactNode, useState, createContext, useContext } from 'react';
 import {Popup} from 'screens';
 import {PopupProps} from 'type';
-
-interface CallPopupParams {
-    mainTxt: string;
-    subTxt?: string;
-    handleFunc: (el?: any) => void;
-    btnTxt?: string;
-}
 
 interface PopupContextProps {
     popupData : PopupProps | null;
     setPopupData : React.Dispatch<React.SetStateAction<PopupProps | null>>;
-    callPopup: ({ mainTxt, subTxt, handleFunc, btnTxt }: CallPopupParams) => void;
+    callPopup: ({ mainTxt, subTxt, handleFunc, btnTxt }: PopupProps) => void;
 }
 
 const PopupContext = createContext<PopupContextProps | null>(null);
@@ -20,8 +13,9 @@ const PopupContext = createContext<PopupContextProps | null>(null);
 export const PopUpProvider = ({children} : {children : ReactNode}) =>{
     const [popupData, setPopupData] = useState<PopupProps | null>(null);
 
-    const callPopup = ({ mainTxt, subTxt, handleFunc, btnTxt }: CallPopupParams) => {
+    const callPopup = ({ popType, mainTxt, subTxt, handleFunc, btnTxt }: PopupProps) => {
         setPopupData({
+          popType,
           mainTxt,
           subTxt,
           handleFunc,
