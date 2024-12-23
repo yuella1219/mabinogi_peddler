@@ -1,9 +1,11 @@
 import React, { ReactNode, useState, useEffect, createContext, useContext } from 'react';
+import type { WalletProps } from 'type';
+import {useWallet} from 'core';
 import {Baggage, itemData} from 'screens'
 
 export type BaggageContextType = {
     baggage: BaggageProps[] | null;
-    setBaggage: React.Dispatch<React.SetStateAction<BaggageProps[] | null>>;
+    setBaggage: React.Dispatch<React.SetStateAction<BaggageProps[] | []>>;
     handleBuyItem:(shopNm:BuyItemProps) => void;
   };
 
@@ -20,38 +22,9 @@ export type BuyItemProps = {
 const BaggageContext = createContext<BaggageContextType|null>(null);
 
 export const Baggageprovider = ({children} : {children : ReactNode}) =>{
-    const [baggage, setBaggage] = useState<BaggageProps[] | null>(null);
+    const {wallet, setWallet} = useWallet();
+    const [baggage, setBaggage] = useState<BaggageProps[] | []>([]);
     const [_dataInit, _setDataInit] = useState(false)
- 
-    const _init: BaggageProps[] = [
-        {
-          npcName: '',
-          items: [
-            {
-              item_display_name: '',
-              item_count: 0,
-              item_option: [
-                {
-                  option_type: '',
-                  option_sub_type: '',
-                  option_value: '',
-                  option_value2: '',
-                  option_desc: '',
-                },
-              ],
-              price: [
-                {
-                  price_type: '',
-                  price_value: 0,
-                },
-              ],
-              limit_type: '',
-              limit_value: 0,
-              image_url: '',
-            },
-          ],
-        },
-      ];
 
       useEffect(() => {
         if (typeof window !== 'undefined') {
@@ -61,21 +34,46 @@ export const Baggageprovider = ({children} : {children : ReactNode}) =>{
     
             if (_get) {
                 setBaggage(_get); // 상태 업데이트는 초기화 한 번만 실행
-            } else {
-                setBaggage(_init);
             }
         }
     }, []); // 초기화는 한 번만 실행
     
     // 구매 로직
-    const handleBuyItem = ({shopNm} : BuyItemProps) =>{
-        const _getBuyList = shopNm;
-        console.log(_getBuyList)
+    const handleBuyItem = ({shopNm, itemList} : BuyItemProps) =>{
+        let wholeCost:WalletProps = {
+            gold:0,
+            ducat:0,
+            pinecone:0,
+            seal:0,
+        }
+
+        const _getBuyItem = () => {
+            itemList.forEach((idx) => {
+                idx.price.forEach((cost) => {
+                    const key = cost.price_type as keyof WalletProps;
+                    if(wholeCost[key]){
+                        wholeCost[key] += cost.price_value;
+                    }
+                })
+            })
+            return wholeCost;
+        }
+        
+        _getBuyItem();
+        // if(wallet)
+        
+        console.log(wholeCost)
+        // if(baggage){
+        //     setBaggage((prevItem)=>[...prevItem, {
+        //         npcName : shopNm,
+        //         items : itemList,
+        //     }])
+        // }
     }
 
       useEffect(()=>{
         if(baggage){
-            localStorage.setItem('maBaggage', JSON.stringify(baggage));
+            localStorage.setItem('myBaggage', JSON.stringify(baggage));
         }
       }, [baggage])
     

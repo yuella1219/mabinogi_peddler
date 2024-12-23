@@ -330,6 +330,18 @@ a {
   background: #fff;
   transition: all 0.05s;
   transform: translateY(0);
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+}
+.btn-press.small::before {
+  bottom: -8px;
+}
+.btn-press.small span {
+  padding: 6px 12px;
+  font-size: 16px;
+}
+.btn-press.small:active span {
+  transform: translateY(4px);
 }
 
 .baggage-wrap {
@@ -505,4 +517,9 @@ a {
   height: 100%;
   background: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(4px);
+}
+.popup .popup-alert {
+  padding: 24px;
+  text-align: center;
+  font-size: 20px;
 }

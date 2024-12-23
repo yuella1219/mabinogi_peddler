@@ -100,11 +100,16 @@ export const ShopPage = () =>{
             getItemInBaggage(getName!)      
         }
     }, [getName])
+
+    const resetData = () =>{
+        localStorage.removeItem('myBaggage');
+    }
     return(
         <div className="sample">
             <NpcValue getNpc={getNpcName}/>
             <Wallet />
             <Todo />
+            <BtnPress btnTxt='데이터 리셋용' func={resetData}/>
             {shopData ? (
                 <div>
                     <Cart shopNm={getNpc} data={cart}/>

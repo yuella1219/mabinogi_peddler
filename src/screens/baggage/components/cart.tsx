@@ -23,34 +23,40 @@ export const Cart = ({shopNm, data} : Props) =>{
     useEffect(()=>{
         if(shopNm){
             setShopName(shopNm);
-            console.log(shopName)
+            // console.log(shopName)
         }
     }, [shopNm])
 
     useEffect(()=>{
         setCartList(data)
-        console.log('카트에 담긴거')
-        console.log(cartList)
     }, [data])
+
+    useEffect(()=>{
+        if(cartList){
+            // console.log(cartList)
+        }
+    }, [cartList])
 
     const handleCartBuyPopup = () => {
         if(cartList){
-            callPopup({
-                popType : 'alert',
-                mainTxt : '장바구니에 담긴 아이템이 없어요',
-                handleFunc:()=>{},
-                btnTxt:'확인'
-            })
-        }else{
-            // callPopup({
-            //     mainTxt : '구매',
-            //     subTxt: '구매하시겠습니까?',
-            //     handleFunc : ()=>{handleBuyItem({
-            //         shopNm : shopName,
-            //         itemList : cartList,
-            //     })},
-            //     btnTxt : '구매하기',   
-            // })
+            if(cartList.length === 0){
+                callPopup({
+                    popType : 'alert',
+                    mainTxt : '장바구니에 담긴 아이템이 없어요',
+                    handleFunc:()=>{},
+                    btnTxt:'확인'
+                })
+            }else{
+                callPopup({
+                    mainTxt : '구매',
+                    subTxt: '구매하시겠습니까?',
+                    handleFunc : ()=>{handleBuyItem({
+                        shopNm : shopName,
+                        itemList : cartList,
+                    })},
+                    btnTxt : '구매하기',   
+                })
+            }
         }
     }
 

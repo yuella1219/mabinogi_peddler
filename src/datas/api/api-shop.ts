@@ -45,7 +45,7 @@ export const getData = async ({chaNm, serNm, chnNum}:ParamProps) => {
             headers : {
                 'accept' : 'application/json',
                 'x-nxopen-api-key' : String(API_KEY),
-            }            
+            }
         });
         if (!response.ok) { // ok가 되지 않은 경우 > responce code가 200이 아닌 경우 +> HTTP 상태 코드가 200~299(성공 상태) 범위가 아닌 경우 ex) response.code : 200 = true / response.code : 400 = false
             throw new Error('Network response was not ok');
