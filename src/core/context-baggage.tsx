@@ -24,7 +24,13 @@ const BaggageContext = createContext<BaggageContextType|null>(null);
 export const Baggageprovider = ({children} : {children : ReactNode}) =>{
     const {wallet, setWallet} = useWallet();
     const {callPopup} = usePopup();
-    const [baggage, setBaggage] = useState<BaggageProps[] | []>([]);
+    const [baggage, setBaggage] = useState<BaggageProps[] | []>(() => {
+        if (typeof window !== "undefined") {
+          const savedBaggage = localStorage.getItem("myBaggage");
+          return savedBaggage ? JSON.parse(savedBaggage) : [];
+        }
+        return [];
+      });
     const [_dataInit, _setDataInit] = useState(false)
 
       useEffect(() => {
@@ -118,6 +124,12 @@ export const Baggageprovider = ({children} : {children : ReactNode}) =>{
                         }])
                     }
                 }
+                setWallet({
+                    gold : _gold,
+                    ducat : _ducat,
+                    pinecone : _pinecone,
+                    seal : _seal
+                })
                 callPopup({
                     mainTxt : '구매완료',
                     subTxt:'구매가 완료되었어요',
