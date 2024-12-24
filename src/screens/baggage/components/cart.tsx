@@ -13,7 +13,7 @@ export const Cart = ({shopNm, data} : Props) =>{
     const {callPopup} = usePopup();
     const {handleBuyItem} = useBaggage();
     const [shopName, setShopName] = useState('');
-    const [cartList, setCartList] = useState<itemData[] | null>([]);
+    const [cartList, setCartList] = useState<itemData[] | []>([]);
     const [showList, setShowList] = useState(false);
 
     const handleShowList = () =>{
@@ -32,10 +32,14 @@ export const Cart = ({shopNm, data} : Props) =>{
     }, [data])
 
     useEffect(()=>{
-        if(cartList){
-            // console.log(cartList)
+        if(cartList.length > 0){
+            console.log(cartList)
         }
     }, [cartList])
+
+    const resetCart = () =>{
+        setCartList([]);
+    }
 
     const handleCartBuyPopup = () => {
         if(cartList){
@@ -53,6 +57,7 @@ export const Cart = ({shopNm, data} : Props) =>{
                     handleFunc : ()=>{handleBuyItem({
                         shopNm : shopName,
                         itemList : cartList,
+                        initCart : resetCart,
                     })},
                     btnTxt : '구매하기',   
                 })

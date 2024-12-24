@@ -17,6 +17,7 @@ export type BaggageProps = {
 export type BuyItemProps = {
     shopNm : string;
     itemList : itemData[];
+    initCart : ()=>void;
 }
 
 const BaggageContext = createContext<BaggageContextType|null>(null);
@@ -46,7 +47,7 @@ export const Baggageprovider = ({children} : {children : ReactNode}) =>{
     }, []); // 초기화는 한 번만 실행
     
     // 구매 로직
-    const handleBuyItem = ({shopNm, itemList} : BuyItemProps) =>{
+    const handleBuyItem = ({shopNm, itemList, initCart} : BuyItemProps) =>{
         // 구매 총액 초기화
         let wholeCost:WalletProps = {
             gold:0,
@@ -130,6 +131,7 @@ export const Baggageprovider = ({children} : {children : ReactNode}) =>{
                     pinecone : _pinecone,
                     seal : _seal
                 })
+                initCart();
                 callPopup({
                     popType:'alert',
                     mainTxt:'구매가 완료되었어요',
