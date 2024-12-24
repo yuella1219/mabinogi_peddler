@@ -131,8 +131,8 @@ export const Baggageprovider = ({children} : {children : ReactNode}) =>{
                     seal : _seal
                 })
                 callPopup({
-                    mainTxt : '구매완료',
-                    subTxt:'구매가 완료되었어요',
+                    popType:'alert',
+                    mainTxt:'구매가 완료되었어요',
                     handleFunc : ()=>{},
                 })
             }
