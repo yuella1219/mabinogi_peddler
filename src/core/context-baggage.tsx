@@ -1,7 +1,7 @@
 import React, { ReactNode, useState, useEffect, createContext, useContext } from 'react';
 import type { WalletProps } from 'type';
-import {useWallet} from 'core';
-import {Baggage, itemData} from 'screens'
+import {useWallet, usePopup} from 'core';
+import {itemData} from 'screens'
 
 export type BaggageContextType = {
     baggage: BaggageProps[] | null;
@@ -23,6 +23,7 @@ const BaggageContext = createContext<BaggageContextType|null>(null);
 
 export const Baggageprovider = ({children} : {children : ReactNode}) =>{
     const {wallet, setWallet} = useWallet();
+    const {callPopup} = usePopup();
     const [baggage, setBaggage] = useState<BaggageProps[] | []>([]);
     const [_dataInit, _setDataInit] = useState(false)
 
@@ -40,6 +41,7 @@ export const Baggageprovider = ({children} : {children : ReactNode}) =>{
     
     // 구매 로직
     const handleBuyItem = ({shopNm, itemList} : BuyItemProps) =>{
+        // 구매 총액 초기화
         let wholeCost:WalletProps = {
             gold:0,
             ducat:0,
@@ -47,28 +49,82 @@ export const Baggageprovider = ({children} : {children : ReactNode}) =>{
             seal:0,
         }
 
-        const _getBuyItem = () => {
-            itemList.forEach((idx) => {
-                idx.price.forEach((cost) => {
-                    const key = cost.price_type as keyof WalletProps;
-                    if(wholeCost[key]){
-                        wholeCost[key] += cost.price_value;
-                    }
-                })
+        // 장바구니 금액 합산
+        itemList.forEach((idx) => {
+            idx.price.forEach((cost) => {
+                if(cost.price_type === '골드'){
+                    wholeCost['gold'] += cost.price_value;
+                }
+                else if(cost.price_type === '두카트'){
+                    wholeCost['ducat'] += cost.price_value;
+                }
+                else if(cost.price_type === '금박 솔방울'){
+                    wholeCost['pinecone'] += cost.price_value;
+                }
+                else if(cost.price_type === '모험가의 인장'){
+                    wholeCost['seal'] += cost.price_value;
+                }
             })
-            return wholeCost;
+        })
+        
+        if(wallet){
+            const _gold = wallet.gold - wholeCost.gold;
+            const _ducat = wallet.ducat - wholeCost.ducat;
+            const _pinecone = wallet.pinecone - wholeCost.pinecone;
+            const _seal = wallet.seal - wholeCost.seal;
+
+            if(_gold < 0){
+                callPopup({
+                    popType:'alert',
+                    mainTxt:'골드가 부족해요',
+                    handleFunc:()=>{},
+                })
+            }else if(_ducat < 0){
+                callPopup({
+                    popType:'alert',
+                    mainTxt:'두카트가 부족해요',
+                    handleFunc:()=>{},
+                })
+            }else if(_pinecone < 0){
+                callPopup({
+                    popType:'alert',
+                    mainTxt:'금박 솔방울이 부족해요',
+                    handleFunc:()=>{},
+                })
+            }else if(_seal < 0){
+                callPopup({
+                    popType:'alert',
+                    mainTxt:'모험가의 인장이 부족해요',
+                    handleFunc:()=>{},
+                })
+            }else{
+                if(baggage){
+                    const _findPrevItemsList = baggage.find((name) => name.npcName === shopNm);
+                    if(_findPrevItemsList){
+                        setBaggage((prevItem)=>
+                            prevItem.map((npc)=>
+                                npc.npcName === shopNm
+                                ? {
+                                    ...npc,
+                                    items: [...npc.items, ...itemList],
+                                }
+                                : npc
+                            )
+                        )
+                    }else{
+                        setBaggage((prevItem)=>[...prevItem, {
+                            npcName : shopNm,
+                            items : itemList,
+                        }])
+                    }
+                }
+                callPopup({
+                    mainTxt : '구매완료',
+                    subTxt:'구매가 완료되었어요',
+                    handleFunc : ()=>{},
+                })
+            }
         }
-        
-        _getBuyItem();
-        // if(wallet)
-        
-        console.log(wholeCost)
-        // if(baggage){
-        //     setBaggage((prevItem)=>[...prevItem, {
-        //         npcName : shopNm,
-        //         items : itemList,
-        //     }])
-        // }
     }
 
       useEffect(()=>{

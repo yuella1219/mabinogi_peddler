@@ -6,8 +6,8 @@ import { Sample2, Gnb, ShopPage } from 'screens';
 function App() {
   return (
     <WalletProvider>
-      <Baggageprovider>
-        <PopUpProvider>
+      <PopUpProvider>
+        <Baggageprovider>
           <Router>
             <Gnb />
             <Routes>
@@ -15,8 +15,8 @@ function App() {
               <Route path="/page02" element={<Sample2 />} />
             </Routes>
           </Router>
-        </PopUpProvider>
-      </Baggageprovider>
+        </Baggageprovider>
+      </PopUpProvider>
     </WalletProvider>
   );
 }

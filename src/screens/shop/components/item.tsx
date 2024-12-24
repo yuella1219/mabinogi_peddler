@@ -1,5 +1,6 @@
 import React from 'react';
 import {useEffect, useRef} from 'react';
+import {numberReplace} from 'core';
 import {NpcShopProps} from '../../../datas'
 import { ItemColorPart } from 'screens';
 
@@ -42,7 +43,7 @@ export const Item = ({item, sendItemNm, type="default"} :itemProps) =>{
             {item.item_count > 1 ? (<span className="cnt">{item.item_count}개 묶음</span>) : null}
             {item.limit_value ? (<span className="limit">구매 가능 횟수 {item.limit_value}회</span>) : null}
             <span className="price">
-                {item.price[0].price_value} 
+                {numberReplace(item.price[0].price_value)} 
                 { item.price[0].price_type === '골드' ? (<span className="gold">{item.price[0].price_type}</span>) 
                 : item.price[0].price_type === '두카트' ? (<span className="ducat">{item.price[0].price_type}</span>)
                 : item.price[0].price_type === '금박 솔방울' ? (<span className="pinecone">{item.price[0].price_type}</span>)
