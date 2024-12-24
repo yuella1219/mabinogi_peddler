@@ -5,15 +5,14 @@ import {useWallet, usePopup, useBaggage} from 'core';
 
 interface Props{
     shopNm : string | null;
-    data : itemData[];
+    data : itemData | null;
 }
 
 export const Cart = ({shopNm, data} : Props) =>{
-    const {wallet, setWallet} = useWallet();
     const {callPopup} = usePopup();
     const {handleBuyItem} = useBaggage();
     const [shopName, setShopName] = useState('');
-    const [cartList, setCartList] = useState<itemData[] | []>([]);
+    const [cartList, setCartList] = useState<itemData[]>([]);
     const [showList, setShowList] = useState(false);
 
     const handleShowList = () =>{
@@ -23,19 +22,20 @@ export const Cart = ({shopNm, data} : Props) =>{
     useEffect(()=>{
         if(shopNm){
             setShopName(shopNm);
-            // console.log(shopName)
         }
     }, [shopNm])
 
     useEffect(()=>{
-        setCartList(data)
+        if(data !== null){
+            setCartList((prevItem) => [...prevItem, data as itemData])
+        }
     }, [data])
 
-    useEffect(()=>{
-        if(cartList.length > 0){
-            console.log(cartList)
-        }
-    }, [cartList])
+    // useEffect(()=>{
+    //     if(cartList){
+    //         console.log(cartList)
+    //     }
+    // }, [cartList])
 
     const resetCart = () =>{
         setCartList([]);

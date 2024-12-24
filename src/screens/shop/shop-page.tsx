@@ -1,7 +1,6 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
 import {NpcShopProps, getData} from '../../datas'
-import {usePopup} from 'core'
 import {Item, BtnPress, Cart, NpcValue, itemData, Todo, Wallet} from 'screens';
 
 interface GetNameProps {
@@ -14,8 +13,7 @@ export const ShopPage = () =>{
     const [shopData, setShopData] = useState<NpcShopProps | null>(null); // 요청받은 데이터 or 로컬 데이터
     const [getName, setGetName] = useState<GetNameProps | null>(null); // 탭에서 선택한 아이템
     const [getNpc, setGetNpc] = useState<string | null>(null); // 엔피씨 선택
-    const [cart, setCart] = useState<itemData[] | []>([]); // 짐 목록 업데이트
-    const {callPopup} = usePopup();
+    const [cart, setCart] = useState<itemData | null>(null); // 짐 목록 업데이트
     
     // 실제 통신은 api.ts 파일에서 진행, 
     // 여기서는 getData 실행 후 응답받은 데이터 상태에 저장해서 출력하는 용도
@@ -90,7 +88,7 @@ export const ShopPage = () =>{
                 item.item_display_name === getName?.nm);
         }
         if (_pushItem) {
-          setCart((state) => [...state, _pushItem]); // 기존 상태 배열에 _pushItem 추가
+          setCart(_pushItem); // 기존 상태 배열에 _pushItem 추가
         }
     }
     useEffect(()=>{
