@@ -1,7 +1,8 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
 import {NpcShopProps, getData} from '../../datas'
-import {Item, BtnPress, Cart, NpcValue, itemData, Todo, Wallet} from 'screens';
+import {useWallet} from 'core';
+import {Item, BtnPress, Cart, NpcValue, itemData, Todo, Wallet, Baggage} from 'screens';
 
 interface GetNameProps {
     nm : string;
@@ -14,6 +15,7 @@ export const ShopPage = () =>{
     const [getName, setGetName] = useState<GetNameProps | null>(null); // 탭에서 선택한 아이템
     const [getNpc, setGetNpc] = useState<string | null>(null); // 엔피씨 선택
     const [cart, setCart] = useState<itemData | null>(null); // 짐 목록 업데이트
+    const {wallet, setWallet} = useWallet();
     
     // 실제 통신은 api.ts 파일에서 진행, 
     // 여기서는 getData 실행 후 응답받은 데이터 상태에 저장해서 출력하는 용도
@@ -102,15 +104,26 @@ export const ShopPage = () =>{
     const resetData = () =>{
         localStorage.removeItem('myBaggage');
     }
+    const giveMeTheMoney = () =>{
+        setWallet({
+            gold : wallet?.gold! + 100000,
+            ducat : wallet?.ducat! + 10000,
+            pinecone : wallet?.pinecone! + 50,
+            seal : wallet?.seal! + 30,
+        })
+    }
     return(
         <div className="sample">
+            <Todo />
             <NpcValue getNpc={getNpcName}/>
             <Wallet />
-            <Todo />
-            <BtnPress btnTxt='데이터 리셋용' func={resetData}/>
+            <div className="btn-wrap">
+                <Baggage />
+                <BtnPress btnTxt='재화 추가' func={giveMeTheMoney}/>
+                <Cart shopNm={getNpc} data={cart}/>
+            </div>
             {shopData ? (
                 <div>
-                    <Cart shopNm={getNpc} data={cart}/>
                     <h1>NPC 상점 정보</h1>
                     <p>탭 개수: {shopData.shop_tab_count}</p>
                     <div className="inner">

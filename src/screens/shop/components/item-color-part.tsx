@@ -17,8 +17,14 @@ const ColorCode = styled.span<Props>`
     transform:translateY(-2px);
 `
 
-export const ItemColorPart = ({color} : getProps) => {
-    return(
-        <ColorCode $color={color}/>
-    )
-}
+export const ItemColorPart = ({ color }: { color: string | number }) => {
+    const colorString = typeof color === "number" ? color.toString() : color;
+  
+    return (
+      <div
+        className="color-part"
+        style={{ background: `rgb(${colorString})` }}
+      ></div>
+    );
+  };
+  

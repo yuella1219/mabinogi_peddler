@@ -29,24 +29,32 @@ export const Todo = () =>{
                 <span>전역상태로 생성 완료</span>
             </p>
             <p className="complete">아이템 카탈로그에 화폐 종류 구분</p>
-            <p>구매한 목록(baggage) 구현
-                <span>구매시스테에에에에엠</span>
-                <span>구매 시 저장되어야 하는 정보는?</span>
-                <span>판매 엔피시</span>
-                <span>어떤 탭인가</span>
-                <span>아이템 밸류에 재화랑 정보 등등은 다 포함되어 있으니 상관없음</span>
-                <span>**로직 저장 시 클릭 여러번 하는 경우 등으로 배열에 데이터가 중복 포함될 수 있으니 주의**</span>
-                <span>**구입 엔피시 중복 검사 필요**</span>
-                <span>컬러코드 같이 시간에 따라 리셋되는 정보들도 포함되어 있으니 따로 저장필요 x<br /><br /></span>
-                <span>그럼 로직 순서는</span>
-                <span>구매 시도 &gt; </span>
-                <span>구매아이템 총액 확인 &gt;</span>
-                <span>구매가능 시 다음 스텝 &gt;</span>
+            <p className="complete">구매한 목록(baggage) 구현
+                <span className="complete">구매시스테에에에에엠</span>
+                <span className="complete">구매 시 저장되어야 하는 정보는?</span>
+                <span className="complete">판매 엔피시</span>
+                <span className="complete">어떤 탭인가</span>
+                <span className="complete">아이템 밸류에 재화랑 정보 등등은 다 포함되어 있으니 상관없음</span>
+                <span className="complete">**로직 저장 시 클릭 여러번 하는 경우 등으로 배열에 데이터가 중복 포함될 수 있으니 주의**</span>
+                <span className="complete">**구입 엔피시 중복 검사 필요**</span>
+                <span className="complete">컬러코드 같이 시간에 따라 리셋되는 정보들도 포함되어 있으니 따로 저장필요 x<br /><br /></span>
+                <span className="complete">그럼 로직 순서는</span>
+                <span className="complete">구매 시도 &gt; </span>
+                <span className="complete">구매아이템 총액 확인 &gt;</span>
+                <span className="complete">구매가능 시 다음 스텝 &gt;</span>
                 <span>무게 확인 &gt;</span>
-                <span>무게 허용치 내 구매 시 다음 스텝</span>
+                <span className="complete">무게 허용치 내 구매 시 다음 스텝</span>
                 <span>슬롯 할 거야? 아이템 갯수 너무 많은데 &gt;</span>
-                <span>모든 로직 통과하면 로컬에 구매목록 저장</span>
+                <span className="complete">모든 로직 통과하면 로컬에 구매목록 저장</span>
             </p>
+            <p>
+                판매 시스템<br />
+                <span>NPC 비주얼 더미데이터 필요</span>
+                <span>판매버튼 필요</span>
+                <span>금액 계산할 때 innerHtml로 계산하지 않기</span>
+                <span>리셀 시 다른 재화의 형태로 받는 경우는..?</span>
+            </p>
+            <p>너 판매시스템 다 하면 이제 시스템 기획하고 디자인 해야된다 조졌다</p>
             <p>무게, 슬롯
                 <span>이동수단 및 교역 규모 선택</span>
                 <span>장바구니가 있고</span>
@@ -60,12 +68,6 @@ export const Todo = () =>{
                 <span>이 모든 동작들이 수행되는 데 짐 상태가 방해받지 않고 데이터를 온전히 보존할 수 있게 전역상태로 관리하고</span>
                 <span>할거 개많네</span>
                 <span>이동수단 차등화 - 단순 슬롯과 무게만으로 구분지어 사용하기에 다른 이동수단을 구매 할 필요가 없음</span>
-            </p>
-            <p>
-                판매 시스템<br />
-                <span>NPC 비주얼 더미데이터 필요</span>
-                <span>판매버튼 필요</span>
-                <span>금액 계산할 때 innerHtml로 계산하지 않기</span>
             </p>
             <p>짐 꾸러미 내부에 동일한 이름을 가진 아이템이 있을 경우, 어떤 아이템을 판매할건지 선택</p>
             <p>

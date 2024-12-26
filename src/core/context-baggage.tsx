@@ -20,9 +20,14 @@ export type BuyItemProps = {
     initCart : ()=>void;
 }
 
+export type SellItemProps = {
+    shopNm : string;
+    itemNm : string;
+}
+
 const BaggageContext = createContext<BaggageContextType|null>(null);
 
-export const Baggageprovider = ({children} : {children : ReactNode}) =>{
+export const BaggageProvider = ({children} : {children : ReactNode}) =>{
     const {wallet, setWallet} = useWallet();
     const {callPopup} = usePopup();
     const [baggage, setBaggage] = useState<BaggageProps[] | []>(() => {
@@ -139,6 +144,12 @@ export const Baggageprovider = ({children} : {children : ReactNode}) =>{
                 })
             }
         }
+    }
+
+    // 판매 로직
+
+    const handleSellItem = ({shopNm, itemNm} : SellItemProps) =>{
+
     }
 
       useEffect(()=>{

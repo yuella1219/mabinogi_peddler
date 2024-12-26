@@ -8,11 +8,11 @@ export type itemData = NpcShopProps['shop'][number]['item'][number];
 
 interface itemProps {
     item : itemData;
-    type? : string;
+    npmNm : string;
     sendItemNm: (nm:string, cnt?:number, color?:string) => void;
 }
 
-export const Item = ({item, sendItemNm, type="default"} :itemProps) =>{
+export const BaggageItem = ({item, sendItemNm, npmNm} :itemProps) =>{
     const thisItem = useRef<HTMLButtonElement>(null);
 
     const addToCart = () =>{

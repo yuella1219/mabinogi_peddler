@@ -10,7 +10,7 @@ interface Props{
 
 export const Cart = ({shopNm, data} : Props) =>{
     const {callPopup} = usePopup();
-    const {handleBuyItem} = useBaggage();
+    const {baggage, handleBuyItem} = useBaggage();
     const [shopName, setShopName] = useState('');
     const [cartList, setCartList] = useState<itemData[]>([]);
     const [showList, setShowList] = useState(false);
@@ -66,7 +66,7 @@ export const Cart = ({shopNm, data} : Props) =>{
     }
 
     return(
-        <div className="baggage-wrap">
+        <div className="baggage-wrap cart">
             <div className="btn-wrap">
                 <BtnPress btnTxt={showList ? '목록 닫기' : '물건 목록 보기'} func={handleShowList} />
                 {showList ? (<BtnPress btnTxt={'구매하기'} func={handleCartBuyPopup}/>) : null}
