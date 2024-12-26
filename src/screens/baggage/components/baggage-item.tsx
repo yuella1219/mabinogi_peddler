@@ -1,6 +1,6 @@
 import React from 'react';
 import {useEffect, useRef} from 'react';
-import {numberReplace} from 'core';
+import {numberReplace, SellItemProps} from 'core';
 import {NpcShopProps} from '../../../datas'
 import { ItemColorPart } from 'screens';
 
@@ -8,29 +8,19 @@ export type itemData = NpcShopProps['shop'][number]['item'][number];
 
 interface itemProps {
     item : itemData;
-    npmNm : string;
-    sendItemNm: (nm:string, cnt?:number, color?:string) => void;
+    npcNm : string;
+    sendItemNm: ({shopNm, item} :SellItemProps) => void;
+    sellFunc : () => void;
 }
 
-export const BaggageItem = ({item, sendItemNm, npmNm} :itemProps) =>{
+export const BaggageItem = ({item, sendItemNm, npcNm, sellFunc} :itemProps) =>{
     const thisItem = useRef<HTMLButtonElement>(null);
 
     const addToCart = () =>{
         if(thisItem.current){
-            const cnt = thisItem.current.querySelector('.cnt') as HTMLSpanElement;
-            const col = item?.item_option.find((txt) => txt.option_type === '아이템 색상');
-            
-            if(cnt){
-                sendItemNm(item.item_display_name, item.item_count);
-            }else if(col){
-                const val = col?.option_value;
-                sendItemNm(item.item_display_name, undefined, val);
-            }
-            else{
-                sendItemNm(item.item_display_name);
-            }
-            
+            sendItemNm({shopNm:npcNm, item:item}) 
         }
+        sellFunc();
     }
 
     return(

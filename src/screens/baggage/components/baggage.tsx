@@ -1,29 +1,32 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
-import {BaggageProps, useBaggage, usePopup} from 'core';
-import {itemData, Item, BtnPress} from 'screens'
-
-interface Props{
-    data : itemData[];
-}
+import {BaggageProps, SellItemProps, useBaggage, usePopup} from 'core';
+import {itemData, BaggageItem, BtnPress} from 'screens'
 
 export const Baggage = () =>{
-    const {baggage} = useBaggage();
+    const {baggage, handleSellItem} = useBaggage();
     const {callPopup} = usePopup();
     const [baggageList, setBaggageList] = useState<BaggageProps[] | []>([]);
-    const [sellNpcName, setSellNpcName] = useState('');
-    const [sellItemData, setSellItemData] = useState<itemData | null>(null);
+    const [sellItemData, setSellItemData] = useState<SellItemProps | null>(null);
     const [showList, setShowList] = useState(false);
 
     const handleShowList = () =>{
         setShowList(!showList);
     }
 
-    const handleBaggageSellItems = () =>{
+    const getSellItemData = ({shopNm, item}:SellItemProps) => {
+        setSellItemData({shopNm, item})        
+    };
+    
+    const handleBaggageSellItems = () => {
+        if(!sellItemData){
+            console.log('alert')
+            return
+        }
         callPopup({
             mainTxt:'판매',
             subTxt : '판매하시겠습니까?',
-            handleFunc : ()=>{},
+            handleFunc : ()=>{handleSellItem(sellItemData)},
             btnTxt : '판매'
         })
     }
@@ -53,6 +56,11 @@ export const Baggage = () =>{
                         <div key={idx} className="minimal">
                             {val.items.map((el, idxItems)=>(
                                 <div key={idxItems}>
+                                    <BaggageItem 
+                                        item={el} 
+                                        npcNm={val.npcName} 
+                                        sendItemNm={getSellItemData} 
+                                        sellFunc={handleBaggageSellItems}/>
                                 </div>
                             ))}
                         </div>
