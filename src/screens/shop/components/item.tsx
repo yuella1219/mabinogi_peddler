@@ -9,27 +9,15 @@ export type itemData = NpcShopProps['shop'][number]['item'][number];
 interface itemProps {
     item : itemData;
     type? : string;
-    sendItemNm: (nm:string, cnt?:number, color?:string) => void;
+    sendItem: (item:itemData) => void;
 }
 
-export const Item = ({item, sendItemNm, type="default"} :itemProps) =>{
+export const Item = ({item, sendItem, type="default"} :itemProps) =>{
     const thisItem = useRef<HTMLButtonElement>(null);
 
     const addToCart = () =>{
         if(thisItem.current){
-            const cnt = thisItem.current.querySelector('.cnt') as HTMLSpanElement;
-            const col = item?.item_option.find((txt) => txt.option_type === '아이템 색상');
-            
-            if(cnt){
-                sendItemNm(item.item_display_name, item.item_count);
-            }else if(col){
-                const val = col?.option_value;
-                sendItemNm(item.item_display_name, undefined, val);
-            }
-            else{
-                sendItemNm(item.item_display_name);
-            }
-            
+            sendItem(item);
         }
     }
 

@@ -47,14 +47,16 @@ export const Todo = () =>{
                 <span>슬롯 할 거야? 아이템 갯수 너무 많은데 &gt;</span>
                 <span className="complete">모든 로직 통과하면 로컬에 구매목록 저장</span>
             </p>
-            <p>
+            <p className="compltete">
                 판매 시스템<br />
-                <span>NPC 비주얼 더미데이터 필요</span>
-                <span>판매버튼 필요</span>
-                <span>금액 계산할 때 innerHtml로 계산하지 않기</span>
-                <span>리셀 시 다른 재화의 형태로 받는 경우는..?</span>
+                <span className="complete">NPC 비주얼 더미데이터 필요</span>
+                <span className="complete">판매버튼 필요</span>
+                <span className="complete">금액 계산할 때 innerHtml로 계산하지 않기</span>
+                <span className="complete">리셀 시 다른 재화의 형태로 받는 경우는..?</span>
+                <span>일단 기능제작 완료, 다중판매 등 여러문제 남음</span>
             </p>
             <p>너 판매시스템 다 하면 이제 시스템 기획하고 디자인 해야된다 조졌다</p>
+            <p>UI 으아악</p>
             <p>무게, 슬롯
                 <span>이동수단 및 교역 규모 선택</span>
                 <span>장바구니가 있고</span>

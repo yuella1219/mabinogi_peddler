@@ -2,7 +2,7 @@ import React from 'react';
 import {useState, useEffect} from 'react';
 import {NpcShopProps, getData} from '../../datas'
 import {useWallet} from 'core';
-import {Item, BtnPress, Cart, NpcValue, itemData, Todo, Wallet, Baggage} from 'screens';
+import {Shop, Item, BtnPress, Cart, NpcValue, itemData, Todo, Wallet, Baggage, ColorInterface} from 'screens';
 
 interface GetNameProps {
     nm : string;
@@ -115,35 +115,14 @@ export const ShopPage = () =>{
     return(
         <div className="sample">
             <Todo />
-            <NpcValue getNpc={getNpcName}/>
+            {/* <NpcValue getNpc={getNpcName}/> */}
             <Wallet />
-            <div className="btn-wrap">
+            {/* <div className="btn-wrap">
                 <Baggage />
                 <BtnPress btnTxt='재화 추가' func={giveMeTheMoney}/>
                 <Cart shopNm={getNpc} data={cart}/>
-            </div>
-            {shopData ? (
-                <div>
-                    <h1>NPC 상점 정보</h1>
-                    <p>탭 개수: {shopData.shop_tab_count}</p>
-                    <div className="inner">
-                        {shopData.shop.map((tab, index) => (
-                            <div key={index} className="tabs">
-                                <h2 className="tab-title">{tab.tab_name} 탭</h2>
-                                <div className="wrap">
-                                    {tab.item.map((item, itemIndex) => (
-                                        <div key={itemIndex}>
-                                            <Item item={item} sendItemNm={getAddItemName}/>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            ) : (
-                <p>Loading...</p>
-            )}
+            </div> */}
+            <Shop />            
         </div>
     )
 }
