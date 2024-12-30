@@ -10,9 +10,10 @@ interface itemProps {
     item : itemData;
     sendItem: (item:itemData) => void;
     detailData : (data:itemData | null) => void;
+    sendItemPosition : (getX:number, getY:number) => void;
 }
 
-export const Item = ({item, sendItem, detailData} :itemProps) =>{
+export const Item = ({item, sendItem, detailData, sendItemPosition} :itemProps) =>{
     const thisItem = useRef<HTMLButtonElement>(null);
 
     const addToCart = () =>{
@@ -20,11 +21,16 @@ export const Item = ({item, sendItem, detailData} :itemProps) =>{
             sendItem(item);
         }
     }
-
+    // 디테일 데이터 보내기
     const showItemDetail = () => {
+
+        const getClientRectData = thisItem.current?.getBoundingClientRect();
+        console.log(getClientRectData)
+        if (getClientRectData) sendItemPosition(getClientRectData.x, getClientRectData.y);
         detailData(item);
     }
 
+    // 디테일 언마운트
     const hideItemDetail = () => {
         detailData(null);
     }

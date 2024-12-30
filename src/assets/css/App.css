@@ -422,7 +422,7 @@ a {
 }
 .shop-wrap .shop-header strong {
   font-size: 24px;
-  color: var(--text);
+  color: var(--text-dark);
 }
 .shop-wrap .tab-header {
   display: flex;
@@ -439,7 +439,7 @@ a {
   padding: 8px 16px;
   font-weight: var(--bold);
   font-size: 18px;
-  color: var(--text);
+  color: var(--text-dark);
   cursor: pointer;
 }
 .shop-wrap .inner {
@@ -448,7 +448,7 @@ a {
 }
 .shop-wrap .tab-body {
   position: relative;
-  padding: 24px 0 48px;
+  padding: 24px 0;
 }
 .shop-wrap .tab-body [class*=plaid-] {
   z-index: 0;
@@ -536,7 +536,7 @@ a {
   position: relative;
 }
 
-[class*=item]:not([class$=wrap]) {
+.item {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -550,13 +550,13 @@ a {
   backdrop-filter: blur(2px);
   cursor: pointer;
 }
-[class*=item]:not([class$=wrap]):hover {
+.item:hover {
   background: rgba(0, 0, 0, 0.6);
 }
-[class*=item]:not([class$=wrap]) span {
+.item span {
   display: block;
 }
-[class*=item]:not([class$=wrap]) .img-wrap {
+.item .img-wrap {
   flex-shrink: 0;
   display: flex;
   align-items: center;
@@ -567,25 +567,25 @@ a {
   height: 80px;
   box-sizing: border-box;
 }
-[class*=item]:not([class$=wrap]) .img-wrap img {
+.item .img-wrap img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: contain;
 }
-[class*=item]:not([class$=wrap]) .name {
+.item .name {
   overflow: hidden;
   width: 90%;
   line-height: 1.5;
   letter-spacing: -0.3px;
   font-size: 16px;
   font-weight: var(--regular);
-  color: var(--light01);
+  color: var(--white);
   white-space: nowrap;
   text-overflow: ellipsis;
   text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.8);
 }
-[class*=item]:not([class$=wrap]) .price {
+.item .price {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -595,7 +595,7 @@ a {
   color: var(--white);
   text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.8);
 }
-[class*=item]:not([class$=wrap]) .price span::after {
+.item .price span::after {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -608,31 +608,31 @@ a {
   box-sizing: border-box;
   text-shadow: initial;
 }
-[class*=item]:not([class$=wrap]) .price span {
+.item .price span {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 4px;
 }
-[class*=item]:not([class$=wrap]) .price .gold::after {
+.item .price .gold::after {
   content: "G";
   color: #e6c000;
   border: 2px solid #fffb83;
   background: rgb(255, 250, 103);
   box-shadow: 2px 1px 0px #ffe015, inset 2px 3px 2px #ffe015;
 }
-[class*=item]:not([class$=wrap]) .price .ducat::after {
+.item .price .ducat::after {
   content: "D";
   color: #9e1200;
   border: 2px solid #ff7e67;
   background: #ff7e67;
   box-shadow: 2px 1px 0px #b80000, inset 2px 3px 2px #e01a00;
 }
-[class*=item]:not([class$=wrap]) .price .pinecone::after {
+.item .price .pinecone::after {
   content: "";
   background: url(/public/img/gold-plated-pine-con.png) no-repeat center center/contain;
 }
-[class*=item]:not([class$=wrap]) .price .adv-seal::after {
+.item .price .adv-seal::after {
   content: "A";
   font-family: initial;
   font-size: 20px;
@@ -642,25 +642,112 @@ a {
   background: #fdf290;
   box-shadow: 2px 1px 0px #cc8f5d, inset 3px 3px 4px #fff7db;
 }
-[class*=item]:not([class$=wrap]) .options {
+
+.item-detail {
+  position: fixed;
+  z-index: 100;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px 12px;
+  width: auto;
+  height: auto;
+  background: rgba(0, 0, 0, 0.6);
+  box-sizing: border-box;
+  border-style: none;
+  backdrop-filter: blur(4px);
+  cursor: pointer;
+  transform: translateX(-100%);
+}
+.item-detail span {
+  display: block;
+}
+.item-detail .name {
+  line-height: 1.5;
+  letter-spacing: -0.3px;
+  font-size: 16px;
+  font-weight: var(--regular);
+  color: var(--white);
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.8);
+}
+.item-detail .price {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 8px;
+  font-size: 16px;
+  color: var(--white);
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.8);
+}
+.item-detail .price span::after {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: initial;
+  font-size: 12px;
+  width: 18px;
+  height: 18px;
+  font-weight: 900;
+  border-radius: 100%;
+  box-sizing: border-box;
+  text-shadow: initial;
+}
+.item-detail .price span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+.item-detail .price .gold::after {
+  content: "G";
+  color: #e6c000;
+  border: 2px solid #fffb83;
+  background: rgb(255, 250, 103);
+  box-shadow: 2px 1px 0px #ffe015, inset 2px 3px 2px #ffe015;
+}
+.item-detail .price .ducat::after {
+  content: "D";
+  color: #9e1200;
+  border: 2px solid #ff7e67;
+  background: #ff7e67;
+  box-shadow: 2px 1px 0px #b80000, inset 2px 3px 2px #e01a00;
+}
+.item-detail .price .pinecone::after {
+  content: "";
+  background: url(/public/img/gold-plated-pine-con.png) no-repeat center center/contain;
+}
+.item-detail .price .adv-seal::after {
+  content: "A";
+  font-family: initial;
+  font-size: 20px;
+  font-weight: 200;
+  color: #be7f36;
+  border: 1px solid #ebe4c5;
+  background: #fdf290;
+  box-shadow: 2px 1px 0px #cc8f5d, inset 3px 3px 4px #fff7db;
+}
+.item-detail .options {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
   margin: 20px 0 0;
 }
-[class*=item]:not([class$=wrap]) .option-txt {
+.item-detail .option-txt {
   font-size: 16px;
 }
-[class*=item]:not([class$=wrap]) .with-color {
+.item-detail .with-color {
   position: relative;
 }
-[class*=item]:not([class$=wrap]) .with-color:hover .color-code {
+.item-detail .with-color:hover .color-code {
   z-index: 1;
   opacity: 1;
   transform: translate(110%, -50%);
 }
-[class*=item]:not([class$=wrap]) .with-color .color-code {
+.item-detail .with-color .color-code {
   position: absolute;
   top: 50%;
   right: 0;
@@ -673,7 +760,7 @@ a {
   transform: translate(80%, -50%);
   opacity: 0;
 }
-[class*=item]:not([class$=wrap]) .with-color .color-code::before {
+.item-detail .with-color .color-code::before {
   position: absolute;
   top: 50%;
   left: 0;
@@ -684,7 +771,7 @@ a {
   border-color: var(--brd-gr) transparent transparent transparent;
   transform: translate(-80%, -50%) rotate(90deg);
 }
-[class*=item]:not([class$=wrap]) .with-color .color-code::after {
+.item-detail .with-color .color-code::after {
   position: absolute;
   top: 50%;
   left: 0;
@@ -695,18 +782,10 @@ a {
   border-color: #fff transparent transparent transparent;
   transform: translate(-75%, -50%) rotate(90deg);
 }
-[class*=item]:not([class$=wrap]) .color-part {
+.item-detail .color-part {
   width: 20px;
   height: 20px;
   transform: translateY(-2px);
-}
-
-[class*=item].item-detail {
-  position: absolute;
-  bottom: 0;
-  z-index: 100;
-  width: auto;
-  height: auto;
 }
 
 .npc-portrait-wrap {

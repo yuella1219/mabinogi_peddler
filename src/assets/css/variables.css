@@ -63,6 +63,14 @@
 }
 .doNotCodingPlz{
   --main:#9c3232;
+  --light01:#a3272f;
+  --light02:#f38c93;
+  --dark01:#fff;
+  --dark02:#fff;
+  --deep:#5e0e35;
+  --select:#fff;
+  --text:#ffc1cf;
+  --inner:#fff;
 }
 .ivory{
   --main:#d6ccb9;
@@ -75,7 +83,8 @@
   --dark02:#cd8b88;
   --deep:#aa4b45;
   --select:#ebaab7;
-  --text:#89474a;
+  --text-dark:#89474a;
+  --text-light:#fff;
   --inner:#a08986;
 }
 .neonGreen{

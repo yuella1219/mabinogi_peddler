@@ -8,15 +8,19 @@ export type itemData = NpcShopProps['shop'][number]['item'][number];
 
 interface itemProps {
     item : itemData;
+    getX : number;
+    getY : number;
 }
 
-export const ItemDetail = ({item} :itemProps) =>{
+export const ItemDetail = ({item, getX, getY} :itemProps) =>{
+
+    const positionCalc = {
+        top:`${getY}px`,
+        left:`${getX}px`,
+    };
 
     return(
-        <div className="item-detail">
-            <span className="img-wrap">
-                <img src={item.image_url} className="" alt="" />
-            </span>
+        <div className="item-detail" style={positionCalc}>
             <span className="name">{item.item_display_name}</span>
             {item.item_count > 1 ? (<span className="cnt">{item.item_count}개 묶음</span>) : null}
             {item.limit_value ? (<span className="limit">구매 가능 횟수 {item.limit_value}회</span>) : null}

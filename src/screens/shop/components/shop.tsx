@@ -8,6 +8,7 @@ export const Shop = () =>{
     const [showShop, setShowShop] = useState(false);
     const [getBuyItemData, setGetBuyItemData] = useState<itemData | null>(null);
     const [getShowDetailData, setGetShowDetailData] = useState<itemData | null>(null);
+    const [getDetailPosition, setGetDetailPosition] = useState({getX:0, getY:0});
 
     // 실제 통신은 api.ts 파일에서 진행, 
     // 여기서는 getData 실행 후 응답받은 데이터 상태에 저장해서 출력하는 용도
@@ -50,7 +51,7 @@ export const Shop = () =>{
     }
 
     useEffect(()=>{
-        handleGetData('상인 아루');
+        handleGetData('델');
     }, [])
 
     // 첫번째 탭 활성화
@@ -80,64 +81,71 @@ export const Shop = () =>{
         }
     };
     
+    // 디테일 데이터
     const handleDetailData = (data: itemData | null) => {
         setGetShowDetailData(data);
     };
+    // 디테일 포지션값
+    const handleDetailPosition = (getX: number, getY:number) =>{
+        setGetDetailPosition({getX:getX, getY:getY});
+    }
     return(
         <>
             {showShop ? (
-                <div className="shop-wrap">
-                    <div className="shop-header">
-                        <strong>상점</strong>
-                    </div>
-                    <div className="inner">
-                        <div className="tab-header">
-                            {shopData?.shop.map((tab, idx) => (
-                                <button type="button" key={idx} className="tab-btn" onClick={handleShowTabs}>{tab.tab_name}</button>
-                            ))}
+                <>
+                    <div className="shop-wrap">
+                        <div className="shop-header">
+                            <strong>상점</strong>
                         </div>
-                        <div className="tab-body">
-                            {/* 배경용 격자 */}
-                            <div className="plaid-wrap">
-                                <div className="plaid-row">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                </div>
-                                <div className="plaid-col">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                </div>
+                        <div className="inner">
+                            <div className="tab-header">
+                                {shopData?.shop.map((tab, idx) => (
+                                    <button type="button" key={idx} className="tab-btn" onClick={handleShowTabs}>{tab.tab_name}</button>
+                                ))}
                             </div>
-                            {/* // 배경용 격자 */}
-                            {shopData?.shop.map((tab, idx) => (
-                                <div className="tab" key={idx}>
-                                    {tab.item.map((item, key) => (
-                                        <div key={`item-${key}`} className="item-wrap">
-                                            <Item item={item} sendItem={getItemData} detailData={handleDetailData}/>
-                                        </div>
-                                    ))}
+                            <div className="tab-body">
+                                {/* 배경용 격자 */}
+                                <div className="plaid-wrap">
+                                    <div className="plaid-row">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </div>
+                                    <div className="plaid-col">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </div>
                                 </div>
-                            ))}
+                                {/* // 배경용 격자 */}
+                                {shopData?.shop.map((tab, idx) => (
+                                    <div className="tab" key={idx}>
+                                        {tab.item.map((item, key) => (
+                                            <div key={`item-${key}`} className="item-wrap">
+                                                <Item item={item} sendItem={getItemData} detailData={handleDetailData} sendItemPosition={handleDetailPosition}/>
+                                            </div>
+                                        ))}
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     </div>
-                    {getShowDetailData && (<ItemDetail item={getShowDetailData}/>)}
-                </div>
+                    {getShowDetailData && getDetailPosition && (<ItemDetail item={getShowDetailData} getX={getDetailPosition.getX} getY={getDetailPosition.getY}/>)}
+                </>
             ) 
             : null}
         </>
