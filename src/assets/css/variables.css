@@ -25,9 +25,10 @@
   --regular : 400;
   --bold : 700;
 
-  --item-base:76px;
-  --item2:calc((76px * 2) - 2px);
-  --item3:calc((76px * 3) - 2px);
+  --item-base:64px;
+  --item1:calc((64px) - 2px);
+  --item2:calc((64px * 2) - 2px);
+  --item3:calc((64px * 3) - 2px);
 }
 
 #root{

@@ -114,22 +114,6 @@ a {
     }
 }
 
-.tabs {
-    margin: 0 0 42px;
-    padding: 52px;
-    background: var(--bg-lbgr);
-    border: 1px solid var(--brd-div);
-    border-radius: 12px;
-
-    .wrap {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: flex-start;
-        justify-content: flex-start;
-        gap: 32px;
-    }
-}
-
 .npc-wrap {
     padding: 24px 24px 48px;
     width: 100%;
@@ -420,6 +404,16 @@ a {
 // =================================== 프로토 타입 完
 // 정식 버전 UI 시작 ===================================
 
+#container{
+    width:100%;
+    height:100vh;
+    overflow:hidden;
+}
+.content{
+    width:100%;
+    height:100%;
+}
+
 // color interface
 .color-interface-wrap {
     display: flex;
@@ -467,7 +461,8 @@ a {
 // shop - 상점
 .shop-wrap{
     margin:0 auto;
-    width:960px;
+    // width:968px;
+    width:min-content;
     .shop-header{
         padding:24px 48px;
         background:var(--shop-header);
@@ -498,16 +493,16 @@ a {
         }
     }
     .inner{
-        padding:20px 24px 24px;
+        padding:20px 28px 24px;
         background:var(--main);
     }
     .tab-body{
         position:relative;
-        padding:24px 0;
+        padding:24px 0 48px;
         [class*="plaid-"]{
             z-index:0;
             width:100%;
-            height:608px;
+            height:512px;
         }
         .plaid-wrap{            
             position:absolute;
@@ -519,16 +514,30 @@ a {
         .plaid-col{
             position:relative;
             display:grid;
-            grid-template-columns: repeat(12, 76px);
+            grid-template-columns: repeat(12, 64px);
             span{
                 &::before{
                     display:block;
+                    margin-top:2px;
                     width:2px;
                     height:100%;
-                    display:block;
                     content:"";
                     background:var(--main);
                     box-shadow:2px 0 0 var(--deep);
+                }
+                &:last-child{
+                    display:flex;
+                    align-items:flex-start;
+                    justify-content:space-between;
+                    &::after{
+                        display:block;
+                        content:"";
+                        margin-top:2px;
+                        margin-right:-2px;
+                        width:2px;
+                        height:100%;
+                        background:var(--main);
+                    }
                 }
             }
         }
@@ -537,7 +546,7 @@ a {
             top:0;
             left:0;
             display:grid;
-            grid-template-rows: repeat(12, 76px);
+            grid-template-rows: repeat(12, 64px);
             span{
                 &::before{
                     display:block;
@@ -553,20 +562,37 @@ a {
         .tab{
             position:relative;
             z-index:1;
-            display:flex;
+            display:none;
             flex-wrap:wrap;
             align-items:flex-start;
             justify-content:flex-start;
-            width:912px;
-            height:608px;
+            gap:2px;
+            // padding:2px 0 0 2px;
+            width:768px;
+            height:512px;
             overflow-y:auto;
-            border:1px solid var(--deep);
+            border:2px solid var(--main);
+            scrollbar-width:none;
+            &.show{
+                display:flex;
+            }
+            &::after{
+                display:block;
+                content:"";
+                width:100%;
+                height:0px;
+                background:var(--main);
+                margin-bottom:-4px;
+            }
         }
     }
 }
 
 // item 아이템
-.item {
+.item-wrap{
+    position:relative;
+}
+[class*="item"]:not([class$="wrap"]) {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -574,9 +600,10 @@ a {
     padding:12px 0;
     width:var(--item2);
     height:var(--item3);
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.3);
     box-sizing: border-box;
     border-style: none;
+    backdrop-filter:blur(2px);
     cursor: pointer;
     &:hover{
         background:rgba(0, 0, 0, 0.6);
@@ -591,8 +618,8 @@ a {
         justify-content: center;
         overflow: hidden;
         margin-bottom: 12px;
-        width: 120px;
-        height: 120px;
+        width: 80px;
+        height: 80px;
         box-sizing: border-box;
 
         img {
@@ -604,10 +631,16 @@ a {
     }
 
     .name {
+        overflow:hidden;
+        width:90%;
         line-height: 1.5;
-        font-size: 18px;
-        font-weight: 700;
+        letter-spacing:-0.3px;
+        font-size: 16px;
+        font-weight: var(--regular);
         color: var(--light01);
+        white-space:nowrap;
+        text-overflow:ellipsis;
+        text-shadow:2px 2px 0 rgba(0, 0, 0, 0.8);
     }
 
     .price {
@@ -618,19 +651,20 @@ a {
         margin-top: 8px;
         font-size: 16px;
         color: var(--white);
+        text-shadow:2px 2px 0 rgba(0, 0, 0, 0.8);
 
         span::after {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             font-family: initial;
-            font-size: 14px;
-            padding-left: 2px;
-            width: 26px;
-            height: 26px;
+            font-size: 12px;
+            width: 18px;
+            height: 18px;
             font-weight: 900;
             border-radius: 100%;
             box-sizing: border-box;
+            text-shadow:initial;
         }
 
         span {
@@ -643,7 +677,7 @@ a {
         .gold::after {
             content: 'G';
             color: #e6c000;
-            border: 4px solid #fffb83;
+            border: 2px solid #fffb83;
             background: rgb(255, 250, 103);
             box-shadow: 2px 1px 0px #ffe015, inset 2px 3px 2px #ffe015;
         }
@@ -651,7 +685,7 @@ a {
         .ducat::after {
             content: 'D';
             color: #9e1200;
-            border: 4px solid #ff7e67;
+            border: 2px solid #ff7e67;
             background: #ff7e67;
             box-shadow: 2px 1px 0px #b80000, inset 2px 3px 2px #e01a00;
         }
@@ -740,4 +774,13 @@ a {
         height: 20px;
         transform: translateY(-2px);
     }
+}
+
+// item detail 아이템 디테일창
+[class*="item"].item-detail{
+    position:absolute;
+    bottom:0;
+    z-index:100;
+    width:auto;
+    height:auto;
 }

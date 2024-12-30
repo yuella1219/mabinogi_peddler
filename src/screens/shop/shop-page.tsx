@@ -113,10 +113,10 @@ export const ShopPage = () =>{
         })
     }
     return(
-        <div className="sample">
+        <div className="content">
             <Todo />
             {/* <NpcValue getNpc={getNpcName}/> */}
-            <Wallet />
+            {/* <Wallet /> */}
             {/* <div className="btn-wrap">
                 <Baggage />
                 <BtnPress btnTxt='재화 추가' func={giveMeTheMoney}/>
