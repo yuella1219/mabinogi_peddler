@@ -74,7 +74,7 @@ export const Cart = ({shopNm, data} : Props) =>{
             <div className={showList ? `inner expanded` : 'inner'}>
                 {showList && cartList?.map((val, idx)=>(
                     <div key={idx} className="minimal">
-                        <Item item={val} sendItemNm={()=>{}} />
+                        <Item item={val} sendItem={()=>{}} detailData={()=>{}} />
                     </div>
                 ))}
             </div>

@@ -44,8 +44,8 @@ a {
 
 .todo {
   position: fixed;
-  top: 12px;
-  left: 8%;
+  bottom: 12px;
+  left: 2%;
   z-index: 999;
   width: 40px;
   height: 40px;
@@ -362,9 +362,13 @@ a {
 }
 
 .color-interface-wrap {
+  position: fixed;
+  bottom: -24px;
+  right: 0;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   gap: 24px;
   width: 1px;
 }
@@ -403,6 +407,9 @@ a {
 }
 
 .shop-wrap {
+  position: fixed;
+  top: 0;
+  right: 0;
   margin: 0 auto;
   width: min-content;
 }
@@ -700,4 +707,39 @@ a {
   z-index: 100;
   width: auto;
   height: auto;
+}
+
+.npc-portrait-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 747px;
+}
+.npc-portrait-wrap img {
+  transform: scaleX(-1);
+}
+
+.npc-dialog-wrap {
+  position: relative;
+  z-index: 0;
+  padding: 24px 48px;
+  margin: -122px auto 0;
+  width: 86%;
+  min-height: 280px;
+  background: #5f473d;
+  border: 10px solid #ccbda7;
+  box-sizing: border-box;
+}
+.npc-dialog-wrap .npc-name {
+  font-size: 32px;
+  font-weight: var(--regular);
+  color: var(--white);
+}
+.npc-dialog-wrap .dialog-box {
+  padding: 24px;
+}
+.npc-dialog-wrap .npc-txt {
+  font-size: 22px;
+  color: var(--white);
 }

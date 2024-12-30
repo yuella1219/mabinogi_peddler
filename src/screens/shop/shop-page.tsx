@@ -2,7 +2,7 @@ import React from 'react';
 import {useState, useEffect} from 'react';
 import {NpcShopProps, getData} from '../../datas'
 import {useWallet} from 'core';
-import {Shop, Item, BtnPress, Cart, NpcValue, itemData, Todo, Wallet, Baggage, ColorInterface} from 'screens';
+import {Shop, Npc, Item, BtnPress, Cart, NpcValue, itemData, Todo, Wallet, Baggage, ColorInterface} from 'screens';
 
 interface GetNameProps {
     nm : string;
@@ -114,15 +114,10 @@ export const ShopPage = () =>{
     }
     return(
         <div className="content">
-            <Todo />
-            {/* <NpcValue getNpc={getNpcName}/> */}
-            {/* <Wallet /> */}
-            {/* <div className="btn-wrap">
-                <Baggage />
-                <BtnPress btnTxt='재화 추가' func={giveMeTheMoney}/>
-                <Cart shopNm={getNpc} data={cart}/>
-            </div> */}
+            {/* <Todo /> */}
+            <Npc />
             <Shop />            
+            <ColorInterface show={true} />
         </div>
     )
 }
