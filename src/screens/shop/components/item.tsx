@@ -25,14 +25,13 @@ export const Item = ({item, sendItem, detailData, sendItemPosition} :itemProps) 
     const showItemDetail = () => {
 
         const getClientRectData = thisItem.current?.getBoundingClientRect();
-        console.log(getClientRectData)
         if (getClientRectData) sendItemPosition(getClientRectData.x, getClientRectData.y);
         detailData(item);
     }
 
     // 디테일 언마운트
     const hideItemDetail = () => {
-        detailData(null);
+        // detailData(null);
     }
 
     return(

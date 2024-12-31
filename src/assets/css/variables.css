@@ -54,12 +54,39 @@
 }
 .electronic{
   --main:#353535;
+  --light01:#f5e8e6;
+  --light02:#f7eeee;
+  --dark01:#ebd1ce;
+  --dark02:#cd8b88;
+  --deep:#aa4b45;
+  --select:#ebaab7;
+  --text-dark:#89474a;
+  --text-light:#fff;
+  --inner:#a08986;
 }
 .dollPink{
   --main:#db8aa0;
+  --light01:#f5e8e6;
+  --light02:#f7eeee;
+  --dark01:#ebd1ce;
+  --dark02:#cd8b88;
+  --deep:#aa4b45;
+  --select:#ebaab7;
+  --text-dark:#89474a;
+  --text-light:#fff;
+  --inner:#a08986;
 }
 .transparentGray{
   --main:#888888;
+  --light01:#f5e8e6;
+  --light02:#f7eeee;
+  --dark01:#ebd1ce;
+  --dark02:#cd8b88;
+  --deep:#aa4b45;
+  --select:#ebaab7;
+  --text-dark:#89474a;
+  --text-light:#fff;
+  --inner:#a08986;
 }
 .doNotCodingPlz{
   --main:#9c3232;
@@ -74,6 +101,15 @@
 }
 .ivory{
   --main:#d6ccb9;
+  --light01:#f5e8e6;
+  --light02:#f7eeee;
+  --dark01:#ebd1ce;
+  --dark02:#cd8b88;
+  --deep:#aa4b45;
+  --select:#ebaab7;
+  --text-dark:#89474a;
+  --text-light:#fff;
+  --inner:#a08986;
 }
 .strawberryMilk{
   --main:#f2e1df;
@@ -89,22 +125,85 @@
 }
 .neonGreen{
   --main:#1a6464;
+  --light01:#f5e8e6;
+  --light02:#f7eeee;
+  --dark01:#ebd1ce;
+  --dark02:#cd8b88;
+  --deep:#aa4b45;
+  --select:#ebaab7;
+  --text-dark:#89474a;
+  --text-light:#fff;
+  --inner:#a08986;
 }
 .neonPink{
   --main:#842559;
+  --light01:#f5e8e6;
+  --light02:#f7eeee;
+  --dark01:#ebd1ce;
+  --dark02:#cd8b88;
+  --deep:#aa4b45;
+  --select:#ebaab7;
+  --text-dark:#89474a;
+  --text-light:#fff;
+  --inner:#a08986;
 }
 .limeOrange{
   --main:#dfe671;
+  --light01:#f5e8e6;
+  --light02:#f7eeee;
+  --dark01:#ebd1ce;
+  --dark02:#cd8b88;
+  --deep:#aa4b45;
+  --select:#ebaab7;
+  --text-dark:#89474a;
+  --text-light:#fff;
+  --inner:#a08986;
 }
 .sandPink{
   --main:#e5cfad;
+  --light01:#f5e8e6;
+  --light02:#f7eeee;
+  --dark01:#ebd1ce;
+  --dark02:#cd8b88;
+  --deep:#aa4b45;
+  --select:#ebaab7;
+  --text-dark:#89474a;
+  --text-light:#fff;
+  --inner:#a08986;
 }
 .newYorkMan{
   --main:#dee5e0;
+  --light01:#f5e8e6;
+  --light02:#f7eeee;
+  --dark01:#ebd1ce;
+  --dark02:#cd8b88;
+  --deep:#aa4b45;
+  --select:#ebaab7;
+  --text-dark:#89474a;
+  --text-light:#fff;
+  --inner:#a08986;
 }
 .mustard{
   --main:#eae28a;
+  --light01:#f5e8e6;
+  --light02:#f7eeee;
+  --dark01:#ebd1ce;
+  --dark02:#cd8b88;
+  --deep:#aa4b45;
+  --select:#ebaab7;
+  --text-dark:#89474a;
+  --text-light:#fff;
+  --inner:#a08986;
 }
 .ladecaBlue{
   --main:#cde5e5;
+  --light01:#f5e8e6;
+  --light02:#f7eeee;
+  --dark01:#ebd1ce;
+  --dark02:#cd8b88;
+  --deep:#aa4b45;
+  --select:#ebaab7;
+  --text-dark:#89474a;
+  --text-light:#fff;
+  --inner:#a08986;
 }

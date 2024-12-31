@@ -9,11 +9,13 @@ interface Sample {
     dd : () => void;
 }
 
+const URL_KEY = process.env.PUBLIC_URL;
+
 export const NpcPortrait = () =>{
     return(
         <div className="npc-portrait-wrap">
-            <img src={process.env.PUBLIC_URL + '/img/portrait-npc-dell.png'} />
-            {/* <img src={process.env.PUBLIC_URL + '/img/sample-namolppaem-fococlipping-standard.png'} /> */}
+            {/* <img src={URL_KEY + '/img/portrait-npc-dell.png'} /> */}
+            <img src={URL_KEY + '/img/sample-namolppaem-fococlipping-standard.png'} />
         </div>
     )
 }
