@@ -42,6 +42,7 @@ a {
     text-decoration: none;
     color: initial;
 }
+ul, ol{list-style:none;}
 
 .todo {
     position: fixed;
@@ -497,6 +498,9 @@ a {
             font-size:18px;
             color:var(--text-dark);
             cursor:pointer;
+            &.active{
+                color:var(--text-light);
+            }
         }
     }
     .inner{
@@ -624,8 +628,8 @@ a {
         justify-content: center;
         overflow: hidden;
         margin-bottom: 12px;
-        width: 80px;
-        height: 80px;
+        width: 100px;
+        height: 100px;
         box-sizing: border-box;
 
         img {
@@ -653,7 +657,7 @@ a {
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 8px;
+        gap: 4px;
         margin-top: 8px;
         font-size: 16px;
         color: var(--white);
@@ -678,6 +682,7 @@ a {
             align-items: center;
             justify-content: center;
             gap: 4px;
+            white-space:nowrap;
         }
 
         .gold::after {
@@ -720,13 +725,12 @@ a {
     z-index:100;
     border-radius:4px;
     padding:20px 12px;
-    width:auto;
-    height:auto;
+    width:max-content;
+    min-width:220px;
     background: rgba(0, 0, 0, 0.6);
     box-sizing: border-box;
     border-style: none;
     backdrop-filter:blur(4px);
-    cursor: pointer;
     transform:translateX(-100%);
     span {
         display: block;
@@ -734,15 +738,26 @@ a {
     .name {
         line-height: 1.5;
         letter-spacing:-0.3px;
-        font-size: 16px;
+        font-size: 20px;
         font-weight: var(--regular);
         color: var(--white);
         text-shadow:2px 2px 0 rgba(0, 0, 0, 0.8);
+    }
+    .limit {
+        line-height: 1.5;
+        letter-spacing:-0.3px;
+        font-size: 16px;
+        font-weight: var(--regular);
+        text-align:center;
+        color: var(--text-light);
     }
     [class*="-wrap"]{
         border:1px solid var(--white);
         padding:0 12px 12px 8px;
         border-radius:4px;
+        &:not(:first-child){
+            margin-top:20px;
+        }
     }
     .wrap-tit{
         display:block;
@@ -755,67 +770,27 @@ a {
         background:var(--black);
         transform:translateY(-4px);
     }
-    .options {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
+    .options-wrap {
         margin: 20px 0 0;
     }
-
+    .options{
+        display:flex;
+        align-items:flex-start;
+        justify-content:flex-start;
+        gap:8px;
+        &:not(:nth-child(2)){
+            margin-top:8px;
+        }
+        &:nth-child(2){
+            margin-top:4px;
+        }
+    }
     .option-txt {
         font-size: 16px;
-        color:var(--white);
-    }
-
-    .with-color {
-        position: relative;
-
-        &:hover {
-            .color-code {
-                z-index: 1;
-                opacity: 1;
-                transform: translate(110%, -50%);
-            }
-        }
-
-        .color-code {
-            position: absolute;
-            top: 50%;
-            right: 0;
-            z-index: -1;
-            padding: 4px 8px;
-            border-radius: 4px;
-            border: 2px solid var(--brd-gr);
-            background: #fff;
-            transition: all .2s;
-            transform: translate(80%, -50%);
-            opacity: 0;
-            color:var(--white);
-
-            &::before {
-                position: absolute;
-                top: 50%;
-                left: 0;
-                display: block;
-                content: "";
-                border-style: solid;
-                border-width: 10px 10px 0 10px;
-                border-color: var(--brd-gr) transparent transparent transparent;
-                transform: translate(-80%, -50%) rotate(90deg);
-            }
-
-            &::after {
-                position: absolute;
-                top: 50%;
-                left: 0;
-                display: block;
-                content: "";
-                border-style: solid;
-                border-width: 8px 8px 0 8px;
-                border-color: #fff transparent transparent transparent;
-                transform: translate(-75%, -50%) rotate(90deg);
-            }
+        color:var(--text-light);
+        &:not(:last-child){
+            flex-shrink:0;
+            white-space:nowrap;
         }
     }
 
@@ -823,6 +798,17 @@ a {
         width: 20px;
         height: 20px;
         transform: translateY(-2px);
+    }
+
+    .color-txt{
+        display:flex;
+        align-items:center;
+        justify-content:flex-start;
+        gap:8px;
+        color:var(--text-light);
+        &:not(strong){
+            margin-top:8px;
+        }
     }
 
     .price {

@@ -51,7 +51,7 @@ export const Shop = () =>{
     }
 
     useEffect(()=>{
-        handleGetData('델');
+        handleGetData('상인 누누');
     }, [])
 
     // 첫번째 탭 활성화
