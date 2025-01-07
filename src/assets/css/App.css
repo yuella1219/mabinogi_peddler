@@ -8,6 +8,10 @@ body {
   width: 100%;
 }
 
+input[type=checkbox] {
+  appearance: none;
+}
+
 nav {
   position: sticky;
   top: 0;
@@ -16,15 +20,6 @@ nav {
   padding: 12px;
   background: #fff;
   border-bottom: 1px solid #ddd;
-}
-
-.sample01 {
-  background: rgb(114, 0, 0);
-}
-
-.sample02 {
-  min-height: 80vh;
-  background: rgb(56, 56, 56);
 }
 
 .nav-btn {
@@ -175,6 +170,12 @@ ul, ol {
   transform: translateY(4px);
 }
 
+.baggage-wrap {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+}
 .baggage-wrap .btn-wrap {
   display: flex;
   align-items: center;
@@ -198,6 +199,12 @@ ul, ol {
 .baggage-wrap .minimal .item {
   max-height: 241px;
   overflow: hidden;
+}
+
+.cart {
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 .wallet {
@@ -594,15 +601,22 @@ ul, ol {
 }
 .item .price {
   display: flex;
+  margin-top: 8px;
+  font-size: 16px;
+  color: var(--white);
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.8);
+  white-space: nowrap;
+}
+
+[class*=price] {
+  display: flex;
   align-items: center;
   justify-content: center;
   gap: 4px;
   margin-top: 8px;
   font-size: 16px;
-  color: var(--white);
-  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.8);
 }
-.item .price span::after {
+[class*=price] .cost::after {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -615,32 +629,35 @@ ul, ol {
   box-sizing: border-box;
   text-shadow: initial;
 }
-.item .price span {
+[class*=price] .cost {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 4px;
   white-space: nowrap;
 }
-.item .price .gold::after {
+[class*=price] .price-type {
+  color: var(--white);
+}
+[class*=price] .gold::after {
   content: "G";
   color: #e6c000;
   border: 2px solid #fffb83;
   background: rgb(255, 250, 103);
   box-shadow: 2px 1px 0px #ffe015, inset 2px 3px 2px #ffe015;
 }
-.item .price .ducat::after {
+[class*=price] .ducat::after {
   content: "D";
   color: #9e1200;
   border: 2px solid #ff7e67;
   background: #ff7e67;
   box-shadow: 2px 1px 0px #b80000, inset 2px 3px 2px #e01a00;
 }
-.item .price .pinecone::after {
+[class*=price] .pinecone::after {
   content: "";
   background: url(/public/img/gold-plated-pine-con.png) no-repeat center center/contain;
 }
-.item .price .adv-seal::after {
+[class*=price] .adv-seal::after {
   content: "A";
   font-family: initial;
   font-size: 20px;
@@ -684,6 +701,7 @@ ul, ol {
   color: var(--text-light);
 }
 .item-detail [class*=-wrap] {
+  display: block;
   border: 1px solid var(--white);
   padding: 0 12px 12px 8px;
   border-radius: 4px;
@@ -740,62 +758,25 @@ ul, ol {
 .item-detail .color-txt:not(strong) {
   margin-top: 8px;
 }
-.item-detail .price {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 8px;
-  font-size: 16px;
-  color: var(--white);
-  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.8);
-}
-.item-detail .price span::after {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-family: initial;
-  font-size: 12px;
-  width: 18px;
-  height: 18px;
-  font-weight: 900;
-  border-radius: 100%;
-  box-sizing: border-box;
-  text-shadow: initial;
-}
 .item-detail .price span {
+  color: var(--white);
+}
+
+.cart-item-wrap label {
+  display: block;
+}
+.cart-item-wrap .img-wrap {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 4px;
+  width: 140px;
+  height: 140px;
 }
-.item-detail .price .gold::after {
-  content: "G";
-  color: #e6c000;
-  border: 2px solid #fffb83;
-  background: rgb(255, 250, 103);
-  box-shadow: 2px 1px 0px #ffe015, inset 2px 3px 2px #ffe015;
-}
-.item-detail .price .ducat::after {
-  content: "D";
-  color: #9e1200;
-  border: 2px solid #ff7e67;
-  background: #ff7e67;
-  box-shadow: 2px 1px 0px #b80000, inset 2px 3px 2px #e01a00;
-}
-.item-detail .price .pinecone::after {
-  content: "";
-  background: url(/public/img/gold-plated-pine-con.png) no-repeat center center/contain;
-}
-.item-detail .price .adv-seal::after {
-  content: "A";
-  font-family: initial;
-  font-size: 20px;
-  font-weight: 200;
-  color: #be7f36;
-  border: 1px solid #ebe4c5;
-  background: #fdf290;
-  box-shadow: 2px 1px 0px #cc8f5d, inset 3px 3px 4px #fff7db;
+.cart-item-wrap .img-wrap img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .npc-portrait-wrap {
@@ -806,6 +787,7 @@ ul, ol {
   height: 747px;
 }
 .npc-portrait-wrap img {
+  max-width: 700px;
   transform: scaleX(-1);
 }
 

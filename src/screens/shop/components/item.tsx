@@ -43,7 +43,7 @@ export const Item = ({item, sendItem, detailData, sendItemPosition} :itemProps) 
                 <span className="name">{item.item_display_name}</span>
                 {item.item_count > 1 ? (<span className="cnt">{item.item_count}개 묶음</span>) : null}
                 <span className="price">
-                    <span>{numberReplace(item.price[0].price_value)}</span>
+                    <span className="price-type">{numberReplace(item.price[0].price_value)}</span>
                     { item.price[0].price_type === '골드' ? (<span className="gold">{item.price[0].price_type}</span>) 
                     : item.price[0].price_type === '두카트' ? (<span className="ducat">{item.price[0].price_type}</span>)
                     : item.price[0].price_type === '금박 솔방울' ? (<span className="pinecone">{item.price[0].price_type}</span>)

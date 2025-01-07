@@ -1,14 +1,16 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
-import {itemData, Item, BtnPress} from 'screens'
+import {itemData, CartItem, BtnPress} from 'screens'
 import {useWallet, usePopup, useBaggage} from 'core';
 
 interface Props{
     shopNm : string | null;
     data : itemData | null;
+    // buyState: (status: boolean) => void; // 새로운 Prop 추가
+    buyState: (status:boolean) => void; // 새로운 Prop 추가
 }
 
-export const Cart = ({shopNm, data} : Props) =>{
+export const Cart = ({shopNm, data, buyState} : Props) =>{
     const {callPopup} = usePopup();
     const {baggage, handleBuyItem} = useBaggage();
     const [shopName, setShopName] = useState('');
@@ -31,14 +33,9 @@ export const Cart = ({shopNm, data} : Props) =>{
         }
     }, [data])
 
-    // useEffect(()=>{
-    //     if(cartList){
-    //         console.log(cartList)
-    //     }
-    // }, [cartList])
-
     const resetCart = () =>{
         setCartList([]);
+        buyState(true);
     }
 
     const handleCartBuyPopup = () => {
@@ -73,9 +70,9 @@ export const Cart = ({shopNm, data} : Props) =>{
             </div>
             <div className={showList ? `inner expanded` : 'inner'}>
                 {showList && cartList?.map((val, idx)=>(
-                    <div key={idx} className="minimal">
-                        <Item item={val} sendItem={()=>{}} detailData={()=>{}} />
-                    </div>
+                    <React.Fragment key={idx}>
+                        <CartItem item={val}/>
+                    </React.Fragment>
                 ))}
             </div>
         </div>

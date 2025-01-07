@@ -51,11 +51,14 @@ export const ItemDetail = ({item, getX, getY} :DetailProps) =>{
                     <React.Fragment key={idx}>
                         {val.option_type !== '아이템 색상' ? (
                             <div className="options">
-                                    {val.option_type !== '인챈트 종류' && val.option_type !== '인챈트' && val.option_type !== null ? (<span className="option-txt">{val.option_type}</span>) : null}                                    
+                                    {val.option_type ==='인챈트' || val.option_type === '인챈트 종류' ? null :
+                                    val.option_type === '퀘스트 종류' ? (<span className="option-txt">퀘스트 내용 : </span>)
+                                    : (<span className="option-txt">{val.option_type}</span>)}                                    
                                     {val.option_sub_type !== null ? (<span className="option-txt">{val.option_sub_type}</span>) : null}                                    
                                     {val.option_value !== null ? (<span className="option-txt">{val.option_value}</span>) : null}                                    
                                     {val.option_type === '공격' ? (<span className="option-txt">~</span>) : null}                                    
                                     {val.option_type === '내구력' ? (<span className="option-txt">/</span>) : null}                                    
+                                    {val.option_type === '부상률' ? (<span className="option-txt">~</span>) : null}                                    
                                     {val.option_value2 !== null ? (<span className="option-txt">{val.option_value2}</span>) : null}                                    
                                     {val.option_desc !== null ? (<span className="option-txt">{val.option_desc}</span>) : null}
                                 </div>
@@ -66,13 +69,13 @@ export const ItemDetail = ({item, getX, getY} :DetailProps) =>{
             ) : null}
             <div className="price-wrap">
                 <strong className="wrap-tit">아이템 가격</strong>
-                <span className="price">
+                <div className="price">
                     {numberReplace(item.price[0].price_value)}
                     <span className={item.price[0].price_type === '골드' ? "cost gold" 
                         : item.price[0].price_type === '두카트' ? "cost ducat"
                         : item.price[0].price_type === '금박 솔방울' ? "cost pinecone"
                         : "cost adv-seal"}>{item.price[0].price_type}</span>
-                </span>
+                </div>
             </div>
             {colorChart ? (
                 <div className="color-wrap">

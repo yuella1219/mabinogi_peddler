@@ -2,20 +2,27 @@ import React from 'react';
 import {useState, useEffect} from 'react';
 
 
-interface Sample {
-    aa : string;
-    bb : number;
-    cc : boolean;
-    dd : () => void;
+interface NpcPortraitProps {
+    buyState : boolean;
 }
 
 const URL_KEY = process.env.PUBLIC_URL;
 
-export const NpcPortrait = () =>{
+export const NpcPortrait = ({buyState} : NpcPortraitProps) =>{
+    const [portraitCondition, setPortraitCondition] = useState(false);
+
+    useEffect(()=>{
+        setPortraitCondition(buyState)
+    }, [buyState])
+
     return(
         <div className="npc-portrait-wrap">
             {/* <img src={URL_KEY + '/img/portrait-npc-dell.png'} /> */}
-            <img src={URL_KEY + '/img/sample-namolppaem-fococlipping-standard.png'} />
+            {portraitCondition ? (
+                <img src={URL_KEY + '/img/buy-complete-bbam.png'} alt=""/>
+            ) : (
+                <img src={URL_KEY + '/img/sample-namolppaem-fococlipping-standard.png'} alt=""/>
+            )}
         </div>
     )
 }
