@@ -48,9 +48,8 @@ export const Baggage = () =>{
 
     return(
         <div className="baggage-wrap">
-            <BtnPress btnTxt={'적재화물 확인'} func={handleShowList}/>
-            <div className={showList ? `inner expanded` : 'inner'}>
-                {showList && baggageList.map((val, idx)=>(
+            <div className='expanded inner'>
+                {baggageList.map((val, idx)=>(
                     <div className="baggage-list-wrap" key={idx}>
                         <strong className="baggage-shop-name">{val.npcName}</strong>
                         <div key={idx} className="minimal">

@@ -1,41 +1,50 @@
 import React from 'react';
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useRef} from 'react';
 import {itemData, CartItem, BtnPress} from 'screens'
-import {useWallet, usePopup, useBaggage} from 'core';
+import {usePopup, useBaggage} from 'core';
+import {CartProps} from 'type';
+import {IcoGarbage, IcoBuy} from 'image';
 
-interface Props{
-    shopNm : string | null;
-    data : itemData | null;
-    // buyState: (status: boolean) => void; // 새로운 Prop 추가
-    buyState: (status:boolean) => void; // 새로운 Prop 추가
-}
-
-export const Cart = ({shopNm, data, buyState} : Props) =>{
+export const Cart = ({shopNm, data, buyState, showList} : CartProps) =>{
     const {callPopup} = usePopup();
-    const {baggage, handleBuyItem} = useBaggage();
+    const {handleBuyItem} = useBaggage();
+    const cartWrap = useRef<HTMLDivElement>(null);
     const [shopName, setShopName] = useState('');
     const [cartList, setCartList] = useState<itemData[]>([]);
-    const [showList, setShowList] = useState(false);
+    const [showCart, setShowCart] = useState(false);
 
-    const handleShowList = () =>{
-        setShowList(!showList);
-    }
-
+    // 샵 이름 받아오기
     useEffect(()=>{
         if(shopNm){
             setShopName(shopNm);
         }
     }, [shopNm])
 
+    // 구매 데이터 array 적재하기
     useEffect(()=>{
         if(data !== null){
             setCartList((prevItem) => [...prevItem, data as itemData])
         }
+        console.log(cartList)
     }, [data])
 
+    // 카트 초기화
     const resetCart = () =>{
         setCartList([]);
         buyState(true);
+    }
+
+    // 카트 보이기
+    useEffect(()=>{
+        setShowCart(showList!);
+    }, [showList])
+
+    //장바구니에서 빼기
+    const handleRemoveItems = () =>{
+        if(cartWrap.current){
+            const list = cartWrap.current;
+            const removeList = Array(list.querySelectorAll('input:checked'));
+        }
     }
 
     const handleCartBuyPopup = () => {
@@ -63,18 +72,46 @@ export const Cart = ({shopNm, data, buyState} : Props) =>{
     }
 
     return(
-        <div className="baggage-wrap cart">
-            <div className="btn-wrap">
-                <BtnPress btnTxt={showList ? '목록 닫기' : '물건 목록 보기'} func={handleShowList} />
-                {showList ? (<BtnPress btnTxt={'구매하기'} func={handleCartBuyPopup}/>) : null}
+        <>
+            <div className={showList ? 'cart-wrap show' : 'cart-wrap'}>
+                <div className="wrap">
+                    {/* 구매하기 */}
+                    <button className="shop-btn" onClick={handleCartBuyPopup}>
+                        <IcoBuy />
+                    </button>
+                    {/* 장바구니에서 빼기 */}
+                    <button className="shop-btn" onClick={handleRemoveItems}>
+                        <IcoGarbage />
+                    </button>
+                </div>
+                <div className="inner">
+                    {/* 배경용 격자 */}
+                    <div className="plaid-wrap">
+                        <div className="plaid-row">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div className="plaid-col">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                    {/* // 배경용 격자 */}
+                    <div className="cart-item-wrap" ref={cartWrap}>
+                        {cartList?.map((val, idx)=>(
+                            <React.Fragment key={idx}>
+                                <CartItem item={val}/>
+                            </React.Fragment>
+                        ))}
+                    </div>
+                </div>
             </div>
-            <div className={showList ? `inner expanded` : 'inner'}>
-                {showList && cartList?.map((val, idx)=>(
-                    <React.Fragment key={idx}>
-                        <CartItem item={val}/>
-                    </React.Fragment>
-                ))}
-            </div>
-        </div>
+        </>
     )
 }

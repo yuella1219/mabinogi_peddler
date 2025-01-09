@@ -19,7 +19,7 @@ export const CartItem = ({item} : CartItemProps) =>{
     return(
         <>
             {itemDataIn ? (
-                <div className="cart-item-wrap">
+                <div className="cart-item">
                     <input type="checkbox" name="cart-in-item" id={id} />
                     <label htmlFor={id}>
                         <div className="img-wrap">

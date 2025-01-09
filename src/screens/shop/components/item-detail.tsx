@@ -70,7 +70,7 @@ export const ItemDetail = ({item, getX, getY} :DetailProps) =>{
             <div className="price-wrap">
                 <strong className="wrap-tit">아이템 가격</strong>
                 <div className="price">
-                    {numberReplace(item.price[0].price_value)}
+                    <span>{numberReplace(item.price[0].price_value)}</span>
                     <span className={item.price[0].price_type === '골드' ? "cost gold" 
                         : item.price[0].price_type === '두카트' ? "cost ducat"
                         : item.price[0].price_type === '금박 솔방울' ? "cost pinecone"

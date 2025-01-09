@@ -56,7 +56,7 @@ export const Shop = ({sendBuyItemName}:ShopProps) => {
     }
 
     useEffect(()=>{
-        handleGetData('상인 누누');
+        handleGetData('델');
     }, [])
 
     // 첫번째 탭 활성화

@@ -9,7 +9,14 @@ body {
     width: 100%
 }
 input[type="checkbox"]{
+    position:absolute;
+    top:0;
+    left:0;
+    overflow:hidden;
+    width:1px;
+    height:1px;
     appearance:none;
+    opacity:0;
 }
 nav {
     position: sticky;
@@ -187,12 +194,6 @@ ul, ol{list-style:none;}
     bottom:0;
     left:0;
     z-index:100;
-    .btn-wrap {
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        gap: 12px;
-    }
 
     .inner {
         display: grid;
@@ -300,7 +301,7 @@ ul, ol{list-style:none;}
         &::before {
             display: inline-flex;
             content: "";
-            background: url(/public/img/gold-plated-pine-con.png) no-repeat center center / auto;
+            background: url(/public/img/icon/gold-plated-pine-con.png) no-repeat center center / auto;
         }
     }
 
@@ -398,11 +399,6 @@ ul, ol{list-style:none;}
         text-align: center;
         font-size: 20px;
     }
-}
-
-.btn-wrap {
-    padding: 20px 20px;
-    box-sizing: border-box;
 }
 
 // =================================== 프로토 타입 完
@@ -674,6 +670,7 @@ ul, ol{list-style:none;}
     font-size: 16px;
 
     .cost::after {
+        flex-shrink:0;
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -691,7 +688,7 @@ ul, ol{list-style:none;}
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 4px;
+        gap: 2px;
         white-space:nowrap;
     }
 
@@ -717,7 +714,7 @@ ul, ol{list-style:none;}
 
     .pinecone::after {
         content: '';
-        background: url(/public/img/gold-plated-pine-con.png) no-repeat center center / contain;
+        background: url(/public/img/icon/gold-plated-pine-con.png) no-repeat center center / contain;
     }
 
     .adv-seal::after {
@@ -833,22 +830,193 @@ ul, ol{list-style:none;}
 }
 
 // cart 장바구니
+.cart-wrap{
+    display:none;
+    padding:24px 12px;
+    border-radius:4px;
+    background:var(--main);
+    box-shadow:2px 2px 8px var(--deep);
+    &.show{
+        display:block;
+    }
+    .wrap{
+        display:flex;
+        align-items:center;
+        justify-content:flex-end;
+        gap:4px;
+        padding:0 0 8px;
+    }
+    .inner{
+        position:relative;
+    }
+    [class*="plaid-"]{
+        z-index:0;
+        width:100%;
+        height:100%;
+    }
+    .plaid-wrap{            
+        position:absolute;
+        background:var(--inner);    
+        overflow:hidden;    
+        top:0;
+        left:0;    
+    }
+    .plaid-col{
+        position:relative;
+        display:grid;
+        grid-template-columns: repeat(12, 64px);
+        span{
+            &::before{
+                display:block;
+                margin-top:2px;
+                width:2px;
+                height:100%;
+                content:"";
+                background:var(--main);
+                box-shadow:2px 0 0 var(--deep);
+            }
+            &:last-child{
+                display:flex;
+                align-items:flex-start;
+                justify-content:space-between;
+                &::after{
+                    display:block;
+                    content:"";
+                    margin-top:2px;
+                    margin-right:-2px;
+                    width:2px;
+                    height:100%;
+                    background:var(--main);
+                }
+            }
+        }
+    }
+    .plaid-row{
+        position:absolute;
+        top:0;
+        left:0;
+        display:grid;
+        grid-template-rows: repeat(12, 64px);
+        span{
+            &::before{
+                display:block;
+                width:100%;
+                height:2px;
+                display:block;
+                content:"";
+                background:var(--main);
+                box-shadow:0 2px 0 var(--deep);
+            }
+        }
+    }
+    &::after{
+        display: block;
+        content: "";
+        width: 100%;
+        height: 0px;
+        background: var(--main);
+        margin-bottom: -4px;
+    }
+}
 .cart-item-wrap{
+    position:relative;
+    display:flex;
+    flex-wrap:wrap;
+    align-items:flex-start;
+    justify-content:flex-start;
+    overflow-y:auto;
+    gap:2px;
+    width:512px;
+    height:192px;
+    border:2px solid var(--main);
+    scrollbar-width:none;
+}
+.cart-item{
+    position:relative;
+    z-index:1;
+    height:min-content;
+    box-sizing: border-box;
+    border-style: none;
+    backdrop-filter: blur(2px);
+    background: rgba(0, 0, 0, 0.3);
     label{
-        display:block;        
+        display:flex;   
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+        width:var(--item2);
+        height:var(--item3);
+        box-sizing:border-box;
+    }
+    input:checked + label{
+        border:4px solid var(--dark02);
     }
     .img-wrap{
         display:flex;
         align-items:center;
         justify-content:center;
-        width:140px;
-        height:140px;
+        width:110px;
+        height:110px;
         img{
             display:block;
             width:100%;
             height:100%;
             object-fit:contain;
         }
+    }
+    .name{
+        color:var(--text-light);
+    }
+    .price{
+        color:var(--text-light);            
+    }
+}
+
+// shop Gnb - 샵 버튼 모음
+.shop-gnb-wrap{
+    position:fixed;
+    top:12px;
+    left:12px;
+    z-index:100;
+    .btn-wrap{
+        display:flex;
+        align-items:center;
+        justify-content:flex-start;
+        gap:12px;
+        border-radius:50px;
+        padding:12px;
+        border:1px solid var(--deep);
+        background:var(--light02);
+    }
+    .shop-btn{
+        display:inline-flex;
+        align-items:center;
+        justify-content:center;
+        width:48px;
+        height:48px;
+        border-style:none;
+        border-radius:100%;
+        background:var(--main);
+        transition:all .2s;
+        cursor:pointer;
+        &:active{
+            box-shadow:inset 2px 2px 2px var(--deep);
+        }
+        span{
+            position:absolute;
+            top:0;
+            left:0;
+            overflow:hidden;
+            width:1px;
+            height:1px;
+            opacity:0;
+        }
+    }
+    .list-comp-wrap{
+        position:absolute;
+        bottom:0;
+        left:0;
+        transform:translateY(104%);
     }
 }
 

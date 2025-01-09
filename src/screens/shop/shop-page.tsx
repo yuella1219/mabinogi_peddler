@@ -2,7 +2,7 @@ import React from 'react';
 import {useState, useEffect} from 'react';
 import {NpcShopProps, getData} from '../../datas'
 import {useWallet} from 'core';
-import {Shop, Npc, Cart, itemData, Todo, Wallet, Baggage, ColorInterface} from 'screens';
+import {Shop, Npc, ShopGnb, itemData, Todo, ColorInterface} from 'screens';
 
 export const ShopPage = () =>{
     const [shopData, setShopData] = useState<NpcShopProps | null>(null); // 요청받은 데이터 or 로컬 데이터
@@ -66,8 +66,7 @@ export const ShopPage = () =>{
     return(
         <div className="content">
             {/* <Todo /> */}
-            <Baggage />
-            <Cart shopNm={getNpc} data={getName} buyState={getBuyStatus}/>
+            <ShopGnb shopNm={getNpc} data={getName} buyState={getBuyStatus}/>
             <Npc buyState={buyStatus} />
             <Shop sendBuyItemName={getAddItemName}/>            
             <ColorInterface show={true} />

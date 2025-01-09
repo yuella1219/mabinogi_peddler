@@ -44,10 +44,10 @@ export const Item = ({item, sendItem, detailData, sendItemPosition} :itemProps) 
                 {item.item_count > 1 ? (<span className="cnt">{item.item_count}개 묶음</span>) : null}
                 <span className="price">
                     <span className="price-type">{numberReplace(item.price[0].price_value)}</span>
-                    { item.price[0].price_type === '골드' ? (<span className="gold">{item.price[0].price_type}</span>) 
-                    : item.price[0].price_type === '두카트' ? (<span className="ducat">{item.price[0].price_type}</span>)
-                    : item.price[0].price_type === '금박 솔방울' ? (<span className="pinecone">{item.price[0].price_type}</span>)
-                    : (<span className="adv-seal">{item.price[0].price_type}</span>)
+                    { item.price[0].price_type === '골드' ? (<span className="gold cost">{item.price[0].price_type}</span>) 
+                    : item.price[0].price_type === '두카트' ? (<span className="ducat cost">{item.price[0].price_type}</span>)
+                    : item.price[0].price_type === '금박 솔방울' ? (<span className="pinecone cost">{item.price[0].price_type}</span>)
+                    : (<span className="adv-seal cost">{item.price[0].price_type}</span>)
                 }
                 </span>
             </button>
