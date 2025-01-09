@@ -18,18 +18,16 @@ export const Baggage = () =>{
         setSellItemData({shopNm, item})        
     };
     
-    const handleBaggageSellItems = () => {
-        if(!sellItemData){
-            console.log('alert')
-            return
+    useEffect(()=>{
+        if(sellItemData){
+            callPopup({
+                mainTxt:'판매',
+                subTxt : '판매하시겠습니까?',
+                handleFunc : ()=>{handleSellItem(sellItemData)},
+                btnTxt : '판매'
+            })
         }
-        callPopup({
-            mainTxt:'판매',
-            subTxt : '판매하시겠습니까?',
-            handleFunc : ()=>{handleSellItem(sellItemData)},
-            btnTxt : '판매'
-        })
-    }
+    }, [sellItemData])
 
     const handleBaggageSellAllItems = () =>{
         callPopup({
@@ -48,7 +46,7 @@ export const Baggage = () =>{
 
     return(
         <div className="baggage-wrap">
-            <div className='expanded inner'>
+            <div className="expanded inner">
                 {baggageList.map((val, idx)=>(
                     <div className="baggage-list-wrap" key={idx}>
                         <strong className="baggage-shop-name">{val.npcName}</strong>
@@ -58,8 +56,7 @@ export const Baggage = () =>{
                                     <BaggageItem 
                                         item={el} 
                                         npcNm={val.npcName} 
-                                        sendItemNm={getSellItemData} 
-                                        sellFunc={handleBaggageSellItems}/>
+                                        sendItemNm={getSellItemData} />
                                 </div>
                             ))}
                         </div>

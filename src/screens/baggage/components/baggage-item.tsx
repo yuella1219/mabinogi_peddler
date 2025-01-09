@@ -10,17 +10,15 @@ interface itemProps {
     item : itemData;
     npcNm : string;
     sendItemNm: ({shopNm, item} :SellItemProps) => void;
-    sellFunc : () => void;
+    sellFunc ?: () => void;
 }
 
 export const BaggageItem = ({item, sendItemNm, npcNm, sellFunc} :itemProps) =>{
     const thisItem = useRef<HTMLButtonElement>(null);
 
     const addToCart = () =>{
-        if(thisItem.current){
-            sendItemNm({shopNm:npcNm, item:item}) 
-        }
-        sellFunc();
+        sendItemNm({shopNm:npcNm, item:item})
+        // sellFunc();
     }
 
     return(
@@ -39,21 +37,6 @@ export const BaggageItem = ({item, sendItemNm, npcNm, sellFunc} :itemProps) =>{
                 : (<span className="adv-seal">{item.price[0].price_type}</span>)
             }
             </span>
-            {item.item_option.map((val, idx) => (
-                <span className="options" key={idx}>
-                    <span className="option-txt">{val.option_type}</span>
-                    <span className="option-txt">{val.option_sub_type}</span>
-                    {val.option_type === '아이템 색상' ? 
-                    (
-                        <span className="with-color">
-                            <span className='color-code'>{val.option_value}</span>
-                            <ItemColorPart color={val.option_value} />
-                        </span>
-                    ) : (<span className="option-txt">{val.option_value}</span>)}
-                    <span className="option-txt">{val.option_value2}</span>
-                    <span className="option-txt">{val.option_desc}</span>
-                </span>
-            ))}
         </button>
     )
 }

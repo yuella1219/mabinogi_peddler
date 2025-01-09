@@ -1,6 +1,6 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
-import {Cart, Baggage} from 'screens';
+import {Cart, Baggage, Wallet} from 'screens';
 import {CartProps} from 'type';
 import {IcoBaggage, IcoCart} from 'image';
 
@@ -36,6 +36,7 @@ export const ShopGnb = ({shopNm, data, buyState} : CartProps) =>{
                     <span>적재화물</span>
                     <IcoBaggage />
                 </button>
+                <Wallet />
             </div>
             <div className="list-comp-wrap">
                 <Cart shopNm={shopNm} data={data} buyState={buyState} showList={showCart}/>                
