@@ -24,6 +24,7 @@ export type BuyItemProps = {
 export type SellItemProps = {
     shopNm : string;
     item : itemData | null;
+    all? : boolean;
 }
 
 const BaggageContext = createContext<BaggageContextType|null>(null);
@@ -148,61 +149,113 @@ export const BaggageProvider = ({children} : {children : ReactNode}) =>{
     }
 
     // 판매 로직
-    const handleSellItem = ({item, shopNm} : SellItemProps) =>{
+    const handleSellItem = ({item, shopNm, all} : SellItemProps) =>{
+        
         const npcTab = baggage.find((npc) => npc.npcName === shopNm);
         if (!npcTab) return;
+
+        if(all){
+            const getItem = npcTab.items;
+
+            let _appendG = wallet!.gold;
+            let _appendD = wallet!.ducat;
+            let _appendP = wallet!.pinecone;
+            let _appendS = wallet!.seal;
+
+            getItem!.map((item)=>(
+                item.price.find((cost : any) => {
+                    if(cost.price_type === '골드'){
+                        _appendG = _appendG += cost.price_value;
+                    }
+                    else if(cost.price_type === '두카트'){
+                        _appendD = _appendD += cost.price_value;
+                    }
+                    else if(cost.price_type === '금박 솔방울'){
+                        _appendP = _appendP += cost.price_value;
+                    }
+                    else if(cost.price_type === '모험가의 인장'){
+                        _appendS = _appendS += cost.price_value;
+                    }
+                })
+            ))
+
+            const updatedBaggage = baggage.filter((npc) => {
+                // npcName이 shopNm과 다르면 유지
+                if (npc.npcName !== shopNm) {
+                    return true;
+                }
+            });
+            
+            setWallet({
+                gold : _appendG,
+                ducat : _appendD,
+                pinecone : _appendP,
+                seal : _appendS,
+            });
+            
+            callPopup({
+                popType : 'alert',
+                mainTxt : '전체 판매가 완료되었어요.',
+                handleFunc:()=>{},
+            })
         
-        const getItem = npcTab.items.find((el) => el === item);
+            // 상태 업데이트
+            setBaggage(updatedBaggage);
 
-        let _appendG = wallet!.gold;
-        let _appendD = wallet!.ducat;
-        let _appendP = wallet!.pinecone;
-        let _appendS = wallet!.seal;
+        }else{
+            const getItem = npcTab.items.find((el) => el === item);
 
-        getItem!.price.find((cost : any) => {
-            if(cost.price_type === '골드'){
-                _appendG = _appendG += cost.price_value;
-            }
-            else if(cost.price_type === '두카트'){
-                _appendD = _appendD += cost.price_value;
-            }
-            else if(cost.price_type === '금박 솔방울'){
-                _appendP = _appendP += cost.price_value;
-            }
-            else if(cost.price_type === '모험가의 인장'){
-                _appendS = _appendS += cost.price_value;
-            }
-        })
-        
-        setWallet({
-            gold : _appendG,
-            ducat : _appendD,
-            pinecone : _appendP,
-            seal : _appendS,
-        });
-
-        const updatedBaggage = baggage.filter((npc) => {
-            // npcName이 shopNm과 다르면 유지
-            if (npc.npcName !== shopNm) {
+            let _appendG = wallet!.gold;
+            let _appendD = wallet!.ducat;
+            let _appendP = wallet!.pinecone;
+            let _appendS = wallet!.seal;
+    
+            getItem!.price.find((cost : any) => {
+                if(cost.price_type === '골드'){
+                    _appendG = _appendG += cost.price_value;
+                }
+                else if(cost.price_type === '두카트'){
+                    _appendD = _appendD += cost.price_value;
+                }
+                else if(cost.price_type === '금박 솔방울'){
+                    _appendP = _appendP += cost.price_value;
+                }
+                else if(cost.price_type === '모험가의 인장'){
+                    _appendS = _appendS += cost.price_value;
+                }
+            })
+            
+            setWallet({
+                gold : _appendG,
+                ducat : _appendD,
+                pinecone : _appendP,
+                seal : _appendS,
+            });
+    
+            const updatedBaggage = baggage.filter((npc) => {
+                // npcName이 shopNm과 다르면 유지
+                if (npc.npcName !== shopNm) {
+                    return true;
+                }
+            
+                // npcName이 shopNm이고 items 길이가 1이면 삭제
+                if (npc.items.length === 1) {
+                    return false;
+                }
+            
+                // npcName이 shopNm이고 items가 여러 개인 경우, 특정 아이템만 삭제
+                npc.items = npc.items.filter((item) => item !== getItem);
                 return true;
-            }
+            });
+            callPopup({
+                popType : 'alert',
+                mainTxt : '판매가 완료되었어요.',
+                handleFunc:()=>{},
+            })
         
-            // npcName이 shopNm이고 items 길이가 1이면 삭제
-            if (npc.items.length === 1) {
-                return false;
-            }
-        
-            // npcName이 shopNm이고 items가 여러 개인 경우, 특정 아이템만 삭제
-            npc.items = npc.items.filter((item) => item !== getItem);
-            return true;
-        });
-        callPopup({
-            popType : 'alert',
-            mainTxt : '판매가 완료되었어요.',
-            handleFunc:()=>{},
-        })
-        // 상태 업데이트
-        setBaggage(updatedBaggage);
+            // 상태 업데이트
+            setBaggage(updatedBaggage);
+        }
     }
 
       useEffect(()=>{

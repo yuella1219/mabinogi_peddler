@@ -1,7 +1,7 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
 import {BaggageProps, SellItemProps, useBaggage, usePopup} from 'core';
-import {itemData, BaggageItem, BtnPress} from 'screens'
+import {itemData, BaggageItem, ItemDetail, BtnPress} from 'screens'
 import {IcoSell} from 'image';
 
 export const Baggage = () =>{
@@ -10,10 +10,6 @@ export const Baggage = () =>{
     const [baggageList, setBaggageList] = useState<BaggageProps[] | []>([]);
     const [sellItemData, setSellItemData] = useState<SellItemProps | null>(null);
     const [showList, setShowList] = useState(false);
-
-    const handleShowList = () =>{
-        setShowList(!showList);
-    }
 
     // 판매 아이템 데이터 받아오기
     const getSellItemData = ({shopNm, item}:SellItemProps) => {
@@ -32,11 +28,11 @@ export const Baggage = () =>{
         }
     }, [sellItemData])
 
-    const handleBaggageSellAllItems = () =>{
-        callPopup({
+    const handleBaggageSellAllItems = (shopNm:string) =>{
+            callPopup({
             mainTxt:'전체 판매',
             subTxt : '모두 판매하시겠습니까?',
-            handleFunc : ()=>{},
+            handleFunc : ()=>{handleSellItem({item: null, shopNm:shopNm, all:true})},
             btnTxt : '전체 판매'
         })
     }
@@ -51,12 +47,14 @@ export const Baggage = () =>{
     return(
         <div className="baggage-wrap">
             <div className="inner">
-                {baggageList.map((val, idx)=>(
+                {baggageList.length > 0 && baggageList.map((val, idx)=>(
                     <div className="baggage-whole-info-wrap" key={idx}>
                         <div className="wrap">
                             <strong className="baggage-shop-name">{val.npcName}</strong>
                             <div>
-                                <button type="button" className="shop-btn"><IcoSell /></button>
+                                <button type="button" className="shop-btn" onClick={()=>{
+                                    handleBaggageSellAllItems(val.npcName);
+                                }}><IcoSell /></button>
                             </div>
                         </div>
                         <div className="baggage-list-wrap" key={idx}>
@@ -91,6 +89,7 @@ export const Baggage = () =>{
                         </div>
                     </div>
                 ))}
+                {baggageList.length === 0 ? (<div><p className="info-txt">구매한 아이템이 없어요</p></div>) : null}
             </div>
         </div>
     )

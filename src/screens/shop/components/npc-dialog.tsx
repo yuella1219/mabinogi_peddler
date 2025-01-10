@@ -2,7 +2,8 @@ import React from 'react';
 import {useState, useEffect} from 'react';
 
 export const NpcDialog = () =>{
-    const npcName = '나몰빼미'
+    const npcName = '물짱이'
+    // const npcName = '나몰빼미'
     // const npcText = '나무르르르르ㄹㄹㄹㄹㄹㄹ!'
     
     // const npcName = '델'

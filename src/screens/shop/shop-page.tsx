@@ -29,7 +29,7 @@ export const ShopPage = () =>{
     //npc 탭
     useEffect(()=>{
         if(getNpc){
-            console.log(getNpc)
+            // console.log(getNpc)
         }
     }, [getNpc])
 

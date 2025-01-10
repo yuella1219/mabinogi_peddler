@@ -1035,7 +1035,6 @@ ul, ol {
 }
 .npc-portrait-wrap img {
   max-width: 700px;
-  transform: scaleX(-1);
 }
 
 .npc-dialog-wrap {
