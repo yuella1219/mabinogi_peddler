@@ -18,7 +18,6 @@ export const BaggageItem = ({item, sendItemNm, npcNm, sellFunc} :itemProps) =>{
 
     const addToCart = () =>{
         sendItemNm({shopNm:npcNm, item:item})
-        // sellFunc();
     }
 
     return(

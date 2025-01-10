@@ -2,7 +2,7 @@ import React from 'react';
 import {useState, useEffect} from 'react';
 import {NpcShopProps, getData} from '../../datas'
 import {useWallet} from 'core';
-import {Shop, Npc, ShopGnb, itemData, Todo, ColorInterface} from 'screens';
+import {Shop, Npc, ShopGnb, itemData, BtnPress, Todo, ColorInterface} from 'screens';
 
 export const ShopPage = () =>{
     const [shopData, setShopData] = useState<NpcShopProps | null>(null); // 요청받은 데이터 or 로컬 데이터
@@ -20,13 +20,16 @@ export const ShopPage = () =>{
     const getNpcName = (nm : string) =>{
         setGetNpc(nm);
     }
+
     // 구매완료 상태 받아오기
     const getBuyStatus = (status : boolean) =>{
         setBuyStatus(status);
     }
+
     //npc 탭
     useEffect(()=>{
         if(getNpc){
+            console.log(getNpc)
         }
     }, [getNpc])
 
@@ -68,8 +71,11 @@ export const ShopPage = () =>{
             {/* <Todo /> */}
             <ShopGnb shopNm={getNpc} data={getName} buyState={getBuyStatus}/>
             <Npc buyState={buyStatus} />
-            <Shop sendBuyItemName={getAddItemName}/>            
+            <Shop sendBuyItemName={getAddItemName} sendShopNm={getNpcName}/>            
             <ColorInterface show={true} />
+            <div className="givemethemoney">
+                <BtnPress btnTxt={'깁미 더 머니'} func={giveMeTheMoney}/>
+            </div>
         </div>
     )
 }

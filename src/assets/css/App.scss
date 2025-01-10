@@ -189,20 +189,13 @@ ul, ol{list-style:none;}
     }
 }
 
-.baggage-wrap {
-    position:absolute;
-    bottom:0;
-    left:0;
-    z-index:100;
-    transform:translateY(100%);
-
-}
-
 .cart{
     position:fixed;
     top:0;
     left:0;
 }
+
+.givemethemoney{position:fixed;top:0;left:50%;transform:translateX(-50%)}
 
 // =================================== 프로토 타입 完
 // 정식 버전 UI 시작 ===================================
@@ -851,6 +844,110 @@ ul, ol{list-style:none;}
     }
 }
 
+// 적재화물
+.baggage-wrap{
+    padding:24px 12px;
+    border-radius:4px;
+    background:var(--main);
+    box-shadow:2px 2px 8px var(--deep);
+    &.show{
+        display:block;
+    }
+    .wrap{
+        display:flex;
+        align-items:flex-end;
+        justify-content:space-between;
+        gap:4px;
+        padding:0 0 8px;
+    }
+    .inner{
+        position:relative;
+    }
+    [class*="plaid-"]{
+        z-index:0;
+        width:100%;
+        height:100%;
+    }
+    .plaid-wrap{            
+        position:absolute;
+        background:var(--inner);    
+        overflow:hidden;    
+        top:0;
+        left:0;    
+    }
+    .plaid-col{
+        position:relative;
+        display:grid;
+        grid-template-columns: repeat(12, 64px);
+        span{
+            &::before{
+                display:block;
+                margin-top:2px;
+                width:2px;
+                height:100%;
+                content:"";
+                background:var(--main);
+                box-shadow:2px 0 0 var(--deep);
+            }
+            &:last-child{
+                display:flex;
+                align-items:flex-start;
+                justify-content:space-between;
+                &::after{
+                    display:block;
+                    content:"";
+                    margin-top:2px;
+                    margin-right:-2px;
+                    width:2px;
+                    height:100%;
+                    background:var(--main);
+                }
+            }
+        }
+    }
+    .plaid-row{
+        position:absolute;
+        top:0;
+        left:0;
+        display:grid;
+        grid-template-rows: repeat(12, 64px);
+        span{
+            &::before{
+                display:block;
+                width:100%;
+                height:2px;
+                display:block;
+                content:"";
+                background:var(--main);
+                box-shadow:0 2px 0 var(--deep);
+            }
+        }
+    }
+    &::after{
+        display: block;
+        content: "";
+        width: 100%;
+        height: 0px;
+        background: var(--main);
+        margin-bottom: -4px;
+    }
+}
+.baggage-list-wrap{
+    position:relative;
+    .scroll-wrap{
+        display:flex;
+        flex-wrap:wrap;
+        align-items:flex-start;
+        justify-content:flex-start;
+        overflow-y:auto;
+        gap:2px;
+        width:512px;
+        height:192px;
+        border:2px solid var(--main);
+        scrollbar-width:none;
+    }
+}
+
 // shop Gnb - 샵 버튼 모음
 .shop-gnb-wrap{
     position:fixed;
@@ -895,7 +992,7 @@ ul, ol{list-style:none;}
         position:absolute;
         bottom:0;
         left:0;
-        transform:translateY(104%);
+        transform:translateY(calc(100% + 8px));
     }
 }
 

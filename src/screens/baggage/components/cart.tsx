@@ -25,7 +25,6 @@ export const Cart = ({shopNm, data, buyState, showList} : CartProps) =>{
         if(data !== null){
             setCartList((prevItem) => [...prevItem, data as itemData])
         }
-        console.log(cartList)
     }, [data])
 
     // 카트 초기화
