@@ -8,7 +8,7 @@ interface ShopProps {
     sendBuyItemName : (item:itemData) => void;
 }
 
-const SHOP_KEY = '인장 상인'
+const SHOP_KEY = '상인 누누'
 
 export const Shop = ({sendShopNm, sendBuyItemName}:ShopProps) => {
     const [shopData, setShopData] = useState<NpcShopProps | null>(null); // 요청받은 데이터 or 로컬 데이터

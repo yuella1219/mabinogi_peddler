@@ -31,7 +31,7 @@ export const Item = ({item, sendItem, detailData, sendItemPosition} :itemProps) 
 
     // 디테일 언마운트
     const hideItemDetail = () => {
-        // detailData(null);
+        detailData(null);
     }
 
     return(
