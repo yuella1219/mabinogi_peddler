@@ -1,26 +1,29 @@
 import React from 'react';
-import {useState, useEffect, useId} from 'react';
+import {useState, useEffect, useId, useRef} from 'react';
 import {numberReplace} from 'core';
 import {itemData} from 'screens'
 
 interface CartItemProps {
     item : itemData;
+    removeData : (item:itemData, checked:boolean) => void;
 }
 
-export const CartItem = ({item} : CartItemProps) =>{
-
+export const CartItem = ({item, removeData} : CartItemProps) =>{
+    const thisItem = useRef<HTMLDivElement | null>(null);
     const [itemDataIn, setItemDataIn] = useState<itemData | null>(null);
     const id = useId();
 
     useEffect(()=>{
         setItemDataIn(item)
     }, [])
-
+    const sendRemoveData = (event:React.MouseEvent<HTMLInputElement>) =>{
+        removeData(item, event.currentTarget.checked)
+    }
     return(
         <>
             {itemDataIn ? (
                 <div className="cart-item">
-                    <input type="checkbox" name="cart-in-item" id={id} />
+                    <input type="checkbox" name="cart-in-item" id={id} onClick={sendRemoveData}/>
                     <label htmlFor={id}>
                         <div className="img-wrap">
                             <img src={itemDataIn.image_url} alt="" />

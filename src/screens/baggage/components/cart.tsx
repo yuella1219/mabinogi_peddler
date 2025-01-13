@@ -5,12 +5,19 @@ import {usePopup, useBaggage} from 'core';
 import {CartProps} from 'type';
 import {IcoGarbage, IcoBuy} from 'image';
 
+interface RemoveData {
+    item: itemData,
+    _type: boolean;
+}
+
 export const Cart = ({shopNm, data, buyState, showList} : CartProps) =>{
     const {callPopup} = usePopup();
     const {handleBuyItem} = useBaggage();
     const cartWrap = useRef<HTMLDivElement>(null);
     const [shopName, setShopName] = useState('');
     const [cartList, setCartList] = useState<itemData[]>([]);
+    const [removeList, setRemoveList] = useState<itemData[]>([]);
+    const [removeData, setRemoveData] = useState<RemoveData | null>(null);
     const [showCart, setShowCart] = useState(false);
 
     // 샵 이름 받아오기
@@ -38,14 +45,50 @@ export const Cart = ({shopNm, data, buyState, showList} : CartProps) =>{
         setShowCart(showList!);
     }, [showList])
 
+    // 
+    useEffect(()=>{
+        setRemoveList((prevList) => {
+            if (removeData?._type) {
+                return [...prevList, removeData.item];
+            } else {
+                // 체크 해제 시 해당 아이템 제거
+                return prevList.filter((prevItem) => prevItem !== removeData?.item);
+            }
+        });        
+    }, [removeData])
+    // 제거 리스트 배열에 담기
+    const checkedRemoveItem = (item:itemData, checked:boolean) => {
+        setRemoveData({item:item, _type:checked});
+    }
+
+    // 제거 배열 비우기
+    const removeListCleaner = () =>{
+        const _remove = new Set(removeList);
+        
+        setCartList((prevItem) => (
+            prevItem.filter((item) => !_remove.has(item))
+        ))
+        setRemoveList([])
+        callPopup({
+            popType:'alert',
+            mainTxt:'장바구니에서 제거하였습니다',
+            handleFunc : ()=>{},
+        })
+    }
+
     //장바구니에서 빼기
     const handleRemoveItems = () =>{
-        if(cartWrap.current){
-            const list = cartWrap.current;
-            const removeList = Array(list.querySelectorAll('input:checked'));
+        if(removeList.length > 0) {
+            callPopup({
+                mainTxt:'장바구니 빼기',
+                subTxt : '해당 아이템들을 장바구니에서 제거하시겠습니까?',
+                handleFunc : () =>{removeListCleaner()},
+                btnTxt : '확인',
+            })
         }
     }
 
+    // 구매하기
     const handleCartBuyPopup = () => {
         if(cartList){
             if(cartList.length === 0){
@@ -105,7 +148,7 @@ export const Cart = ({shopNm, data, buyState, showList} : CartProps) =>{
                     <div className="cart-item-wrap" ref={cartWrap}>
                         {cartList?.map((val, idx)=>(
                             <React.Fragment key={idx}>
-                                <CartItem item={val}/>
+                                <CartItem item={val} removeData={checkedRemoveItem}/>
                             </React.Fragment>
                         ))}
                     </div>

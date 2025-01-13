@@ -533,6 +533,7 @@ ul, ol {
 }
 [class*=price] .price-type {
   color: var(--white);
+  margin: 0;
 }
 [class*=price] .gold::after {
   content: "G";
