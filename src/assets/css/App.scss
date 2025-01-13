@@ -446,7 +446,8 @@ ul, ol{list-style:none;}
             z-index:1;
             display:none;
             flex-wrap:wrap;
-            align-items:flex-start;
+            // align-items:flex-start;
+            align-content:flex-start;
             justify-content:flex-start;
             gap:2px;
             width:768px;

@@ -8,7 +8,7 @@ interface ShopProps {
     sendBuyItemName : (item:itemData) => void;
 }
 
-const SHOP_KEY = '상인 누누'
+const SHOP_KEY = '피오나트'
 
 export const Shop = ({sendShopNm, sendBuyItemName}:ShopProps) => {
     const [shopData, setShopData] = useState<NpcShopProps | null>(null); // 요청받은 데이터 or 로컬 데이터
@@ -144,9 +144,9 @@ export const Shop = ({sendShopNm, sendBuyItemName}:ShopProps) => {
                                 {shopData?.shop.map((tab, idx) => (
                                     <div className="tab" key={idx}>
                                         {tab.item.map((item, key) => (
-                                            <div key={`item-${key}`} className="item-wrap">
+                                            <React.Fragment key={key}>
                                                 <Item item={item} sendItem={getItemData} detailData={handleDetailData} sendItemPosition={handleDetailPosition}/>
-                                            </div>
+                                            </React.Fragment>
                                         ))}
                                     </div>
                                 ))}
