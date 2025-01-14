@@ -56,6 +56,7 @@ export const Cart = ({shopNm, data, buyState, showList} : CartProps) =>{
             }
         });        
     }, [removeData])
+    
     // 제거 리스트 배열에 담기
     const checkedRemoveItem = (item:itemData, checked:boolean) => {
         setRemoveData({item:item, _type:checked});
@@ -63,11 +64,11 @@ export const Cart = ({shopNm, data, buyState, showList} : CartProps) =>{
 
     // 제거 배열 비우기
     const removeListCleaner = () =>{
-        const _remove = new Set(removeList);
-        
-        setCartList((prevItem) => (
-            prevItem.filter((item) => !_remove.has(item))
-        ))
+        const _remove = cartList.filter((remove) => !removeList.includes(remove))
+        setCartList(_remove);
+        // setCartList((prevItem) => (
+        //     prevItem.filter((item) => !removeList.includes(item))
+        // ))
         setRemoveList([])
         callPopup({
             popType:'alert',

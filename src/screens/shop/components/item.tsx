@@ -8,12 +8,13 @@ export type itemData = NpcShopProps['shop'][number]['item'][number];
 
 interface itemProps {
     item : itemData;
+    key : string;
     sendItem: (item:itemData) => void;
     detailData : (data:itemData | null) => void;
     sendItemPosition : (getX:number, getY:number) => void;
 }
 
-export const Item = ({item, sendItem, detailData, sendItemPosition} :itemProps) =>{
+export const Item = ({item, key, sendItem, detailData, sendItemPosition} :itemProps) =>{
     const thisItem = useRef<HTMLButtonElement>(null);
 
     const addToCart = () =>{

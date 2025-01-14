@@ -145,7 +145,8 @@ export const Shop = ({sendShopNm, sendBuyItemName}:ShopProps) => {
                                     <div className="tab" key={idx}>
                                         {tab.item.map((item, key) => (
                                             <React.Fragment key={key}>
-                                                <Item item={item} sendItem={getItemData} detailData={handleDetailData} sendItemPosition={handleDetailPosition}/>
+                                                <Item item={item} key={`item-${key}`} sendItem={getItemData} detailData={handleDetailData} sendItemPosition={handleDetailPosition}/>
+                                                {/* 고유 코드값 있는게 관리 측면에서 좋다. 추가 필요 */}
                                             </React.Fragment>
                                         ))}
                                     </div>
