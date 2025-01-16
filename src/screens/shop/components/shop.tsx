@@ -2,6 +2,7 @@ import React from 'react';
 import {useState, useEffect} from 'react';
 import {NpcShopProps, getData} from '../../../datas'
 import {Item, itemData, ItemDetail} from 'screens'
+import {useLoading} from 'core';
 
 interface ShopProps {
     sendShopNm:(shopNm:string)=>void;
@@ -11,6 +12,7 @@ interface ShopProps {
 const SHOP_KEY = '피오나트'
 
 export const Shop = ({sendShopNm, sendBuyItemName}:ShopProps) => {
+    const {setLoading} = useLoading();
     const [shopData, setShopData] = useState<NpcShopProps | null>(null); // 요청받은 데이터 or 로컬 데이터
     const [showShop, setShowShop] = useState(false);
     const [getBuyItemData, setGetBuyItemData] = useState<itemData | null>(null);
@@ -25,9 +27,13 @@ export const Shop = ({sendShopNm, sendBuyItemName}:ShopProps) => {
         .then((fetchedData) => {
             setShopData(fetchedData);
             localStorage.setItem(nm, JSON.stringify(fetchedData));
-            setShowShop(true)
+            setShowShop(true);
+            setLoading(true);
         })
-        .catch((error) => console.error('Fetch error:', error));
+        .catch((error) => {
+            console.error('Fetch error:', error);
+            setLoading(false);
+        });
     }
     // 상점 데이터 출력
     const handleGetData = (nm : string) =>{  
@@ -43,11 +49,13 @@ export const Shop = ({sendShopNm, sendBuyItemName}:ShopProps) => {
             }else{
                 setShopData(localData);
                 setShowShop(true)
+                setLoading(true);
                 console.log('로컬 데이터')
             }
         }else{
             callApiData(nm)            
             setShowShop(true)
+            setLoading(true);
             console.log('로컬 데이터 없음으로 신규데이터 내려받기')
         }
     }
