@@ -1,26 +1,33 @@
+import React, {useState} from 'react';
 import { WalletProvider, BaggageProvider, PopUpProvider, LoadingProvider } from 'core';
 import './assets/css/styles.css'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { Sample2, Gnb, ShopPage } from 'screens';
+import { Sample2, Gnb, ShopPage, MapPage } from 'screens';
 
 function App() {
+  const [shopName, setShopName] = useState('')
+
+  const handleGetName = (nm) => {
+    setShopName(nm)
+  }
   return (
     <div id="container">
-      <WalletProvider>
-        <PopUpProvider>
-          <BaggageProvider>
-            <LoadingProvider>
-            <Router>
-              <Routes>
-                <Route path="/mabinogi_peddler" element={<ShopPage />} />
-                <Route path="/page02" element={<Sample2 />} />
-              </Routes>
-            </Router>
-            </LoadingProvider>
-          </BaggageProvider>
-        </PopUpProvider>
-      </WalletProvider>
-    </div>
+      <Router>
+        <WalletProvider>
+          <PopUpProvider>
+            <BaggageProvider>
+              <LoadingProvider>
+                <Gnb />
+                <Routes>
+                  <Route path="/mabinogi_peddler" element={<ShopPage shopNm={null}/>} />
+                  <Route path="/map-page" element={<MapPage sendNpcName={handleGetName} />} />
+                </Routes>
+              </LoadingProvider>
+            </BaggageProvider>
+          </PopUpProvider>
+        </WalletProvider>
+      </Router>
+      </div>
   );
 }
 export default App;

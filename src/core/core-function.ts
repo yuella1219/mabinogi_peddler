@@ -16,3 +16,5 @@ export const numberReplace = (num: number): string | number => {
         return `${tenThousand}만 ${formattedRemainder}`;
     }
 };
+
+export const URL_KEY = process.env.PUBLIC_URL;

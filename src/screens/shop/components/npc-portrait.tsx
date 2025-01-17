@@ -1,12 +1,11 @@
 import React from 'react';
+import {URL_KEY} from 'core';
 import {useState, useEffect} from 'react';
 
 
 interface NpcPortraitProps {
     buyState : boolean;
 }
-
-const URL_KEY = process.env.PUBLIC_URL;
 
 export const NpcPortrait = ({buyState} : NpcPortraitProps) =>{
     const [portraitCondition, setPortraitCondition] = useState(false);

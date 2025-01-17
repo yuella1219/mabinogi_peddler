@@ -30,6 +30,9 @@ export const LoadingProvider = ({children} : {children : ReactNode}) =>{
             setTimeout(()=>{
                 setLoadChildren(true);
             }, 2000)
+        }else{
+            _window.current?.classList.remove('hide');
+            setLoadChildren(false);
         }
     }, [loading])
 
