@@ -29,7 +29,7 @@ export const LoadingProvider = ({children} : {children : ReactNode}) =>{
             }
             setTimeout(()=>{
                 setLoadChildren(true);
-            }, 2500)
+            }, 2000)
         }
     }, [loading])
 

@@ -5,13 +5,13 @@ import {Item, itemData, ItemDetail} from 'screens'
 import {useLoading} from 'core';
 
 interface ShopProps {
-    sendShopNm:(shopNm:string)=>void;
+    shopNm : string;
     sendBuyItemName : (item:itemData) => void;
 }
 
 const SHOP_KEY = '피오나트'
 
-export const Shop = ({sendShopNm, sendBuyItemName}:ShopProps) => {
+export const Shop = ({shopNm, sendBuyItemName}:ShopProps) => {
     const {setLoading} = useLoading();
     const [shopData, setShopData] = useState<NpcShopProps | null>(null); // 요청받은 데이터 or 로컬 데이터
     const [showShop, setShowShop] = useState(false);
@@ -66,9 +66,9 @@ export const Shop = ({sendShopNm, sendBuyItemName}:ShopProps) => {
         sendBuyItemName(item);
     }
 
+    // 샵 데이터 호출
     useEffect(()=>{
-        handleGetData(SHOP_KEY);
-        sendShopNm(SHOP_KEY)
+        handleGetData(shopNm);
     }, [])
 
     // 첫번째 탭 활성화

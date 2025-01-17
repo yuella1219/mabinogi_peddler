@@ -6,20 +6,20 @@ import { Sample2, Gnb, ShopPage } from 'screens';
 function App() {
   return (
     <div id="container">
-      <LoadingProvider>
-        <WalletProvider>
-          <PopUpProvider>
-            <BaggageProvider>
-              <Router>
-                <Routes>
-                  <Route path="/mabinogi_peddler" element={<ShopPage />} />
-                  <Route path="/page02" element={<Sample2 />} />
-                </Routes>
-              </Router>
-            </BaggageProvider>
-          </PopUpProvider>
-        </WalletProvider>
-      </LoadingProvider>
+      <WalletProvider>
+        <PopUpProvider>
+          <BaggageProvider>
+            <LoadingProvider>
+            <Router>
+              <Routes>
+                <Route path="/mabinogi_peddler" element={<ShopPage />} />
+                <Route path="/page02" element={<Sample2 />} />
+              </Routes>
+            </Router>
+            </LoadingProvider>
+          </BaggageProvider>
+        </PopUpProvider>
+      </WalletProvider>
     </div>
   );
 }
