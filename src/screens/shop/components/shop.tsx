@@ -1,6 +1,6 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
-import {NpcShopProps, getData} from '../../../datas'
+import {NpcShopProps, getData} from 'datas'
 import {Item, itemData, ItemDetail} from 'screens'
 import {useLoading} from 'core';
 
@@ -45,18 +45,15 @@ export const Shop = ({shopNm, sendBuyItemName}:ShopProps) => {
             const updateDate = new Date(localData.date_shop_next_update);
             if(new Date() > updateDate){
                 callApiData(nm)
-                console.log('데이터 신규 업데이트')
             }else{
                 setShopData(localData);
                 setShowShop(true)
                 setLoading(true);
-                console.log('로컬 데이터')
             }
         }else{
             callApiData(nm)            
             setShowShop(true)
             setLoading(true);
-            console.log('로컬 데이터 없음으로 신규데이터 내려받기')
         }
     }
 
@@ -69,7 +66,7 @@ export const Shop = ({shopNm, sendBuyItemName}:ShopProps) => {
     // 샵 데이터 호출
     useEffect(()=>{
         handleGetData(shopNm);
-    }, [])
+    }, [shopNm])
 
     // 첫번째 탭 활성화
     useEffect(()=>{

@@ -1,7 +1,7 @@
 import React from 'react';
 import {useEffect, useRef} from 'react';
 import {numberReplace, SellItemProps} from 'core';
-import {NpcShopProps} from '../../../datas'
+import {NpcShopProps} from 'datas'
 
 export type itemData = NpcShopProps['shop'][number]['item'][number];
 

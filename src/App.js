@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { WalletProvider, BaggageProvider, PopUpProvider, LoadingProvider } from 'core';
 import './assets/css/styles.css'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
@@ -7,9 +7,15 @@ import { Sample2, Gnb, ShopPage, MapPage } from 'screens';
 function App() {
   const [shopName, setShopName] = useState('')
 
+  // 맵에서 npc 데이터 받아오기
   const handleGetName = (nm) => {
     setShopName(nm)
   }
+
+  useEffect(()=>{
+    console.log('App.js => ' + shopName);
+  }, [shopName])
+
   return (
     <div id="container">
       <Router>
@@ -19,7 +25,7 @@ function App() {
               <LoadingProvider>
                 <Gnb />
                 <Routes>
-                  <Route path="/mabinogi_peddler" element={<ShopPage shopNm={null}/>} />
+                  <Route path="/mabinogi_peddler" element={<ShopPage npcNm={shopName}/>} />
                   <Route path="/map-page" element={<MapPage sendNpcName={handleGetName} />} />
                 </Routes>
               </LoadingProvider>

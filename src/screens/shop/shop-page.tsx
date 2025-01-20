@@ -1,6 +1,6 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
-import {NpcShopProps, getData} from '../../datas'
+import {NpcShopProps, getData} from 'datas'
 import {useWallet} from 'core';
 import {Shop, Npc, ShopGnb, itemData, BtnPress, Todo, ColorInterface} from 'screens';
 
@@ -36,13 +36,6 @@ export const ShopPage = ({npcNm}:ShopPageProps) =>{
     const getBuyStatus = (status : boolean) =>{
         setBuyStatus(status);
     }
-
-    //npc 탭
-    useEffect(()=>{
-        if(getNpc){
-            // console.log(getNpc)
-        }
-    }, [getNpc])
 
     // 아이템 담기
     const getItemInBaggage = (item:itemData) =>{

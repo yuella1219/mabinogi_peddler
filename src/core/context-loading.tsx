@@ -1,5 +1,5 @@
 import React, {ReactNode, useState, useEffect, useRef, createContext, useContext} from 'react';
-import { LoadingTipText } from 'datas/local/tip-data';
+import { LoadingTipText } from 'datas';
 
 interface LoadingContextType{
     loading : boolean;
@@ -15,13 +15,14 @@ export const LoadingProvider = ({children} : {children : ReactNode}) =>{
     const [tipNum, setTipNum] = useState(0);
 
     // loading중
-    useEffect(()=>{
-        setTipNum(Math.floor(Math.random() * LoadingTipText.length));
-    }, [])
+    // useEffect(()=>{
+    //     setTipNum(Math.floor(Math.random() * LoadingTipText.length));
+    // }, [])
 
     // loading 성공
     useEffect(()=>{
         if(loading){
+            setTipNum(Math.floor(Math.random() * LoadingTipText.length));
             if(_window){
                 setTimeout(()=>{
                     _window.current?.classList.add('hide');
