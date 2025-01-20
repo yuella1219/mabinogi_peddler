@@ -32,9 +32,12 @@ export const MapPage = ({sendNpcName} : MapProps) =>{
                 {NpcData.map((nm)=>(
                     <div className="map-btn-wrap" key={nm.id} 
                     style={{top:`${nm.pos.y}%`, left:`${nm.pos.x}%`}}>
-                        <Link to="/mabinogi_peddler" className="map-btn" onClick={()=>{
+                        <Link to="/mabinogi_peddler" className="map-btn" 
+                        onClick={()=>{
                             handleMoveMap(nm.name)
-                        }}>{nm.name}</Link>
+                        }}>
+                            <span>{nm.name}</span>
+                        </Link>
                     </div>
                 ))}
             </div>

@@ -1121,3 +1121,21 @@ ul, ol {
   position: absolute;
   transform: translate(-50%, -50%);
 }
+.map .map-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 8px;
+  border-radius: 50px;
+  background: var(--main);
+  border: 1px solid var(--dark02);
+  box-shadow: 2px 2px 0 var(--deep);
+}
+.map .map-btn:hover {
+  transition: transform 0.2s;
+  transform: translateY(-4px);
+}
+.map .map-btn span {
+  line-height: 1;
+  font-size: 16px;
+}

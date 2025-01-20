@@ -27,11 +27,6 @@ export const ShopPage = ({npcNm}:ShopPageProps) =>{
         }
     }, [npcNm])
 
-    // npc 이름 받아오기
-    const getNpcName = (nm : string) =>{
-        setGetNpc(nm);
-    }
-
     // 구매완료 상태 받아오기
     const getBuyStatus = (status : boolean) =>{
         setBuyStatus(status);
@@ -75,7 +70,7 @@ export const ShopPage = ({npcNm}:ShopPageProps) =>{
         <div className="content">
             {/* <Todo /> */}
             <ShopGnb shopNm={getNpc} data={getName} buyState={getBuyStatus}/>
-            <Npc buyState={buyStatus} />
+            <Npc buyState={buyStatus} name={getNpc ?? '델'}/>
             <Shop sendBuyItemName={getAddItemName} shopNm={getNpc ?? '델'}/>            
             <ColorInterface show={true} />
             <div className="givemethemoney">
