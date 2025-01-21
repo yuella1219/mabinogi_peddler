@@ -2,17 +2,17 @@ import React from 'react';
 import {useState, useEffect} from 'react';
 import {NpcShopProps, getData} from 'datas'
 import {Item, itemData, ItemDetail} from 'screens'
-import {useLoading, usePopup} from 'core';
+import {useLoading, usePopup, useNpcName} from 'core';
 
 interface ShopProps {
-    shopNm : string;
     sendBuyItemName : (item:itemData) => void;
 }
 
 const SHOP_KEY = '피오나트'
 const MAX_RETRY = 4;
 
-export const Shop = ({shopNm, sendBuyItemName}:ShopProps) => {
+export const Shop = ({sendBuyItemName}:ShopProps) => {
+    const {npcName} = useNpcName();
     const {setLoading} = useLoading();
     const {callPopup} = usePopup();
     const [shopData, setShopData] = useState<NpcShopProps | null>(null); // 요청받은 데이터 or 로컬 데이터
@@ -38,7 +38,7 @@ export const Shop = ({shopNm, sendBuyItemName}:ShopProps) => {
             if(retry < MAX_RETRY){
                 callPopup({
                     mainTxt:'!ERROR',
-                    subTxt:`통신에 오류가 생겼어요.<br/>${retry === 0 ? '첫' : retry === 1 ? '두' : retry === 2 ? '세' : retry === 3 ? '네' : '다섯'}번째 시도중...`,
+                    subTxt:`통신에 오류가 생겼어요.<br/>${retry === 0 ? '두' : retry === 1 ? '세' : retry === 2 ? '네' : retry === 3 ? '다섯' : '여섯'}번째 시도중...`,
                     handleFunc : ()=>{},
                     hideBtn:true,
                 })
@@ -84,8 +84,12 @@ export const Shop = ({shopNm, sendBuyItemName}:ShopProps) => {
 
     // 샵 데이터 호출
     useEffect(()=>{
-        handleGetData(shopNm);
-    }, [shopNm])
+        if(npcName === ""){
+            handleGetData('델');
+        }else{
+            handleGetData(npcName);
+        }
+    }, [])
 
     // 첫번째 탭 활성화
     useEffect(()=>{

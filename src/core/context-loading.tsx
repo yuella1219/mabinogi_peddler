@@ -16,11 +16,6 @@ export const LoadingProvider = ({children} : {children : ReactNode}) =>{
     const [loadChildren, setLoadChildren] = useState(false);
     const [tipNum, setTipNum] = useState(0);
 
-    // loading중
-    // useEffect(()=>{
-    //     setTipNum(Math.floor(Math.random() * LoadingTipText.length));
-    // }, [])
-
     // loading 성공
     useEffect(()=>{
         if(loading){

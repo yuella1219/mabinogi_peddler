@@ -1,28 +1,25 @@
 import React from 'react';
 import {useState, useEffect, useRef} from 'react';
 import {Link} from 'react-router-dom';
-import {URL_KEY, useLoading} from 'core'
+import {URL_KEY, useLoading, useNpcName} from 'core'
 import {NpcData} from 'datas'
-
-interface MapProps {
-    sendNpcName : (nm:string) => void;
-}
 
 const BASE_WIDTH = 711;
 const BASE_HEIGHT = 604;
 
-export const MapPage = ({sendNpcName} : MapProps) =>{
+export const MapPage = () =>{
+    const {setNpcName} = useNpcName();
     const imgRef = useRef<HTMLImageElement | null>(null);
     const {setLoading} = useLoading();
 
     const handleMoveMap = (nm:string) =>{
-        sendNpcName(nm)
-        setLoading(false)     
+        setNpcName(nm)
+        setLoading(false)
     }
 
     // 로딩상태 컨트롤
     useEffect(()=>{
-        setLoading(true)     
+        setLoading(true)
     }, [])
 
     return(

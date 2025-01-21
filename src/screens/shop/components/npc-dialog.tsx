@@ -1,9 +1,12 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
+import {useNpcName} from 'core';
 import {NpcProps} from 'type';
 
-export const NpcDialog = ({name, buyState} : NpcProps) =>{
-    const npcName = '물짱이'
+export const NpcDialog = ({buyState} : NpcProps) =>{
+    const {npcName} = useNpcName();
+
+    // const npcName = '물짱이'
     // const npcName = '나몰빼미'
     // const npcText = '나무르르르르ㄹㄹㄹㄹㄹㄹ!'
     
@@ -12,7 +15,7 @@ export const NpcDialog = ({name, buyState} : NpcProps) =>{
 
     return(
         <div className="npc-dialog-wrap">
-            <strong className="npc-name">{name}</strong>
+            <strong className="npc-name">{npcName}</strong>
             <div className="dialog-box">
                 <p className="npc-txt">{npcText}</p>
             </div>
