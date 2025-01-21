@@ -4,6 +4,7 @@ import { LoadingTipText } from 'datas';
 interface LoadingContextType{
     loading : boolean;
     setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+    setNetworkCheck : React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const LoadingContext = createContext<LoadingContextType | null>(null);
@@ -11,6 +12,7 @@ const LoadingContext = createContext<LoadingContextType | null>(null);
 export const LoadingProvider = ({children} : {children : ReactNode}) =>{
     const _window = useRef<HTMLDivElement | null>(null);
     const [loading, setLoading] = useState(false);
+    const [networkCheck, setNetworkCheck] = useState(false);
     const [loadChildren, setLoadChildren] = useState(false);
     const [tipNum, setTipNum] = useState(0);
 
@@ -38,7 +40,7 @@ export const LoadingProvider = ({children} : {children : ReactNode}) =>{
     }, [loading])
 
     return(
-        <LoadingContext.Provider value={{ loading, setLoading }}>
+        <LoadingContext.Provider value={{ loading, setLoading, setNetworkCheck }}>
             {!loadChildren ? (
                 <div className="loading-wrap" ref={_window}>
                     <div className="inner">

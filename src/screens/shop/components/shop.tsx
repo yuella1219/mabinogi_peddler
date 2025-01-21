@@ -2,7 +2,7 @@ import React from 'react';
 import {useState, useEffect} from 'react';
 import {NpcShopProps, getData} from 'datas'
 import {Item, itemData, ItemDetail} from 'screens'
-import {useLoading} from 'core';
+import {useLoading, usePopup} from 'core';
 
 interface ShopProps {
     shopNm : string;
@@ -10,9 +10,11 @@ interface ShopProps {
 }
 
 const SHOP_KEY = '피오나트'
+const MAX_RETRY = 4;
 
 export const Shop = ({shopNm, sendBuyItemName}:ShopProps) => {
     const {setLoading} = useLoading();
+    const {callPopup} = usePopup();
     const [shopData, setShopData] = useState<NpcShopProps | null>(null); // 요청받은 데이터 or 로컬 데이터
     const [showShop, setShowShop] = useState(false);
     const [getBuyItemData, setGetBuyItemData] = useState<itemData | null>(null);
@@ -21,7 +23,7 @@ export const Shop = ({shopNm, sendBuyItemName}:ShopProps) => {
 
     // 실제 통신은 api.ts 파일에서 진행, 
     // 여기서는 getData 실행 후 응답받은 데이터 상태에 저장해서 출력하는 용도
-    const callApiData = (nm:string) =>{
+    const callApiData = (nm:string, retry : number) =>{
         // 필요한 매개변수 전달
         getData({chaNm : nm, serNm : '만돌린', chnNum : 3}) // npcName, serverName, channel 값을 전달
         .then((fetchedData) => {
@@ -31,8 +33,25 @@ export const Shop = ({shopNm, sendBuyItemName}:ShopProps) => {
             setLoading(true);
         })
         .catch((error) => {
-            console.error('Fetch error:', error);
+            console.error(`Fetch error: (재시도 횟수 : ${retry} / ${MAX_RETRY})`, error);
             setLoading(false);
+            if(retry < MAX_RETRY){
+                callPopup({
+                    mainTxt:'!ERROR',
+                    subTxt:`통신에 오류가 생겼어요.<br/>${retry === 0 ? '첫' : retry === 1 ? '두' : retry === 2 ? '세' : retry === 3 ? '네' : '다섯'}번째 시도중...`,
+                    handleFunc : ()=>{},
+                    hideBtn:true,
+                })
+                setTimeout(()=>{
+                    callApiData(nm, retry + 1);
+                }, 5000)
+            }else{
+                callPopup({
+                    popType : 'alert',
+                    mainTxt:'서버 이상으로 정보를 받아올 수 없습니다.<br/>잠시 후 다시 시도해주세요.',                    
+                    handleFunc : ()=>{},
+                })
+            }
         });
     }
     // 상점 데이터 출력
@@ -44,14 +63,14 @@ export const Shop = ({shopNm, sendBuyItemName}:ShopProps) => {
         if(localData){
             const updateDate = new Date(localData.date_shop_next_update);
             if(new Date() > updateDate){
-                callApiData(nm)
+                callApiData(nm, 0)
             }else{
                 setShopData(localData);
                 setShowShop(true)
                 setLoading(true);
             }
         }else{
-            callApiData(nm)            
+            callApiData(nm, 0)            
             setShowShop(true)
             setLoading(true);
         }

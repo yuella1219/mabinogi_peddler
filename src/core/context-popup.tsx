@@ -13,13 +13,14 @@ const PopupContext = createContext<PopupContextProps | null>(null);
 export const PopUpProvider = ({children} : {children : ReactNode}) =>{
     const [popupData, setPopupData] = useState<PopupProps | null>(null);
 
-    const callPopup = ({ popType, mainTxt, subTxt, handleFunc, btnTxt }: PopupProps) => {
+    const callPopup = ({ popType, mainTxt, subTxt, handleFunc, btnTxt, hideBtn }: PopupProps) => {
         setPopupData({
           popType,
           mainTxt,
           subTxt,
           handleFunc,
           btnTxt,
+          hideBtn,
         });
       };
 

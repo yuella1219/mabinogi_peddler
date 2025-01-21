@@ -274,13 +274,15 @@ ul, ol{list-style:none;}
     }
 
     .popup-inner {
-        padding: 12px 24px;
+        padding: 24px;
 
         p {
             line-height: 1.5;
-            font-size: 16px;
-            font-weight: 400;
-            color: var(--txt-bk);
+            font-size:16px;
+            font-weight:400;
+            color:var(--txt-bk);
+            text-align:center;
+            white-space:pre-line;
         }
     }
 
@@ -314,6 +316,10 @@ ul, ol{list-style:none;}
         padding: 24px;
         text-align: center;
         font-size: 20px;
+        .alert-txt{
+            white-space:pre-line;
+            line-height:1.5;
+        }
     }
 }
 

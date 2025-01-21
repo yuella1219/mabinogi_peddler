@@ -5,4 +5,5 @@ export type PopupProps = {
     subTxt? : string;
     handleFunc : (el?:any) => void | null;
     btnTxt? : string;
+    hideBtn? : boolean;
 };
