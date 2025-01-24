@@ -14,7 +14,7 @@ const MAX_RETRY = 4;
 export const Shop = ({sendBuyItemName}:ShopProps) => {
     const {npcName} = useNpcName();
     const {setLoading} = useLoading();
-    const {callPopup} = usePopup();
+    const {setPopupData, callPopup} = usePopup();
     const [shopData, setShopData] = useState<NpcShopProps | null>(null); // 요청받은 데이터 or 로컬 데이터
     const [showShop, setShowShop] = useState(false);
     const [getBuyItemData, setGetBuyItemData] = useState<itemData | null>(null);
@@ -30,6 +30,7 @@ export const Shop = ({sendBuyItemName}:ShopProps) => {
             setShopData(fetchedData);
             localStorage.setItem(nm, JSON.stringify(fetchedData));
             setShowShop(true);
+            setPopupData(null);
             setLoading(true);
         })
         .catch((error) => {
