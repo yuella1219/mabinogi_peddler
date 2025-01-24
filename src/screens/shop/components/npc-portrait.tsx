@@ -19,9 +19,7 @@ export const NpcPortrait = ({buyState} : NpcProps) =>{
     useEffect(()=>{
         setPortraitCondition(buyState)
     }, [buyState])
-    useEffect(()=>{
-        console.log(`/img/${getNpcData.img}`)
-    }, [])
+    
     return(
         <div className="npc-portrait-wrap">
             <img src={URL_KEY + `/img/${getNpcData.img}`} alt="" />            

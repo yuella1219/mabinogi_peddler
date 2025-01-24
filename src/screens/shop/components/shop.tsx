@@ -12,14 +12,15 @@ const SHOP_KEY = '피오나트'
 const MAX_RETRY = 4;
 
 export const Shop = ({sendBuyItemName}:ShopProps) => {
-    const {npcName} = useNpcName();
-    const {setLoading} = useLoading();
-    const {setPopupData, callPopup} = usePopup();
+    const {npcName} = useNpcName(); // 상점명 context
+    const {setLoading} = useLoading(); // 로딩상태 context
+    const {setPopupData, callPopup} = usePopup(); // 팝업 context
     const [shopData, setShopData] = useState<NpcShopProps | null>(null); // 요청받은 데이터 or 로컬 데이터
-    const [showShop, setShowShop] = useState(false);
-    const [getBuyItemData, setGetBuyItemData] = useState<itemData | null>(null);
-    const [getShowDetailData, setGetShowDetailData] = useState<itemData | null>(null);
-    const [getDetailPosition, setGetDetailPosition] = useState({getX:0, getY:0});
+    const [showShop, setShowShop] = useState(false); // 샵 노출/비노출
+    const [getBuyItemData, setGetBuyItemData] = useState<itemData | null>(null); // 아이템 데이터
+    const [getShowDetailData, setGetShowDetailData] = useState<itemData | null>(null); // hover 디테일 데이터
+    const [getDetailPosition, setGetDetailPosition] = useState({getX:0, getY:0}); // 디테일 노출 위치값
+    const [cartInCheck, setCartInCheck] = useState(0); // 카트 담기
 
     // 실제 통신은 api.ts 파일에서 진행, 
     // 여기서는 getData 실행 후 응답받은 데이터 상태에 저장해서 출력하는 용도
