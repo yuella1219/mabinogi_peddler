@@ -29,6 +29,8 @@
   --item1:calc((64px) - 2px);
   --item2:calc((64px * 2) - 2px);
   --item3:calc((64px * 3) - 2px);
+
+  --road-spped : 0;
 }
 
 #root{

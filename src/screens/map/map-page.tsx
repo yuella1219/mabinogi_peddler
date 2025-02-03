@@ -29,7 +29,7 @@ export const MapPage = () =>{
                 {NpcData.map((nm)=>(
                     <div className="map-btn-wrap" key={nm.id} 
                     style={{top:`${nm.pos.y}%`, left:`${nm.pos.x}%`}}>
-                        <Link to="/mabinogi_peddler" className="map-btn" 
+                        <Link to="/road-page" className="map-btn" 
                         onClick={()=>{
                             handleMoveMap(nm.name)
                         }}>

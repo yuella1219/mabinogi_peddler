@@ -1226,9 +1226,21 @@ ul, ol{list-style:none;}
     background-repeat:repeat;
     background-size:100%;
     animation-name: roadMoving;
-    animation-duration:8s;
     animation-iteration-count: infinite;
     animation-timing-function:linear;
+    animation-duration:var(--road-speed);
+    &::before{  
+        position: absolute;
+        top:0;
+        left:0;
+        z-index:0;
+        display:block;
+        content:"";
+        width:100%;
+        height:100%;
+        background:#fff;
+        opacity:0.9;
+    }
 }
 @keyframes roadMoving{
     0%{
@@ -1241,9 +1253,20 @@ ul, ol{list-style:none;}
 .player{
     position:absolute;
     bottom:5%;
-    left:49%;
+    left:48.5%;
+    z-index:1;
     transform:translate(-50%, 0);
     width:59px;
     height:90px;
     background:url(/public/img/player/basic-character-transport.png) no-repeat center center / contain;
+}
+.road-timer-wrap{
+    position: absolute;
+    top: 24px;
+    right:24px;
+    z-index:2;
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+    gap:12px;
 }
