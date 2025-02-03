@@ -1216,3 +1216,34 @@ ul, ol{list-style:none;}
         }
     }
 }
+
+// 이동중
+.road-wrap{
+    position:relative;
+    width:100%;
+    height:100vh;
+    background-image:url(/public/img/bg/forest-road.png);
+    background-repeat:repeat;
+    background-size:100%;
+    animation-name: roadMoving;
+    animation-duration:8s;
+    animation-iteration-count: infinite;
+    animation-timing-function:linear;
+}
+@keyframes roadMoving{
+    0%{
+        background-position:center 100%;
+    }
+    100%{
+        background-position:center -332%;
+    }
+}
+.player{
+    position:absolute;
+    bottom:5%;
+    left:49%;
+    transform:translate(-50%, 0);
+    width:59px;
+    height:90px;
+    background:url(/public/img/player/basic-character-transport.png) no-repeat center center / contain;
+}
