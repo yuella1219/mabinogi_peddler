@@ -22,7 +22,7 @@ export const NpcPortrait = ({buyState} : NpcProps) =>{
     
     return(
         <div className="npc-portrait-wrap">
-            <img src={URL_KEY + `/img/${getNpcData.img}`} alt="" />            
+            <img src={URL_KEY + `/img/npc/${getNpcData.img}`} alt="" />            
         </div>
     )
 }

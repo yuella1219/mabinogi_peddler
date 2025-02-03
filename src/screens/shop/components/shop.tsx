@@ -72,9 +72,7 @@ export const Shop = ({sendBuyItemName}:ShopProps) => {
                 setLoading(true);
             }
         }else{
-            callApiData(nm, 0)            
-            setShowShop(true)
-            setLoading(true);
+            callApiData(nm, 0)        
         }
     }
 

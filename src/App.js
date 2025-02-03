@@ -1,7 +1,7 @@
 import { GlobalProvider } from 'core';
 import './assets/css/styles.css'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { Gnb, ShopPage, MapPage } from 'screens';
+import { Gnb, ShopPage, MapPage, RoadPage } from 'screens';
 
 function App() {
 
@@ -13,6 +13,7 @@ function App() {
             <Routes>
               <Route path="/mabinogi_peddler" element={<ShopPage/>} />
               <Route path="/map-page" element={<MapPage/>} />
+              <Route path="/road-page" element={<RoadPage/>} />
             </Routes>
         </div>
       </Router>

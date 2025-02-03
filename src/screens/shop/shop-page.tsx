@@ -62,7 +62,7 @@ export const ShopPage = () =>{
 
     return(
         <div className="content">
-            {/* <Todo /> */}
+            <Todo />
             <ShopGnb shopNm={getNpc} data={getItem} buyState={getBuyStatus}/>
             <Npc buyState={buyStatus}/>
             <Shop sendBuyItemName={getAddItemName}/>            

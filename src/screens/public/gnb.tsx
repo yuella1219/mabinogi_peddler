@@ -8,6 +8,7 @@ export const Gnb = () => {
     <nav>
       <Link className="nav-btn" to="/mabinogi_peddler" onClick={()=>{setLoading(false)}}>0101</Link>
       <Link className="nav-btn" to="/map-page" onClick={()=>{setLoading(false)}}>map</Link>
+      <Link className="nav-btn" to="/road-page" onClick={()=>{setLoading(false)}}>road</Link>
     </nav>
   );
 };

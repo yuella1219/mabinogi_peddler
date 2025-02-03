@@ -1,3 +1,5 @@
 export * from './public'
 export * from './shop'
 export * from './baggage'
+export * from './map'
+export * from './road'
