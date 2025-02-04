@@ -1,14 +1,11 @@
 import React from 'react';
-import {useState, useEffect, useRef} from 'react';
+import {useEffect, useRef} from 'react';
 import {Link} from 'react-router-dom';
 import {URL_KEY, useLoading, useNpcName} from 'core'
 import {NpcData} from 'datas'
 
-const BASE_WIDTH = 711;
-const BASE_HEIGHT = 604;
-
 export const MapPage = () =>{
-    const {setNpcName} = useNpcName();
+    const {npcName, setNpcName, setPrevNpcName} = useNpcName();
     const imgRef = useRef<HTMLImageElement | null>(null);
     const {setLoading} = useLoading();
 
@@ -31,6 +28,7 @@ export const MapPage = () =>{
                     style={{top:`${nm.pos.y}%`, left:`${nm.pos.x}%`}}>
                         <Link to="/road-page" className="map-btn" 
                         onClick={()=>{
+                            setPrevNpcName(npcName)
                             handleMoveMap(nm.name)
                         }}>
                             <span>{nm.name}</span>

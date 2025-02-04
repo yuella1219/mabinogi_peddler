@@ -1,6 +1,6 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
-import {NpcShopProps, getData} from 'datas'
+import {NpcShopProps} from 'datas'
 import {useWallet, useNpcName} from 'core';
 import {Shop, Npc, ShopGnb, itemData, BtnPress, Todo, ColorInterface} from 'screens';
 
@@ -48,9 +48,6 @@ export const ShopPage = () =>{
         setGetNpc(npcName)
     }, [npcName])
 
-    const resetData = () =>{
-        localStorage.removeItem('myBaggage');
-    }
     const giveMeTheMoney = () =>{
         setWallet({
             gold : wallet?.gold! + 100000,

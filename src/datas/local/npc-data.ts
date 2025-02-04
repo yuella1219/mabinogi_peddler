@@ -129,6 +129,6 @@ export const NpcData : NpcDataProps[] = [
         name : '피오나트',
         id : 'pionart',
         pos : {x:73, y:60},
-        img : 'sample-namolppaem-fococlipping-standard.png',
+        img : 'portrait-npc-pionat.png',
     },
 ]

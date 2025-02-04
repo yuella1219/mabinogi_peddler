@@ -1,51 +1,75 @@
 import React from 'react';
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useRef} from 'react';
+import {useNpcName} from 'core';
+import { NpcData } from 'datas';
 
 interface RoadTimerProps {
-    time : number;
     speed : number;
-    arrive : (arv : boolean) => void;
+    arrive : (arv: boolean | null) => void;
 }
 
-export const RoadTimer = ({time, speed, arrive} : RoadTimerProps) =>{
-    const [getTime, setTime] = useState<RoadTimerProps['time'] | null>(null); // 받아온 시간
-    const [getSpeed, setSpeed] = useState<RoadTimerProps['speed']>(0); // 토글 스피드
+export const RoadTimer = ({speed, arrive} : RoadTimerProps) =>{
+    const {prevNpcName, npcName} = useNpcName();
+    const [arriveTime, setArriveTime] = useState<number | null>(null); // 받아온 시간
+    const speedRef = useRef(speed); // 재렌더링이 싫으면 ref를 적극 활용하자. useState가 항상 정답은 아니다.
+    const timerRef = useRef<NodeJS.Timeout | null>(null); // 타이머 참조 저장용
 
     // 시간 계산
     useEffect(()=>{
-        setTime(time * 2);
-    }, [time]);
 
-    // 스피드 토글
-    useEffect(()=>{
-        setSpeed(speed);
-    }, [speed]);
+        // 이전 샵 거리 구하기
+        const _prevShop = NpcData.find((data) => data.name === prevNpcName);
+        const _prevDistance = ((_prevShop?.pos.x || 0) + (_prevShop?.pos.y || 0)) * 2;
 
-    useEffect(()=>{
-        if (getTime === null){
-            return;
-        }else{
-            console.log(getTime)
-            // 시간 종료 시 페이지 이동
-            const handleTimer = setTimeout(()=>{
-                setTime((prev) => (prev !== null ? prev - 1 : 0));
-            }, 1000)
-            if(getTime <= 0){
-                clearTimeout(handleTimer);
-                arrive(true);
+        // 목적지 샵 거리 구하기
+        const _arriveShop = NpcData.find((data) => data.name === npcName);
+        const _arriveDistance = ((_arriveShop?.pos.x || 0) + (_arriveShop?.pos.y || 0)) * 2;
+
+        // 북쪽으로 이동 시 목적지값이 -가 되는 경우 대비
+        // if(_prevDistance < _arriveDistance){
+        //     setArriveTime(_arriveDistance - _prevDistance)
+        // }else{
+        //     setArriveTime(_prevDistance - _arriveDistance)
+        // } 기존소스
+        setArriveTime(Math.abs(_arriveDistance - _prevDistance));        
+    }, []);
+
+    // 타이머 시작 및 도착 감지
+    useEffect(() => {
+        if (arriveTime === null || arriveTime <= 0) {
+            if (arriveTime !== null) {
+                arrive(true); // 🚀 arrive가 null이 아닐 때만 true로 설정
             }
+            return;
         }
-    }, [getTime])
+
+        // 속도
+        const _delay = 1000 / (1 + speedRef.current);
+
+        // 타이머 설정
+        timerRef.current = setTimeout(() => {
+            setArriveTime((prev) => (prev !== null ? prev - 1 : 0));
+        }, _delay);
+
+        return () => {
+            if (timerRef.current) clearTimeout(timerRef.current); // 기존 타이머 제거
+        };
+
+    }, [arriveTime]);
+
+    useEffect(()=>{
+        speedRef.current = speed;
+    }, [speed])
 
     return(
         <div className="road-timer-wrap">
             <p>
-                시간 {getTime !== null ? 
-                `${Math.floor(getTime / 60).toString().padStart(2, '0')} : 
-                ${(getTime % 60).toString().padStart(2, '0')}` 
+                시간 {arriveTime !== null ? 
+                `${Math.floor(arriveTime / 60).toString().padStart(2, '0')} : 
+                ${(arriveTime % 60).toString().padStart(2, '0')}` 
                 : `00:00`}
             </p>
-            <p>속도 {getSpeed}</p>
+            <p>속도 {speedRef.current === 0 ? 'x 1' : 'x 2'}</p>
         </div>
     )
 }
