@@ -1,7 +1,6 @@
 import React from 'react';
 import {useState, useEffect, useRef} from 'react';
 import { useLoading, useNpcName } from 'core';
-import { NpcDataProps, NpcData } from 'datas';
 import {RoadTimer} from 'screens';
 import { useNavigate } from "react-router-dom";
 

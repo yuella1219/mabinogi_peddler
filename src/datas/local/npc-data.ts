@@ -16,7 +16,7 @@ export const NpcData : NpcDataProps[] = [
         name : '델렌',
         id : 'dellen',
         pos : {x:49, y:60},
-        img : 'mooljjange-01.png',
+        img : 'portrait-npc-dellen.png',
     },
     {
         name : '상인 라누',
@@ -27,7 +27,7 @@ export const NpcData : NpcDataProps[] = [
     {   name : '상인 피루',
         id: 'merchant-peeroo',
         pos : {x:0, y:0},
-        img : '.',
+        img : 'mooljjange-01.png',
     },
     {
         name : '모락',
@@ -123,7 +123,7 @@ export const NpcData : NpcDataProps[] = [
         name : '인장 상인',
         id : 'seal-merchant',
         pos : {x:72, y:48},
-        img : '.',
+        img : 'portrait-npc-sealBuyer.png',
     },
     {
         name : '피오나트',
