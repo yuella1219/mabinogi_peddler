@@ -9,7 +9,7 @@ export const Baggage = () =>{
     const {callPopup} = usePopup();
     const [baggageList, setBaggageList] = useState<BaggageProps[] | []>([]);
     const [sellItemData, setSellItemData] = useState<SellItemProps | null>(null);
-    const [showList, setShowList] = useState(false);
+    // const [showList, setShowList] = useState(false);
 
     // 판매 아이템 데이터 받아오기
     const getSellItemData = ({shopNm, item}:SellItemProps) => {

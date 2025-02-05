@@ -19,8 +19,7 @@ export const RoadTimer = ({speed, arrive} : RoadTimerProps) =>{
 
         // 이전 샵 거리 구하기 - prevNpcName 없을 시 델로 초기화
         // 초기화를 road에서 하는 쪽으로 변경...
-        const _prevShop = NpcData.find((data) => data.name === prevNpcName);
-
+        const _prevShop = prevNpcName.length < 1 ? NpcData.find((data) => data.name === '델') : NpcData.find((data) => data.name === prevNpcName);
         const _prevDistance = ((_prevShop?.pos.x || 0) + (_prevShop?.pos.y || 0)) * 2;
 
         // 목적지 샵 거리 구하기
@@ -28,13 +27,12 @@ export const RoadTimer = ({speed, arrive} : RoadTimerProps) =>{
         const _arriveDistance = ((_arriveShop?.pos.x || 0) + (_arriveShop?.pos.y || 0)) * 2;
 
         // 북쪽으로 이동 시 목적지값이 -가 되는 경우 대비
-        // if(_prevDistance < _arriveDistance){
-        //     setArriveTime(_arriveDistance - _prevDistance)
-        // }else{
-        //     setArriveTime(_prevDistance - _arriveDistance)
-        // } 기존소스
-        setArriveTime(Math.abs(_arriveDistance - _prevDistance));        
-    }, []);
+        if(_prevDistance < _arriveDistance){
+            setArriveTime(Math.abs(_arriveDistance - _prevDistance))
+        }else{
+            setArriveTime(Math.abs(_prevDistance - _arriveDistance))
+        }
+    }, [npcName]);
 
     // 타이머 시작 및 도착 감지
     useEffect(() => {

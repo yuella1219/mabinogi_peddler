@@ -24,7 +24,8 @@ export const RoadPage = () =>{
 
     useEffect(() => {
         setLoading(true);
-        if(prevNpcName.length < 1) setPrevNpcName('델');
+        if(prevNpcName.length < 1) setPrevNpcName('델'); // 현재위치 없을 때 델로 초기화
+
         // 키보드 온오프
         const handleKeyDown = (e: KeyboardEvent) => {
             if (!isHolding.current) {
@@ -64,7 +65,7 @@ export const RoadPage = () =>{
             document.removeEventListener("mousedown", handleMouseDown);
             document.removeEventListener("mouseup", handleMouseUp);
         };
-    }, [npcName]);
+    }, []);
 
     // 페이지 이동 감지 전달용
     const getArrive = (arr : boolean | null) =>{
@@ -75,6 +76,7 @@ export const RoadPage = () =>{
 
     useEffect(()=>{
         if(arrive){
+            setLoading(false);
             navigate("/mabinogi_peddler");
         }
     }, [arrive])

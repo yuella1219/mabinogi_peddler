@@ -1,6 +1,7 @@
 import React, { ReactNode, useState, useEffect, createContext, useContext } from 'react';
 import type { WalletProps } from 'type';
-import {useWallet, usePopup} from 'core';
+import {useWallet, usePopup, useNpcName} from 'core';
+import {NpcDataProps, NpcData} from 'datas';
 import {itemData} from 'screens'
 
 export type BaggageContextType = {
@@ -30,6 +31,7 @@ export type SellItemProps = {
 const BaggageContext = createContext<BaggageContextType|null>(null);
 
 export const BaggageProvider = ({children} : {children : ReactNode}) =>{
+    const {npcName} = useNpcName();
     const {wallet, setWallet} = useWallet();
     const {callPopup} = usePopup();
     const [baggage, setBaggage] = useState<BaggageProps[] | []>(() => {
@@ -150,35 +152,47 @@ export const BaggageProvider = ({children} : {children : ReactNode}) =>{
 
     // 판매 로직
     const handleSellItem = ({item, shopNm, all} : SellItemProps) =>{
-        
-        const npcTab = baggage.find((npc) => npc.npcName === shopNm);
-        if (!npcTab) return;
+        // shopNm은 판매하는 상점 명을 찾기 위한 것
+        // 동일 아이템 목록에 있을 시 중복 판매를 방지하기 위함
+        // ex) 마족표 너클 구매 - 이름으로만 검색 시 어느 교역소 npc에서 산 것 인지 확인 불가하여
+        // find 돌려서 걸리는 제일 첫번째 아이템이 판매됨. 이 경우 차익이 다르게 계산되므로 막아야 함.
+        // ❕❕❗❗❕❕선생님 주석 좀 잘 써두세요 제발 몇번째야 이게❕❕❗❗❕❕
+        const npcTab = baggage.find((npc) => npc.npcName === shopNm); // 구매한 아이템에서 판매할 아이템을 npc이름으로 찾기
+        const _toSell = NpcData.find((nm) => nm.name === npcName)?.pos || NpcData.find((nm) => nm.name === '델')?.pos; // 판매샵 위치값
+        const _purchased = NpcData.find((nm) => nm.name === shopNm)?.pos || NpcData.find((nm) => nm.name === '델')?.pos;; // 구매한 샵 위치값        
+        const _profit  = Math.abs(((_toSell?.x ?? 0) + (_toSell?.y ?? 0)) - ((_purchased?.x ?? 0) + (_purchased?.y ?? 0)) / 100)
+
+        console.log(`이율 계산 -> ${_profit}`)
+
+        if (!npcTab) return; // 목록 없으면 종료
 
         if(all){
-            const getItem = npcTab.items;
+            const getItem = npcTab.items; // 구매한 아이템 목록 가져오기
 
-            let _appendG = wallet!.gold;
-            let _appendD = wallet!.ducat;
-            let _appendP = wallet!.pinecone;
-            let _appendS = wallet!.seal;
+            let _appendG = wallet!.gold; // 지갑 잔고 - 골드
+            let _appendD = wallet!.ducat; // 지갑 잔고 - 두카트
+            let _appendP = wallet!.pinecone; // 지갑 잔고 - 금박솔방울
+            let _appendS = wallet!.seal; // 지갑 잔고 - 모험가의 인장
 
-            getItem!.map((item)=>(
+            // 목록 돌면서 판매가 계산해서 더하기
+            getItem!.map((item)=>( 
                 item.price.find((cost : any) => {
                     if(cost.price_type === '골드'){
-                        _appendG = _appendG += cost.price_value;
+                        _appendG = _appendG += (cost.price_value + (cost.price_value * _profit));
                     }
                     else if(cost.price_type === '두카트'){
-                        _appendD = _appendD += cost.price_value;
+                        _appendD = _appendD += (cost.price_value + (cost.price_value * _profit));
                     }
                     else if(cost.price_type === '금박 솔방울'){
-                        _appendP = _appendP += cost.price_value;
+                        _appendP = _appendP += (cost.price_value + (cost.price_value * _profit));
                     }
                     else if(cost.price_type === '모험가의 인장'){
-                        _appendS = _appendS += cost.price_value;
+                        _appendS = _appendS += (cost.price_value + (cost.price_value * _profit));
                     }
                 })
             ))
 
+            // 구매목록 업데이트
             const updatedBaggage = baggage.filter((npc) => {
                 // npcName이 shopNm과 다르면 유지
                 if (npc.npcName !== shopNm) {
@@ -212,16 +226,16 @@ export const BaggageProvider = ({children} : {children : ReactNode}) =>{
     
             getItem!.price.find((cost : any) => {
                 if(cost.price_type === '골드'){
-                    _appendG = _appendG += cost.price_value;
+                    _appendG = _appendG += (cost.price_value + (cost.price_value * _profit));;
                 }
                 else if(cost.price_type === '두카트'){
-                    _appendD = _appendD += cost.price_value;
+                    _appendD = _appendD += (cost.price_value + (cost.price_value * _profit));;
                 }
                 else if(cost.price_type === '금박 솔방울'){
-                    _appendP = _appendP += cost.price_value;
+                    _appendP = _appendP += (cost.price_value + (cost.price_value * _profit));;
                 }
                 else if(cost.price_type === '모험가의 인장'){
-                    _appendS = _appendS += cost.price_value;
+                    _appendS = _appendS += (cost.price_value + (cost.price_value * _profit));;
                 }
             })
             

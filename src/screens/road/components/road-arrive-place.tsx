@@ -2,13 +2,6 @@ import React from 'react';
 import {useState, useEffect} from 'react';
 import {useNpcName} from 'core'
 
-interface Sample {
-    aa : string;
-    bb : number;
-    cc : boolean;
-    dd : () => void;
-}
-
 export const RoadArrivePlace = () =>{
     const {prevNpcName, npcName} = useNpcName();
 

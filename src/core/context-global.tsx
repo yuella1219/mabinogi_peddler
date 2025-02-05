@@ -3,16 +3,16 @@ import { WalletProvider, PopUpProvider, BaggageProvider, LoadingProvider, NpcNam
 
 export const GlobalProvider = ({ children }: { children: React.ReactNode }) => {
   return (
-    <WalletProvider>
-      <PopUpProvider>
-        <BaggageProvider>
-          <LoadingProvider>
-            <NpcNameProvider>
-                {children}
-            </NpcNameProvider>
-          </LoadingProvider>
-        </BaggageProvider>
-      </PopUpProvider>
-    </WalletProvider>
+    <NpcNameProvider>
+      <WalletProvider>
+        <PopUpProvider>
+          <BaggageProvider>
+            <LoadingProvider>
+                  {children}
+            </LoadingProvider>
+          </BaggageProvider>
+        </PopUpProvider>
+      </WalletProvider>
+    </NpcNameProvider>
   );
 };
