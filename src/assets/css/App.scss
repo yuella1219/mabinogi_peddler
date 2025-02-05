@@ -1196,25 +1196,51 @@ ul, ol{list-style:none;}
     .map-btn-wrap{
         position:absolute;
         transform:translate(-50%, -50%);
-    }
-    .map-btn{
-        display:inline-flex;
-        align-items:center;
-        justify-content:center;
-        padding:6px 8px;
-        border-radius:50px;
-        background:var(--main);
-        border:1px solid var(--dark02);
-        box-shadow:2px 2px 0 var(--deep);
+        backdrop-filter:blur(4px);
+        &::before{
+            position:absolute;
+            top:20%;
+            left:10%;
+            z-index:0;
+            display:block;
+            content:"";
+            width:80%;
+            height:40%;            
+            box-shadow:0 0 8px 4px var(--light01);
+            background:var(--light01);
+            border-radius:50px;
+            opacity:0.5;
+        }
+        .map-btn{
+            position:relative;
+            z-index:1;
+            display:inline-flex;
+            align-items:center;
+            justify-content:center;
+            padding:4px 8px;
+            border-radius:50px;
+            .txt{
+                line-height:1;
+                font-size:18px;
+            }
+        }
         &:hover{
-            transition:transform 0.2s;
-            transform:translateY(-4px);
+            z-index:3;
+            &::before{
+                box-shadow:0 0 12px 8px var(--light01);
+                transition:transform 0.2s;
+                transform:translateY(-4px);
+                opacity:0.8;
+            }
+            .map-btn{
+                transition:transform 0.2s;
+                transform:translateY(-4px);
+                .txt{
+                    color:var(--deep);
+                }
+            }
         }
-        span{
-            line-height:1;
-            font-size:16px;
-        }
-    }
+    }    
 }
 
 // 이동중
@@ -1269,4 +1295,32 @@ ul, ol{list-style:none;}
     align-items:center;
     justify-content:flex-end;
     gap:12px;
+}
+.road-arrive-wrap{
+    position:absolute;
+    top:24px;
+    left:24px;
+    z-index:2;
+    padding:12px;
+    background:var(--main);
+    border-radius:4px;
+    [class*="txt"]{
+        font-size:18px;
+        color:var(--text-dark);
+    }
+    .txt-movment{
+        margin-bottom:4px;
+    }
+    .destination-wrap{
+        display:flex;
+        align-items:center;
+        justify-content:flex-start;
+        gap:8px;
+    }
+    .txt-arrive{
+        padding:4px 12px;
+        background:var(--deep);
+        color:var(--text-light);
+        border-radius:50px;
+    }
 }

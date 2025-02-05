@@ -1129,24 +1129,50 @@ ul, ol {
 .map .map-btn-wrap {
   position: absolute;
   transform: translate(-50%, -50%);
+  backdrop-filter: blur(4px);
 }
-.map .map-btn {
+.map .map-btn-wrap::before {
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  z-index: 0;
+  display: block;
+  content: "";
+  width: 80%;
+  height: 40%;
+  box-shadow: 0 0 8px 4px var(--light01);
+  background: var(--light01);
+  border-radius: 50px;
+  opacity: 0.5;
+}
+.map .map-btn-wrap .map-btn {
+  position: relative;
+  z-index: 1;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 6px 8px;
+  padding: 4px 8px;
   border-radius: 50px;
-  background: var(--main);
-  border: 1px solid var(--dark02);
-  box-shadow: 2px 2px 0 var(--deep);
 }
-.map .map-btn:hover {
+.map .map-btn-wrap .map-btn .txt {
+  line-height: 1;
+  font-size: 18px;
+}
+.map .map-btn-wrap:hover {
+  z-index: 3;
+}
+.map .map-btn-wrap:hover::before {
+  box-shadow: 0 0 12px 8px var(--light01);
+  transition: transform 0.2s;
+  transform: translateY(-4px);
+  opacity: 0.8;
+}
+.map .map-btn-wrap:hover .map-btn {
   transition: transform 0.2s;
   transform: translateY(-4px);
 }
-.map .map-btn span {
-  line-height: 1;
-  font-size: 16px;
+.map .map-btn-wrap:hover .map-btn .txt {
+  color: var(--deep);
 }
 
 .road-wrap {
@@ -1202,4 +1228,33 @@ ul, ol {
   align-items: center;
   justify-content: flex-end;
   gap: 12px;
+}
+
+.road-arrive-wrap {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  z-index: 2;
+  padding: 12px;
+  background: var(--main);
+  border-radius: 4px;
+}
+.road-arrive-wrap [class*=txt] {
+  font-size: 18px;
+  color: var(--text-dark);
+}
+.road-arrive-wrap .txt-movment {
+  margin-bottom: 4px;
+}
+.road-arrive-wrap .destination-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+}
+.road-arrive-wrap .txt-arrive {
+  padding: 4px 12px;
+  background: var(--deep);
+  color: var(--text-light);
+  border-radius: 50px;
 }

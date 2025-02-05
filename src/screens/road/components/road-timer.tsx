@@ -17,8 +17,10 @@ export const RoadTimer = ({speed, arrive} : RoadTimerProps) =>{
     // 시간 계산
     useEffect(()=>{
 
-        // 이전 샵 거리 구하기
+        // 이전 샵 거리 구하기 - prevNpcName 없을 시 델로 초기화
+        // 초기화를 road에서 하는 쪽으로 변경...
         const _prevShop = NpcData.find((data) => data.name === prevNpcName);
+
         const _prevDistance = ((_prevShop?.pos.x || 0) + (_prevShop?.pos.y || 0)) * 2;
 
         // 목적지 샵 거리 구하기

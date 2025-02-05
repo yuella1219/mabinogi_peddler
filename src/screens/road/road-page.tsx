@@ -1,7 +1,7 @@
 import React from 'react';
 import {useState, useEffect, useRef} from 'react';
 import { useLoading, useNpcName } from 'core';
-import {RoadTimer} from 'screens';
+import { RoadTimer, RoadArrivePlace } from 'screens';
 import { useNavigate } from "react-router-dom";
 
 interface RoadPageProps {
@@ -11,11 +11,10 @@ interface RoadPageProps {
     dd : () => void;
 }
 
-
 export const RoadPage = () =>{
     const DEFAULT_SPEED = 8; // 배경 디폴트 스피드
     const {setLoading} = useLoading(); // 로딩
-    const {npcName} = useNpcName(); // 이동할 npc 이름 받아오기
+    const { npcName, prevNpcName, setPrevNpcName } = useNpcName(); // 이동할 npc 이름 받아오기
     const navigate = useNavigate(); // 시간 종료 시 페이지 이동 기능
     const [arrive, setArrive]  = useState(false); // 페이지 이동 감지용
     const [backSpeed, setBackSpeed] = useState(DEFAULT_SPEED); 
@@ -25,6 +24,7 @@ export const RoadPage = () =>{
 
     useEffect(() => {
         setLoading(true);
+        if(prevNpcName.length < 1) setPrevNpcName('델');
         // 키보드 온오프
         const handleKeyDown = (e: KeyboardEvent) => {
             if (!isHolding.current) {
@@ -85,6 +85,7 @@ export const RoadPage = () =>{
         style={{ "--road-speed": `${backSpeed}s` } as React.CSSProperties}>
             <div className="player"></div>
             <RoadTimer speed={isHolding.current ? 1 : 0} arrive={getArrive}/>
+            <RoadArrivePlace />
         </div>
     )
 }

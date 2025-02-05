@@ -5,26 +5,29 @@ export type NpcDataProps = {
     img : string;
 }
 
+const REPLACE_URL = (nm:string) => {
+    return `portrait-npc-${nm}.png`
+}
 
 export const NpcData : NpcDataProps[] = [
     {   name : '델',
         id:'dell',
-        pos : {x:46, y:60},
-        img : 'portrait-npc-dell.png',
+        pos : {x:44, y:63},
+        img : `${REPLACE_URL('dell')}`,
     },
     {
         name : '델렌',
         id : 'dellen',
-        pos : {x:49, y:60},
-        img : 'portrait-npc-dellen.png',
+        pos : {x:49, y:63},
+        img : `${REPLACE_URL('dellen')}`,
     },
     {
         name : '상인 라누',
         id : 'merchant-lanoo',
-        pos : {x:0, y:0},
+        pos : {x:78, y:76},
         img : 'sample-namolppaem-fococlipping-standard.png',
     },
-    {   name : '상인 피루',
+    {   name : '상인 피루(벨바스트)',
         id: 'merchant-peeroo',
         pos : {x:0, y:0},
         img : 'mooljjange-01.png',
@@ -38,7 +41,7 @@ export const NpcData : NpcDataProps[] = [
     {
         name : '상인 아루',
         id : 'merchant-aroo',
-        pos : {x:0, y:0},
+        pos : {x:82, y:49},
         img : '.',
     },
     {
@@ -50,13 +53,13 @@ export const NpcData : NpcDataProps[] = [
     {
         name : '상인 누누',
         id : 'merchant-nooonoo',
-        pos : {x:0, y:0},
+        pos : {x:74, y:47},
         img : '.',
     },
     {
         name : '상인 메루',
         id : 'merchant-meroo',
-        pos : {x:0, y:0},
+        pos : {x:48, y:56},
         img : '.',
     },
     {
@@ -98,20 +101,20 @@ export const NpcData : NpcDataProps[] = [
     {
         name : '상인 베루',
         id : 'merchant-berro',
-        pos : {x:0, y:0},
+        pos : {x:48, y:24},
         img : '.',
     },
     {
         name : '상인 에루',
         id : 'merchant-eroo',
-        pos : {x:0, y:0},
+        pos : {x:16, y:48},
         img : '.',
     },
     {
         name : '상인 네루',
         id : 'merchant-neroo',
-        pos : {x:0, y:0},
-        img : '.',
+        pos : {x:77, y:20},
+        img : `${REPLACE_URL('imp-neroo')}`,
     },
     {
         name : '카디',
@@ -122,13 +125,13 @@ export const NpcData : NpcDataProps[] = [
     {
         name : '인장 상인',
         id : 'seal-merchant',
-        pos : {x:72, y:48},
-        img : 'portrait-npc-sealBuyer.png',
+        pos : {x:72, y:53},
+        img : `${REPLACE_URL('sealBuyer')}`,
     },
     {
         name : '피오나트',
         id : 'pionart',
         pos : {x:73, y:60},
-        img : 'portrait-npc-pionat.png',
+        img : `${REPLACE_URL('pionat')}`,
     },
 ]

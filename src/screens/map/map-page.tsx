@@ -31,7 +31,7 @@ export const MapPage = () =>{
                             setPrevNpcName(npcName)
                             handleMoveMap(nm.name)
                         }}>
-                            <span>{nm.name}</span>
+                            <span className="txt">{nm.name}</span>
                         </Link>
                     </div>
                 ))}
