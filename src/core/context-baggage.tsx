@@ -160,13 +160,17 @@ export const BaggageProvider = ({children} : {children : ReactNode}) =>{
         const npcTab = baggage.find((npc) => npc.npcName === shopNm); // 구매한 아이템에서 판매할 아이템을 npc이름으로 찾기
         const _toSell = NpcData.find((nm) => nm.name === npcName)?.pos || NpcData.find((nm) => nm.name === '델')?.pos; // 판매샵 위치값
         const _purchased = NpcData.find((nm) => nm.name === shopNm)?.pos || NpcData.find((nm) => nm.name === '델')?.pos;; // 구매한 샵 위치값        
-        const _profit  = Math.abs(((_toSell?.x ?? 0) + (_toSell?.y ?? 0)) - ((_purchased?.x ?? 0) + (_purchased?.y ?? 0)) / 100)
+        const _profit = Math.abs((((_toSell?.x ?? 0) + (_toSell?.y ?? 0)) - ((_purchased?.x ?? 0) + (_purchased?.y ?? 0))) * 0.01);
 
+
+
+        console.log('판매샵 위치값 -> ' + ((_toSell?.x || 0) + (_toSell?.y || 0)));
+        console.log('구매한 샵 위치값 -> ' + ( (_purchased?.x || 0 )+ (_purchased?.y || 0)));
         console.log(`이율 계산 -> ${_profit}`)
 
         if (!npcTab) return; // 목록 없으면 종료
 
-        if(all){
+        if(all){ // 전체 판매 버튼 클릭 시
             const getItem = npcTab.items; // 구매한 아이템 목록 가져오기
 
             let _appendG = wallet!.gold; // 지갑 잔고 - 골드
@@ -216,7 +220,7 @@ export const BaggageProvider = ({children} : {children : ReactNode}) =>{
             // 상태 업데이트
             setBaggage(updatedBaggage);
 
-        }else{
+        }else{ // 개별 아이템 클릭 시
             const getItem = npcTab.items.find((el) => el === item);
 
             let _appendG = wallet!.gold;

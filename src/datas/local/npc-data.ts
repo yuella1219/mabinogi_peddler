@@ -13,8 +13,7 @@ export const NpcData : NpcDataProps[] = [
     {   name : '델',
         id:'dell',
         pos : {x:44, y:63},
-        img : '',
-        // img : `${REPLACE_URL('dell')}`,
+        img : `${REPLACE_URL('dell')}`,
     },
     {
         name : '델렌',

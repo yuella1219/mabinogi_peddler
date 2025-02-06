@@ -18,12 +18,24 @@ export const ShopGnb = ({shopNm, data, buyState} : CartProps) =>{
     // 장바구니 온오프
     const handleShowCart = () =>{
         setShowCart(!showCart);
+        if(showBaggage) setShowBaggage(false);
     }
 
     // 화물 온오프
     const handleShowBaggage = () =>{
         setShowBaggage(!showBaggage);
+        if(showCart) setShowCart(false);
     }
+
+    useEffect(()=>{
+        console.log('ShopGnb 컴포 재랜더링됨')        
+    }, [])
+
+    useEffect(()=>{
+        if(data === null) return
+        if(showCart) return;
+        setShowCart(true);
+    }, [data])
 
     return(
         <div className="shop-gnb-wrap">
@@ -47,3 +59,5 @@ export const ShopGnb = ({shopNm, data, buyState} : CartProps) =>{
         </div>
     )
 }
+
+export default ShopGnb;

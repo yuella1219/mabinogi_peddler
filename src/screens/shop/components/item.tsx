@@ -15,6 +15,7 @@ interface itemProps {
 export const Item = ({item, sendItem, detailData, sendItemPosition} :itemProps) =>{
     const thisItem = useRef<HTMLButtonElement>(null);
 
+    // 카트 담기
     const addToCart = () =>{
         if(thisItem.current){
             sendItem(item);

@@ -15,10 +15,10 @@ export const Cart = ({shopNm, data, buyState, showList} : CartProps) =>{
     const {handleBuyItem} = useBaggage();
     const cartWrap = useRef<HTMLDivElement>(null);
     const [shopName, setShopName] = useState('');
-    const [cartList, setCartList] = useState<itemData[]>([]);
-    const [removeList, setRemoveList] = useState<itemData[]>([]);
-    const [removeData, setRemoveData] = useState<RemoveData | null>(null);
-    const [showCart, setShowCart] = useState(false);
+    const [cartList, setCartList] = useState<itemData[]>([]); // 장바구니 담긴 아이템 목록
+    const [removeList, setRemoveList] = useState<itemData[]>([]); // 삭제리스트
+    const [removeData, setRemoveData] = useState<RemoveData | null>(null); // 삭제예정 데이터 임시 저장
+    const [showCart, setShowCart] = useState(false); // 카트 show 토글
 
     // 샵 이름 받아오기
     useEffect(()=>{
@@ -45,7 +45,7 @@ export const Cart = ({shopNm, data, buyState, showList} : CartProps) =>{
         setShowCart(showList!);
     }, [showList])
 
-    // 
+    // 삭제예정 임시 리스트 업데이트
     useEffect(()=>{
         setRemoveList((prevList) => {
             if (removeData?._type) {

@@ -51,7 +51,9 @@ export const Shop = ({sendBuyItemName}:ShopProps) => {
                 callPopup({
                     popType : 'alert',
                     mainTxt:'서버 이상으로 정보를 받아올 수 없습니다.<br/>잠시 후 다시 시도해주세요.',                    
-                    handleFunc : ()=>{},
+                    handleFunc : ()=>{
+                        setLoading(true);
+                    },
                 })
             }
         });
@@ -78,12 +80,14 @@ export const Shop = ({sendBuyItemName}:ShopProps) => {
 
     // 구매할 아이템 데이터 받아오기
     const getItemData = (item : itemData) =>{
-        setGetBuyItemData(item)
+        setGetBuyItemData(item);
         sendBuyItemName(item);
     }
 
     // 샵 데이터 호출
     useEffect(()=>{
+        console.log('Shop 컴포 재랜더링됨')
+        
         if(npcName === ""){
             handleGetData('델');
         }else{

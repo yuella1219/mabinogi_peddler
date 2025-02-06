@@ -2,6 +2,7 @@ import React from 'react';
 import {useState, useEffect} from 'react';
 import {useNpcName} from 'core';
 import {NpcProps} from 'type';
+import {scriptDell} from 'datas'
 
 export const NpcDialog = ({buyState} : NpcProps) =>{
     const {npcName} = useNpcName();
@@ -11,7 +12,7 @@ export const NpcDialog = ({buyState} : NpcProps) =>{
     // const npcText = '나무르르르르ㄹㄹㄹㄹㄹㄹ!'
     
     // const npcName = '델'
-    const npcText = '임시 텍스트'
+    const npcText = scriptDell.visit;
 
     return(
         <div className="npc-dialog-wrap">
