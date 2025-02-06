@@ -1,18 +1,18 @@
 {
   "files": {
     "main.css": "/mabinogi_peddler/static/css/main.162ad92a.css",
-    "main.js": "/mabinogi_peddler/static/js/main.704cf936.js",
+    "main.js": "/mabinogi_peddler/static/js/main.1597a757.js",
     "static/js/453.ed3810f9.chunk.js": "/mabinogi_peddler/static/js/453.ed3810f9.chunk.js",
     "static/media/forest-road.png": "/mabinogi_peddler/static/media/forest-road.d6aa5201a4ba88df2fd9.png",
     "static/media/Mabinogi_Classic_TTF.ttf": "/mabinogi_peddler/static/media/Mabinogi_Classic_TTF.29cfc6b1788dec2cb6bc.ttf",
     "static/media/basic-character-transport.png": "/mabinogi_peddler/static/media/basic-character-transport.4ac84c19199715cf1510.png",
     "index.html": "/mabinogi_peddler/index.html",
     "main.162ad92a.css.map": "/mabinogi_peddler/static/css/main.162ad92a.css.map",
-    "main.704cf936.js.map": "/mabinogi_peddler/static/js/main.704cf936.js.map",
+    "main.1597a757.js.map": "/mabinogi_peddler/static/js/main.1597a757.js.map",
     "453.ed3810f9.chunk.js.map": "/mabinogi_peddler/static/js/453.ed3810f9.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.162ad92a.css",
-    "static/js/main.704cf936.js"
+    "static/js/main.1597a757.js"
   ]
 }
