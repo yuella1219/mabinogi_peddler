@@ -4,9 +4,9 @@ import {NpcShopProps} from 'datas'
 import {useWallet, useNpcName} from 'core';
 import {Shop, Npc, ShopGnb, itemData, BtnPress, Todo, ColorInterface} from 'screens';
 
-const MemoizedShopGnb = memo(ShopGnb);
-const MemoizedShop = memo(Shop);
-const MemoizedNpc = memo(Npc);
+// const MemoizedShopGnb = React.memo(ShopGnb);
+// const MemoizedShop = React.memo(Shop);
+// const MemoizedNpc = React.memo(Npc);
 
 export const ShopPage = () =>{
     const {npcName} = useNpcName();
@@ -70,9 +70,9 @@ export const ShopPage = () =>{
     return(
         <div className="content">
             <Todo />
-            <MemoizedShopGnb shopNm={getNpc} data={getItem} buyState={getBuyStatus}/>
-            <MemoizedNpc buyState={buyStatus}/>
-            <MemoizedShop sendBuyItemName={getAddItemName}/>            
+            <ShopGnb shopNm={getNpc} data={getItem} buyState={getBuyStatus}/>
+            <Npc buyState={buyStatus}/>
+            <Shop sendBuyItemName={getAddItemName}/>            
             <ColorInterface show={true} />
             <div className="givemethemoney">
                 <BtnPress btnTxt={'깁미 더 머니'} func={giveMeTheMoney}/>

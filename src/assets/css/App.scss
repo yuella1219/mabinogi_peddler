@@ -1254,7 +1254,7 @@ ul, ol{list-style:none;}
     animation-name: roadMoving;
     animation-iteration-count: infinite;
     animation-timing-function:linear;
-    animation-duration:var(--road-speed);
+    animation-duration:8s;
     &::before{  
         position: absolute;
         top:0;
@@ -1266,6 +1266,9 @@ ul, ol{list-style:none;}
         height:100%;
         background:#fff;
         opacity:0.9;
+    }
+    &.boost{
+        animation-duration:4s;
     }
 }
 @keyframes roadMoving{

@@ -204,11 +204,12 @@ export const BaggageProvider = ({children} : {children : ReactNode}) =>{
                 }
             });
             
+            // 소수점 반올림해서 판매금액 저장
             setWallet({
-                gold : _appendG,
-                ducat : _appendD,
-                pinecone : _appendP,
-                seal : _appendS,
+                gold : Math.round(_appendG),
+                ducat : Math.round(_appendD),
+                pinecone : Math.round(_appendP),
+                seal : Math.round(_appendS),
             });
             
             callPopup({
@@ -243,11 +244,12 @@ export const BaggageProvider = ({children} : {children : ReactNode}) =>{
                 }
             })
             
+            // 소수점 반올림해서 판매금액 저장
             setWallet({
-                gold : _appendG,
-                ducat : _appendD,
-                pinecone : _appendP,
-                seal : _appendS,
+                gold : Math.round(_appendG),
+                ducat : Math.round(_appendD),
+                pinecone : Math.round(_appendP),
+                seal : Math.round(_appendS),
             });
     
             const updatedBaggage = baggage.filter((npc) => {
@@ -262,7 +264,12 @@ export const BaggageProvider = ({children} : {children : ReactNode}) =>{
                 }
             
                 // npcName이 shopNm이고 items가 여러 개인 경우, 특정 아이템만 삭제
-                npc.items = npc.items.filter((item) => item !== getItem);
+                // 하기 스크립트는 npc.items와 다른 것만 골라서 배열을 새로 작성하는 것이므로, 중복 물건을 남기지 못한다.
+                // 중복 물건을 남길 수 있도록 소스 수정 필요
+                const index = npc.items.indexOf(getItem!);
+                if (index !== -1) {
+                    npc.items.splice(index, 1); // 첫 번째 일치하는 항목만 삭제
+                }
                 return true;
             });
             callPopup({

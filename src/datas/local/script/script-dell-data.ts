@@ -1,6 +1,6 @@
 import type {NpcScriptDataProps} from 'type';
 
-export const scriptDell:NpcScriptDataProps = {
+export const scriptDell : NpcScriptDataProps = {
     visit : '예쁜 꽃 한송이 어떠세요?',
     buy : '감사합니다, 꽃들도 기뻐할거에요.',    
     sell : '배송 감사합니다. 금액이 맞는지 확인해 보세요.',
