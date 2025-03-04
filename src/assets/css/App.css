@@ -6,6 +6,7 @@
 
 body {
   width: 100%;
+  background: url(/public/img/bg/hide.png) no-repeat center center/cover;
 }
 
 input[type=checkbox] {
@@ -356,6 +357,7 @@ ul, ol {
   right: 0;
   margin: 0 auto;
   width: min-content;
+  opacity: 0.05;
 }
 .shop-wrap .shop-header {
   padding: 24px 48px;
@@ -945,6 +947,7 @@ ul, ol {
   top: 12px;
   left: 12px;
   z-index: 100;
+  opacity: 0.05;
 }
 .shop-gnb-wrap .btn-wrap {
   display: flex;
@@ -1075,6 +1078,7 @@ ul, ol {
   justify-content: center;
   width: 50%;
   height: 747px;
+  opacity: 0.05;
 }
 .npc-portrait-wrap img {
   max-width: 700px;
@@ -1091,6 +1095,7 @@ ul, ol {
   background: #5f473d;
   border: 10px solid #ccbda7;
   box-sizing: border-box;
+  opacity: 0.05;
 }
 .npc-dialog-wrap .npc-name {
   font-size: 32px;

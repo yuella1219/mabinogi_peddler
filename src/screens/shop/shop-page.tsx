@@ -66,16 +66,16 @@ export const ShopPage = () =>{
             seal : wallet?.seal! + 30,
         })
     }
-
+// <ColorInterface show={true} />
     return(
         <div className="content">
             <Todo />
             <ShopGnb shopNm={getNpc} data={getItem} buyState={getBuyStatus}/>
             <Npc buyState={buyStatus}/>
             <Shop sendBuyItemName={getAddItemName}/>            
-            <ColorInterface show={true} />
+            
             <div className="givemethemoney">
-                <BtnPress btnTxt={'깁미 더 머니'} func={giveMeTheMoney}/>
+                {/* <BtnPress btnTxt={'깁미 더 머니'} func={giveMeTheMoney}/> */}
             </div>
         </div>
     )

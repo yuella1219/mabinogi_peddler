@@ -6,7 +6,8 @@
 }
 
 body {
-    width: 100%
+    width: 100%;
+    background:url(/public/img/bg/hide.png) no-repeat center center / cover;
 }
 input[type="checkbox"]{
     position:absolute;
@@ -378,6 +379,7 @@ ul, ol{list-style:none;}
     margin:0 auto;
     // width:968px;
     width:min-content;
+    opacity:0.05; //지우기
     .shop-header{
         padding:24px 48px;
         background:var(--shop-header);
@@ -995,6 +997,7 @@ ul, ol{list-style:none;}
     top:12px;
     left:12px;
     z-index:100;
+    opacity:0.05; //지우기
     .btn-wrap{
         display:flex;
         align-items:center;
@@ -1143,6 +1146,7 @@ ul, ol{list-style:none;}
     justify-content:center;
     width:50%;
     height:747px;
+    opacity:0.05; //지우기
     img{
         max-width:700px;
         transform:scaleX(-1);
@@ -1158,6 +1162,7 @@ ul, ol{list-style:none;}
     background:#5f473d;
     border:10px solid #ccbda7;
     box-sizing:border-box;
+    opacity:0.05; //지우기
     .npc-name{
         font-size:32px;
         font-weight:var(--regular);

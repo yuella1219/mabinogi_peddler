@@ -5,7 +5,7 @@ import {NpcProps} from 'type'
 
 export const Npc = ({buyState} : NpcProps) =>{
     useEffect(()=>{
-        console.log('Npc 컴포 재랜더링됨')
+        // console.log('Npc 컴포 재랜더링됨')
     }, [])
     return(
         <div>

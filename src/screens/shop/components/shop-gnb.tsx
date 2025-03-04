@@ -27,9 +27,9 @@ export const ShopGnb = ({shopNm, data, buyState} : CartProps) =>{
         if(showCart) setShowCart(false);
     }
 
-    useEffect(()=>{
-        console.log('ShopGnb 컴포 재랜더링됨')        
-    }, [])
+    // useEffect(()=>{
+    //     console.log('ShopGnb 컴포 재랜더링됨')        
+    // }, [])
 
     useEffect(()=>{
         if(data === null) return

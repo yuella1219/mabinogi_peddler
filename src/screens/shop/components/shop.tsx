@@ -86,7 +86,7 @@ export const Shop = ({sendBuyItemName}:ShopProps) => {
 
     // 샵 데이터 호출
     useEffect(()=>{
-        console.log('Shop 컴포 재랜더링됨')
+        // console.log('Shop 컴포 재랜더링됨')
         
         if(npcName === ""){
             handleGetData('델');
