@@ -63,13 +63,13 @@ export const RoadTimer = ({speed, arrive} : RoadTimerProps) =>{
 
     return(
         <div className="road-timer-wrap">
-            <p>
+            <p className="road-timer">
                 시간 {arriveTime !== null ? 
                 `${Math.floor(arriveTime / 60).toString().padStart(2, '0')} : 
                 ${(arriveTime % 60).toString().padStart(2, '0')}` 
                 : `00:00`}
             </p>
-            <p>속도 {speedRef.current === 0 ? 'x 1' : 'x 2'}</p>
+            <p className="road-speed">속도 {speedRef.current === 0 ? 'x 1' : 'x 2'}</p>
         </div>
     )
 }

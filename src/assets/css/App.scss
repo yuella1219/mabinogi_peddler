@@ -7,7 +7,7 @@
 
 body {
     width: 100%;
-    background:url(/public/img/bg/hide.png) no-repeat center center / cover;
+    // background:url(/public/img/bg/hide.png) no-repeat center center / cover;
 }
 input[type="checkbox"]{
     position:absolute;
@@ -25,8 +25,8 @@ nav {
     left: 0;
     z-index: 99;
     padding: 12px;
-    background: #fff;
-    border-bottom: 1px solid #ddd;
+    // background: #fff;
+    border-bottom: 1px solid #dddddd;
 }
 
 .nav-btn {
@@ -37,6 +37,7 @@ nav {
     padding: 12px;
     border: 1px solid #333;
     border-radius: 8px;
+    background:var(--white);
 }
 
 a {
@@ -240,6 +241,41 @@ ul, ol{list-style:none;}
 .content{
     width:100%;
     height:100%;
+    isolation: isolate; 
+    // 가상선택자 레이어 부모 밑으로 빠지지 않게 해주는 css. 오오오... 새로운거...
+
+    &.pionat{
+
+    }
+
+    // 티르
+    &.merchant-neroo{
+        background:url(/public/img/bg/bg-TirChonaill.jpg) no-repeat center center / cover;
+    }
+    // 던바
+    &.seal-merchant,
+    &.merchant-nooonoo{
+        background:url(/public/img/bg/bg-Dunbarton.png) no-repeat center center / cover;
+    }
+    // 이멘
+    &.dell,
+    &.dellen,
+    &.merchant-meroo{
+        background:url(/public/img/bg/bg-EmainMacha.jfif) no-repeat center center / cover;
+    }
+    // 마그멜
+    &.pionart{
+        background:url(/public/img/bg/bg-magmel.webp) no-repeat center center / cover;
+    }
+    &::after{
+        content: '';
+        position: absolute;
+        background: rgba(255, 255, 255, 0.4);
+        z-index: -1;
+        inset: 0;
+        opacity: 1;
+        backdrop-filter:blur(4px);
+    }
 }
 
 .popup {
@@ -379,7 +415,7 @@ ul, ol{list-style:none;}
     margin:0 auto;
     // width:968px;
     width:min-content;
-    opacity:0.3; //지우기
+    // opacity:0.3; //지우기
     .shop-header{
         padding:24px 48px;
         background:var(--shop-header);
@@ -997,7 +1033,7 @@ ul, ol{list-style:none;}
     top:12px;
     left:12px;
     z-index:100;
-    opacity:0.3; //지우기
+    // opacity:0.3; //지우기
     .btn-wrap{
         display:flex;
         align-items:center;
@@ -1146,7 +1182,7 @@ ul, ol{list-style:none;}
     justify-content:center;
     width:50%;
     height:747px;
-    opacity:0.05; //지우기
+    // opacity:0.05; //지우기
     img{
         max-width:700px;
         transform:scaleX(-1);
@@ -1162,7 +1198,7 @@ ul, ol{list-style:none;}
     background:#5f473d;
     border:10px solid #ccbda7;
     box-sizing:border-box;
-    opacity:0.5; //지우기
+    // opacity:0.5; //지우기
     .npc-name{
         font-size:32px;
         font-weight:var(--regular);
@@ -1260,13 +1296,13 @@ ul, ol{list-style:none;}
     animation-iteration-count: infinite;
     animation-timing-function:linear;
     animation-duration:8s;
+    isolation:isolate;
     &::before{  
         position: absolute;
         top:0;
         left:0;
-        z-index:0;
         display:block;
-        content:"";
+        // content:"";
         width:100%;
         height:100%;
         background:#fff;
@@ -1302,7 +1338,17 @@ ul, ol{list-style:none;}
     display:flex;
     align-items:center;
     justify-content:flex-end;
-    gap:12px;
+    gap:24px;
+    padding:12px;
+    border-radius:4px;
+    background:var(--main);
+    p{
+        color:var(--text-dark);
+        font-size:16px;
+
+    }
+    .road-timer{
+    }
 }
 .road-arrive-wrap{
     position:absolute;

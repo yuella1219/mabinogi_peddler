@@ -1,6 +1,6 @@
 import React, {memo} from 'react';
 import {useState, useEffect} from 'react';
-import {NpcShopProps} from 'datas'
+import {NpcShopProps, NpcData} from 'datas'
 import {useWallet, useNpcName} from 'core';
 import {Shop, Npc, ShopGnb, itemData, BtnPress, Todo, ColorInterface} from 'screens';
 
@@ -16,6 +16,7 @@ export const ShopPage = () =>{
     const [getNpc, setGetNpc] = useState<string | null>(null); // 엔피씨 선택
     const [cart, setCart] = useState<itemData | null>(null); // 짐 목록 업데이트
     const [buyStatus, setBuyStatus] = useState('normal'); // 구매 완료 상태
+    const [classNm, setClassNm] = useState<string | null>(null);
     
     // 구매할 아이템 받아오기
     const getAddItemName = (item:itemData) =>{
@@ -57,6 +58,7 @@ export const ShopPage = () =>{
     // 전역으로 npc명 관리
     useEffect(()=>{
         setGetNpc(npcName)
+        setClassNm(NpcData.find((el) => el.name === npcName)?.id ?? null);
     }, [npcName])
 
     const giveMeTheMoney = () =>{
@@ -69,8 +71,8 @@ export const ShopPage = () =>{
     }
 // <ColorInterface show={true} />
     return(
-        <div className="content">
-            <Todo />
+        <div className={`content ${classNm}`}>
+            {/* <Todo /> */}
             <ShopGnb shopNm={getNpc} data={getItem} buySts={getBuyStatus}/>
             <Npc buyState={buyStatus}/>
             <Shop sendBuyItemName={getAddItemName}/>            

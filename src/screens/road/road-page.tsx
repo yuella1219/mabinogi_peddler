@@ -18,10 +18,12 @@ export const RoadPage = () =>{
     const [arrive, setArrive]  = useState(false); // 페이지 이동 감지용
     const roadArea = useRef<HTMLDivElement>(null); // 이동맵 useRef는 리랜더링을 유발하지 않는다. 이걸 이제 알았네
     const isHolding = useRef(false); // 동작 감지
+    const [isBoosting, setIsBoosting] = useState(false); // ✅ 상태 추가
 
     const handleSpeedUp = () =>{
         if (!isHolding.current) {
             isHolding.current = true;
+            setIsBoosting(true);
             if(roadArea.current){
                 roadArea.current.classList.add('boost');
             }
@@ -30,6 +32,7 @@ export const RoadPage = () =>{
     const handleSpeedDown = () =>{
         if (isHolding.current) {
             isHolding.current = false;
+            setIsBoosting(false);
             if(roadArea.current){
                 roadArea.current.classList.remove('boost');
             }
@@ -90,7 +93,8 @@ export const RoadPage = () =>{
     return(
         <div className="road-wrap" ref={roadArea}>
             <div className="player"></div>
-            <RoadTimer speed={isHolding.current ? 1 : 0} arrive={getArrive}/>
+            {/* isHolding이 하위 컴포넌트에 전달되지 않는 이유? */}
+            <RoadTimer speed={isBoosting ? 1 : 0} arrive={getArrive}/>
             <RoadArrivePlace />
         </div>
     )

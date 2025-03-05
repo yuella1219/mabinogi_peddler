@@ -51,7 +51,7 @@ export const NpcDialog = ({ buyState }: NpcProps) => {
 
         setTimeout(()=>{
             changeNormalText();
-        }, 1000)
+        }, 10000)
 
         const interval = setInterval(changeNormalText, 10000); // 10초마다 변경
         setIntervalId(interval); // 기존 interval 저장
@@ -61,8 +61,7 @@ export const NpcDialog = ({ buyState }: NpcProps) => {
 
     // 샵 상태 업데이트
     useEffect(()=>{
-        setShopState(buyState)
-            
+        setShopState(buyState)            
     }, [buyState])
 
     // 샵 상태 업데이트 되면
@@ -71,13 +70,14 @@ export const NpcDialog = ({ buyState }: NpcProps) => {
         if(nowNpcDatas){
             // buyState 의존성 걸어서 업데이트 되면 키값으로 검색하기
             const _findEl = nowNpcDatas[shopState as keyof typeof nowNpcDatas];
-            setFullText(_findEl);
-        }
         
-        // intervalId값 유효하면 clear하고 state null로 만들기
-        if(intervalId){
-            clearInterval(intervalId);
-            setIntervalId(null);
+            // intervalId값 유효하면 clear하고 state null로 만들기
+            if(intervalId){
+                clearInterval(intervalId);
+                setIntervalId(null);
+            }
+
+            setFullText(_findEl);
         }
         
         // 일정 시간이 지나면 다시 normalText 순환 시작
@@ -90,6 +90,8 @@ export const NpcDialog = ({ buyState }: NpcProps) => {
 
     // 타이핑 효과
     useEffect(()=>{       
+        if (!fullText) return;
+
         let charIndex = 0;
             setText('')
             const typeEffect = () => {

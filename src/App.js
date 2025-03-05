@@ -11,8 +11,8 @@ function App() {
         <div id="container">
             <Gnb />
             <Routes>
+              <Route path="/" element={<MapPage/>} />
               <Route path="/mabinogi_peddler" element={<ShopPage/>} />
-              <Route path="/map-page" element={<MapPage/>} />
               <Route path="/road-page" element={<RoadPage/>} />
             </Routes>
         </div>
