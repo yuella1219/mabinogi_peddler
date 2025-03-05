@@ -379,7 +379,7 @@ ul, ol{list-style:none;}
     margin:0 auto;
     // width:968px;
     width:min-content;
-    opacity:0.05; //지우기
+    opacity:0.3; //지우기
     .shop-header{
         padding:24px 48px;
         background:var(--shop-header);
@@ -997,7 +997,7 @@ ul, ol{list-style:none;}
     top:12px;
     left:12px;
     z-index:100;
-    opacity:0.05; //지우기
+    opacity:0.3; //지우기
     .btn-wrap{
         display:flex;
         align-items:center;
@@ -1162,7 +1162,7 @@ ul, ol{list-style:none;}
     background:#5f473d;
     border:10px solid #ccbda7;
     box-sizing:border-box;
-    opacity:0.05; //지우기
+    opacity:0.5; //지우기
     .npc-name{
         font-size:32px;
         font-weight:var(--regular);

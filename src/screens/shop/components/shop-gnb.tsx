@@ -11,7 +11,7 @@ interface Sample {
     dd : () => void;
 }
 
-export const ShopGnb = ({shopNm, data, buyState} : CartProps) =>{
+export const ShopGnb = ({shopNm, data, buySts} : CartProps) =>{
     const [showCart, setShowCart] = useState(false);
     const [showBaggage, setShowBaggage] = useState(false);
 
@@ -51,9 +51,9 @@ export const ShopGnb = ({shopNm, data, buyState} : CartProps) =>{
                 <Wallet />
             </div>
             <div className="list-comp-wrap">
-                <Cart shopNm={shopNm} data={data} buyState={buyState} showList={showCart}/>                
+                <Cart shopNm={shopNm} data={data} buySts={buySts} showList={showCart}/>                
                 {showBaggage ? (
-                    <Baggage />
+                    <Baggage  buySts={buySts}/>
                 ) : null}
             </div>
         </div>

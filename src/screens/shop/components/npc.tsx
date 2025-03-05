@@ -10,7 +10,7 @@ export const Npc = ({buyState} : NpcProps) =>{
     return(
         <div>
             <NpcPortrait buyState={buyState}/>
-            <NpcDialog buyState={false}/>
+            <NpcDialog buyState={buyState}/>
         </div>
     )
 }

@@ -2,9 +2,14 @@ import React from 'react';
 import {useState, useEffect} from 'react';
 import {BaggageProps, SellItemProps, useBaggage, usePopup} from 'core';
 import {itemData, BaggageItem, ItemDetail, BtnPress} from 'screens'
+import {CartProps} from 'type';
 import {IcoSell} from 'image';
 
-export const Baggage = () =>{
+interface BaggageStatusProps {
+    buySts : (status:string)=>void;
+}
+
+export const Baggage = ({ buySts } : BaggageStatusProps) =>{
     const {baggage, handleSellItem} = useBaggage();
     const {callPopup} = usePopup();
     const [baggageList, setBaggageList] = useState<BaggageProps[] | []>([]);
@@ -16,13 +21,21 @@ export const Baggage = () =>{
         setSellItemData({shopNm, item})        
     };
     
+    // 구매완료 상태 보내기
+    const sendSellStatus = (sts:string) =>{
+        buySts(sts)
+    }
+
     // 단일클릭
     useEffect(()=>{
         if(sellItemData){
             callPopup({
                 mainTxt:'판매',
                 subTxt : '판매하시겠습니까?',
-                handleFunc : ()=>{handleSellItem(sellItemData)},
+                handleFunc : ()=>{
+                    handleSellItem(sellItemData);
+                    sendSellStatus('sell');
+                },
                 btnTxt : '판매'
             })
         }
@@ -32,7 +45,10 @@ export const Baggage = () =>{
             callPopup({
             mainTxt:'전체 판매',
             subTxt : '모두 판매하시겠습니까?',
-            handleFunc : ()=>{handleSellItem({item: null, shopNm:shopNm, all:true})},
+            handleFunc : ()=>{
+                handleSellItem({item: null, shopNm:shopNm, all:true});
+                sendSellStatus('sell');
+            },
             btnTxt : '전체 판매'
         })
     }

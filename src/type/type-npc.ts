@@ -1,5 +1,5 @@
 export type NpcProps  = {
-    buyState : boolean;
+    buyState : string;
 }
 
 export type NpcScriptDataProps = {

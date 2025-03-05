@@ -1,8 +1,9 @@
 import {itemData} from 'screens';
+import {NpcProps} from 'type';
 
 export type CartProps = {
     shopNm : string | null;
     data : itemData | null;
-    buyState: (status:boolean) => void; // 새로운 Prop 추가
     showList?: boolean;
+    buySts : (status:string) => void; // 새로운 Prop 추가
 }

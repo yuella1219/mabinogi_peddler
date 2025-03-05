@@ -15,7 +15,7 @@ export const ShopPage = () =>{
     const [getItem, setGetItem] = useState<itemData | null>(null); // 탭에서 선택한 아이템
     const [getNpc, setGetNpc] = useState<string | null>(null); // 엔피씨 선택
     const [cart, setCart] = useState<itemData | null>(null); // 짐 목록 업데이트
-    const [buyStatus, setBuyStatus] = useState(false); // 구매 완료 상태
+    const [buyStatus, setBuyStatus] = useState('normal'); // 구매 완료 상태
     
     // 구매할 아이템 받아오기
     const getAddItemName = (item:itemData) =>{
@@ -23,7 +23,8 @@ export const ShopPage = () =>{
     }
 
     // 구매완료 상태 받아오기
-    const getBuyStatus = (status : boolean) =>{
+    const getBuyStatus = (status : string) =>{
+        console.log(status)
         setBuyStatus(status);
     }
 
@@ -70,7 +71,7 @@ export const ShopPage = () =>{
     return(
         <div className="content">
             <Todo />
-            <ShopGnb shopNm={getNpc} data={getItem} buyState={getBuyStatus}/>
+            <ShopGnb shopNm={getNpc} data={getItem} buySts={getBuyStatus}/>
             <Npc buyState={buyStatus}/>
             <Shop sendBuyItemName={getAddItemName}/>            
             

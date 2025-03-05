@@ -9,7 +9,9 @@ export const NpcDialog = ({ buyState }: NpcProps) => {
     const [normalTxt, setNormal] = useState<string[] | null>(null); // 일반 출력 텍스트(특수 조건 텍스트x)
     const [text, setText] = useState(""); // 실제 출력 텍스트 (한글자씩 타이핑되는 텍스트)
     const [fullText, setFullText] = useState(""); // text의 전체 미리 담아두는 상태 hook
-    const [shopState, setShopState] = useState('')
+    const [isUpdate, setUpdate] = useState(false); // state 업데이트 감지용
+    const [shopState, setShopState] = useState(buyState ?? 'normal') // state 업데이트
+    const [intervalId, setIntervalId] = useState<NodeJS.Timeout | null>(null); // ✅ 기존 interval 저장
 
     // 15초마다 랜덤 스크립트로 바뀌는 함수
     const changeNormalText = () =>{
@@ -41,19 +43,50 @@ export const NpcDialog = ({ buyState }: NpcProps) => {
             setNormal(_arr);
             setText(nowNpcDatas.visit);
         }
-        
     }, [nowNpcDatas])
 
     // 랜덤 텍스트 출력
     useEffect(()=>{
+        if(isUpdate) return;
+
         setTimeout(()=>{
             changeNormalText();
         }, 1000)
 
         const interval = setInterval(changeNormalText, 10000); // 10초마다 변경
+        setIntervalId(interval); // 기존 interval 저장
 
         return () => clearInterval(interval); // 클린업
     }, [normalTxt])
+
+    // 샵 상태 업데이트
+    useEffect(()=>{
+        setShopState(buyState)
+            
+    }, [buyState])
+
+    // 샵 상태 업데이트 되면
+    useEffect(()=>{
+        if(shopState === 'normal') return;
+        if(nowNpcDatas){
+            // buyState 의존성 걸어서 업데이트 되면 키값으로 검색하기
+            const _findEl = nowNpcDatas[shopState as keyof typeof nowNpcDatas];
+            setFullText(_findEl);
+        }
+        
+        // intervalId값 유효하면 clear하고 state null로 만들기
+        if(intervalId){
+            clearInterval(intervalId);
+            setIntervalId(null);
+        }
+        
+        // 일정 시간이 지나면 다시 normalText 순환 시작
+        setTimeout(() => {
+            setShopState('noraml');
+            changeNormalText(); // 다시 랜덤 대사 출력 시작
+        }, 20000); // ✅ 20초 동안 구매 대사 유지
+
+    }, [shopState])
 
     // 타이핑 효과
     useEffect(()=>{       

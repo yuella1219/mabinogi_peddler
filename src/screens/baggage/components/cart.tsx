@@ -10,7 +10,7 @@ interface RemoveData {
     _type: boolean;
 }
 
-export const Cart = ({shopNm, data, buyState, showList} : CartProps) =>{
+export const Cart = ({shopNm, data, buySts, showList} : CartProps) =>{
     const {callPopup} = usePopup();
     const {handleBuyItem} = useBaggage();
     const cartWrap = useRef<HTMLDivElement>(null);
@@ -37,7 +37,7 @@ export const Cart = ({shopNm, data, buyState, showList} : CartProps) =>{
     // 카트 초기화
     const resetCart = () =>{
         setCartList([]);
-        buyState(true);
+        buySts('buy');
     }
 
     // 카트 보이기
