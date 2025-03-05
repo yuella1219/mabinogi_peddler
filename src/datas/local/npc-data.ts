@@ -30,7 +30,7 @@ export const NpcData : NpcDataProps[] = [
         name : '상인 라누',
         id : 'merchant-lanoo',
         pos : {x:78, y:76},
-        img : 'sample-namolppaem-fococlipping-standard.png',
+        img : 'buy-complete-bbam.png',
         txtScript:scriptMerchantImp,
     },
     {   name : '상인 피루(벨바스트)',

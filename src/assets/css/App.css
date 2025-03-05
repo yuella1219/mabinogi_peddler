@@ -243,6 +243,9 @@ ul, ol {
 .content.dell, .content.dellen, .content.merchant-meroo {
   background: url(/public/img/bg/bg-EmainMacha.jfif) no-repeat center center/cover;
 }
+.content.merchant-lanoo {
+  background: url(/public/img/bg/bg-Bangor.png) no-repeat center center/cover;
+}
 .content.pionart {
   background: url(/public/img/bg/bg-magmel.webp) no-repeat center center/cover;
 }
