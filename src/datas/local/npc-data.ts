@@ -1,4 +1,4 @@
-import {scriptDell, scriptMerchantImp} from './script'
+import {scriptDell, scriptMerchantImp, scriptPionart} from './script'
 
 export type NpcDataProps = {
     name : string; 
@@ -156,6 +156,6 @@ export const NpcData : NpcDataProps[] = [
         id : 'pionart',
         pos : {x:73, y:60},
         img : `${REPLACE_URL('pionat')}`,
-        txtScript:scriptDell,
+        txtScript:scriptPionart,
     },
 ]

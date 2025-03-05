@@ -1206,10 +1206,13 @@ ul, ol{list-style:none;}
     }
     .dialog-box{
         padding:24px;
+        max-width:55%;
     }
     .npc-txt{
+        line-height:1.5;
         font-size:22px;
         color:var(--white);
+        word-break:keep-all;
     }
 }
 

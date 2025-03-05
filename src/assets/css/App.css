@@ -1121,10 +1121,13 @@ ul, ol {
 }
 .npc-dialog-wrap .dialog-box {
   padding: 24px;
+  max-width: 55%;
 }
 .npc-dialog-wrap .npc-txt {
+  line-height: 1.5;
   font-size: 22px;
   color: var(--white);
+  word-break: keep-all;
 }
 
 .map {
