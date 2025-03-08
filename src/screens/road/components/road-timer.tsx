@@ -26,6 +26,8 @@ export const RoadTimer = ({speed, arrive} : RoadTimerProps) =>{
         const _arriveShop = NpcData.find((data) => data.name === npcName);
         const _arriveDistance = ((_arriveShop?.pos.x || 0) + (_arriveShop?.pos.y || 0)) * 2;
 
+        // 대륙이동 케이스 체크
+
         // 북쪽으로 이동 시 목적지값이 -가 되는 경우 대비
         if(_prevDistance < _arriveDistance){
             setArriveTime(Math.abs(_arriveDistance - _prevDistance))

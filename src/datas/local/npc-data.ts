@@ -37,10 +37,10 @@ export const NpcData : NpcDataProps[] = [
         img : 'buy-complete-bbam.png',
         txtScript:scriptMerchantImp,
     },
-    {   name : '상인 피루(벨바스트)',
+    {   name : '상인 피루',
         id: 'merchant-peeroo',
-        cont : 'befast',
-        pos : {x:0, y:0},
+        cont : 'belfast',
+        pos : {x:68, y:78},
         img : 'mooljjange-01.png',
         txtScript:scriptMerchantImp,
     },
@@ -48,7 +48,7 @@ export const NpcData : NpcDataProps[] = [
         name : '모락',
         id : 'morack',
         cont : 'iria', // 칼리다
-        pos : {x:0, y:0},
+        pos : {x:48, y:14},
         img : '.',
         txtScript:scriptDell,
     },
@@ -64,7 +64,7 @@ export const NpcData : NpcDataProps[] = [
         name : '리나',
         id : 'lina',
         cont : 'iria', // 코르
-        pos : {x:0, y:0},
+        pos : {x:58, y:54},
         img : '.',
         txtScript:scriptMerchantImp,
     },
@@ -88,7 +88,7 @@ export const NpcData : NpcDataProps[] = [
         name : '켄',
         id : 'ken',
         cont : 'iria', // 필리아
-        pos : {x:0, y:0},
+        pos : {x:86, y:59},
         img : '.',
         txtScript:scriptDell,
     },
@@ -96,7 +96,7 @@ export const NpcData : NpcDataProps[] = [
         name : '귀넥',
         id : 'gweeneck',
         cont : 'iria', // 카루 
-        pos : {x:0, y:0},
+        pos : {x:48, y:90},
         img : '.',
         txtScript:scriptDell,
     },
@@ -104,7 +104,7 @@ export const NpcData : NpcDataProps[] = [
         name : '얼리',
         id : 'early',
         cont : 'iria', // 오아시스 
-        pos : {x:0, y:0},
+        pos : {x:78, y:64},
         img : '.',
         txtScript:scriptDell,
     },
@@ -112,7 +112,7 @@ export const NpcData : NpcDataProps[] = [
         name : '데위',
         id : 'dewi',
         cont : 'iria', //자르딘 
-        pos : {x:0, y:0},
+        pos : {x:38, y:7},
         img : '.',
         txtScript:scriptDell,
     },
@@ -120,7 +120,7 @@ export const NpcData : NpcDataProps[] = [
         name : '테일로',
         id : 'tailo',
         cont : 'iria', // 켈라 
-        pos : {x:0, y:0},
+        pos : {x:27, y:82},
         img : '.',
         txtScript:scriptDell,
     },
@@ -128,7 +128,7 @@ export const NpcData : NpcDataProps[] = [
         name : '상인 세누',
         id : 'merchant-senoo',
         cont : 'belfast', // 스카하 
-        pos : {x:0, y:0},
+        pos : {x:68, y:48},
         img : '.',
         txtScript:scriptMerchantImp,
     },
@@ -160,7 +160,7 @@ export const NpcData : NpcDataProps[] = [
         name : '카디',
         id : 'cardi',
         cont : 'iria', // 발레스
-        pos : {x:0, y:0},
+        pos : {x:38, y:24},
         img : '.',
         txtScript:scriptDell,
     },
