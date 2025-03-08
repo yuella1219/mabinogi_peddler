@@ -259,19 +259,54 @@ ul, ol{list-style:none;}
     }
     // 이멘
     &.dell,
-    &.dellen,
+    &.dellen{
+        background:url(/public/img/bg/bg-EmainMacha.png) no-repeat center center / cover;
+    }
     &.merchant-meroo{
-        background:url(/public/img/bg/bg-EmainMacha.jfif) no-repeat center center / cover;
+        background:url(/public/img/bg/bg-EmainMacha_North.png) no-repeat center center / cover;
     }
     // 반호르
     &.merchant-lanoo{
         background:url(/public/img/bg/bg-Bangor.png) no-repeat center center / cover;
-    }
-        
+    }        
     // 마그멜
     &.pionart{
         background:url(/public/img/bg/bg-magmel.webp) no-repeat center center / cover;
     }
+    // 켈라
+    &.tailo{
+        background:url(/public/img/bg/bg-Qilla_Base_Camp.png) no-repeat center center / cover;
+    }
+    // 카루
+    &.gweeneck{
+        background:url(/public/img/bg/bg-Caroo.png) no-repeat center center / cover;
+    }
+    // 오아시스
+    &.early{
+        background:url(/public/img/bg/bg-Oasis.png) no-repeat center center / cover;
+    }
+    // 필리아
+    &.ken{
+        background:url(/public/img/bg/bg-Filia.png) no-repeat center center / cover;
+    }
+    // 코르
+    &.lina{
+        background:url(/public/img/bg/bg-Cor.png) no-repeat center center / cover;
+    }
+    // 발레스
+    &.cardi{
+        background:url(/public/img/bg/bg-Vales.png) no-repeat center center / cover;
+    }
+    // 칼리다
+    &.morack{
+        background:url(/public/img/bg/bg-Calida.png) no-repeat center center / cover;
+    }
+    // 자르딘
+    &.dewi{
+        background:url(/public/img/bg/bg-Renes.png) no-repeat center center / cover;
+    }
+
+
     &::after{
         content: '';
         position: absolute;
@@ -1289,7 +1324,32 @@ ul, ol{list-style:none;}
                 }
             }
         }
-    }    
+    } 
+    .map-pagenation{
+        position:absolute;
+        top:50%;
+        left:0;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        width:100%;    
+        box-sizing:border-box;
+        padding:0 24px;
+        button{
+            width:38px;
+            height:82px;
+            background:none;
+            border-style:none;
+            cursor:pointer;
+            transform:translateY(-50%);
+        }
+        .prev-cont{
+            background:url(/public/img/icon/arrow-prev.png) no-repeat center center / contain;
+        }
+        .next-cont{
+            background:url(/public/img/icon/arrow-next.png) no-repeat center center / contain;
+        }
+    }   
 }
 
 // 이동중
@@ -1325,7 +1385,7 @@ ul, ol{list-style:none;}
         background-position:center 100%;
     }
     100%{
-        background-position:center -332%;
+        background-position:center -323%;
     }
 }
 .player{

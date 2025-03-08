@@ -240,14 +240,41 @@ ul, ol {
 .content.seal-merchant, .content.merchant-nooonoo {
   background: url(/public/img/bg/bg-Dunbarton.png) no-repeat center center/cover;
 }
-.content.dell, .content.dellen, .content.merchant-meroo {
-  background: url(/public/img/bg/bg-EmainMacha.jfif) no-repeat center center/cover;
+.content.dell, .content.dellen {
+  background: url(/public/img/bg/bg-EmainMacha.png) no-repeat center center/cover;
+}
+.content.merchant-meroo {
+  background: url(/public/img/bg/bg-EmainMacha_North.png) no-repeat center center/cover;
 }
 .content.merchant-lanoo {
   background: url(/public/img/bg/bg-Bangor.png) no-repeat center center/cover;
 }
 .content.pionart {
   background: url(/public/img/bg/bg-magmel.webp) no-repeat center center/cover;
+}
+.content.tailo {
+  background: url(/public/img/bg/bg-Qilla_Base_Camp.png) no-repeat center center/cover;
+}
+.content.gweeneck {
+  background: url(/public/img/bg/bg-Caroo.png) no-repeat center center/cover;
+}
+.content.early {
+  background: url(/public/img/bg/bg-Oasis.png) no-repeat center center/cover;
+}
+.content.ken {
+  background: url(/public/img/bg/bg-Filia.png) no-repeat center center/cover;
+}
+.content.lina {
+  background: url(/public/img/bg/bg-Cor.png) no-repeat center center/cover;
+}
+.content.cardi {
+  background: url(/public/img/bg/bg-Vales.png) no-repeat center center/cover;
+}
+.content.morack {
+  background: url(/public/img/bg/bg-Calida.png) no-repeat center center/cover;
+}
+.content.dewi {
+  background: url(/public/img/bg/bg-Renes.png) no-repeat center center/cover;
 }
 .content::after {
   content: "";
@@ -1202,6 +1229,31 @@ ul, ol {
 .map .map-btn-wrap:hover .map-btn .txt {
   color: var(--deep);
 }
+.map .map-pagenation {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 24px;
+}
+.map .map-pagenation button {
+  width: 38px;
+  height: 82px;
+  background: none;
+  border-style: none;
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+.map .map-pagenation .prev-cont {
+  background: url(/public/img/icon/arrow-prev.png) no-repeat center center/contain;
+}
+.map .map-pagenation .next-cont {
+  background: url(/public/img/icon/arrow-next.png) no-repeat center center/contain;
+}
 
 .road-wrap {
   position: relative;
@@ -1235,7 +1287,7 @@ ul, ol {
     background-position: center 100%;
   }
   100% {
-    background-position: center -332%;
+    background-position: center -323%;
   }
 }
 .player {

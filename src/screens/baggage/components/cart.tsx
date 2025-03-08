@@ -63,7 +63,7 @@ export const Cart = ({shopNm, data, buySts, showList} : CartProps) =>{
     }
 
     // 제거 배열 비우기
-    const removeListCleaner = () =>{
+    const removeListCleaner = () =>{ 
         const _remove = cartList.filter((remove) => !removeList.includes(remove))
         setCartList(_remove);
         // setCartList((prevItem) => (
