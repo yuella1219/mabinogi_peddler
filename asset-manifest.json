@@ -1,22 +1,35 @@
 {
   "files": {
-    "main.css": "/mabinogi_peddler/static/css/main.ced73506.css",
-    "main.js": "/mabinogi_peddler/static/js/main.8675ee3e.js",
+    "main.css": "/mabinogi_peddler/static/css/main.f6591979.css",
+    "main.js": "/mabinogi_peddler/static/js/main.c92e4833.js",
     "static/js/453.ed3810f9.chunk.js": "/mabinogi_peddler/static/js/453.ed3810f9.chunk.js",
     "static/media/bg-Dunbarton.png": "/mabinogi_peddler/static/media/bg-Dunbarton.fcf8a88b9ebc3df36b71.png",
     "static/media/forest-road.png": "/mabinogi_peddler/static/media/forest-road.d6aa5201a4ba88df2fd9.png",
+    "static/media/bg-Caroo.png": "/mabinogi_peddler/static/media/bg-Caroo.830009fecddc08cf2c52.png",
+    "static/media/bg-Oasis.png": "/mabinogi_peddler/static/media/bg-Oasis.a274c4eefe0b2ef81485.png",
+    "static/media/bg-Taillteann.png": "/mabinogi_peddler/static/media/bg-Taillteann.488678d1b38ac96d2023.png",
+    "static/media/bg-Tara.png": "/mabinogi_peddler/static/media/bg-Tara.f75320f5187b165173ca.png",
+    "static/media/bg-Filia.png": "/mabinogi_peddler/static/media/bg-Filia.f6cc0af69e6ae3e98a87.png",
+    "static/media/bg-Qilla_Base_Camp.png": "/mabinogi_peddler/static/media/bg-Qilla_Base_Camp.932b50650d6fdddd1da4.png",
+    "static/media/bg-EmainMacha_North.png": "/mabinogi_peddler/static/media/bg-EmainMacha_North.99664a2dfee32c381ff9.png",
+    "static/media/bg-Cor.png": "/mabinogi_peddler/static/media/bg-Cor.198167cddb701f02b41f.png",
+    "static/media/bg-Vales.png": "/mabinogi_peddler/static/media/bg-Vales.5ecce593a83492e1cc70.png",
+    "static/media/bg-Scathach.png": "/mabinogi_peddler/static/media/bg-Scathach.44c50573960e36647de5.png",
+    "static/media/bg-Renes.png": "/mabinogi_peddler/static/media/bg-Renes.7723bb18b2dda58e189d.png",
+    "static/media/bg-Calida.png": "/mabinogi_peddler/static/media/bg-Calida.eafc33118d6aac0abb85.png",
+    "static/media/bg-EmainMacha.png": "/mabinogi_peddler/static/media/bg-EmainMacha.9fed0606d8653c2e8fa9.png",
     "static/media/Mabinogi_Classic_TTF.ttf": "/mabinogi_peddler/static/media/Mabinogi_Classic_TTF.29cfc6b1788dec2cb6bc.ttf",
-    "static/media/bg-EmainMacha.jfif": "/mabinogi_peddler/static/media/bg-EmainMacha.f8ffcae4930b69edf19e.jfif",
     "static/media/bg-TirChonaill.jpg": "/mabinogi_peddler/static/media/bg-TirChonaill.41806c48a37cb312b7ae.jpg",
+    "static/media/bg-Bangor.png": "/mabinogi_peddler/static/media/bg-Bangor.15e38a5c52038e43d7ce.png",
     "static/media/bg-magmel.webp": "/mabinogi_peddler/static/media/bg-magmel.33f144c55a3f80ea4fdc.webp",
     "static/media/basic-character-transport.png": "/mabinogi_peddler/static/media/basic-character-transport.4ac84c19199715cf1510.png",
     "index.html": "/mabinogi_peddler/index.html",
-    "main.ced73506.css.map": "/mabinogi_peddler/static/css/main.ced73506.css.map",
-    "main.8675ee3e.js.map": "/mabinogi_peddler/static/js/main.8675ee3e.js.map",
+    "main.f6591979.css.map": "/mabinogi_peddler/static/css/main.f6591979.css.map",
+    "main.c92e4833.js.map": "/mabinogi_peddler/static/js/main.c92e4833.js.map",
     "453.ed3810f9.chunk.js.map": "/mabinogi_peddler/static/js/453.ed3810f9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ced73506.css",
-    "static/js/main.8675ee3e.js"
+    "static/css/main.f6591979.css",
+    "static/js/main.c92e4833.js"
   ]
 }
