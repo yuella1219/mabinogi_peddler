@@ -76,7 +76,7 @@ export const ShopPage = () =>{
             <ShopGnb shopNm={getNpc} data={getItem} buySts={getBuyStatus}/>
             <Npc buyState={buyStatus}/>
             <Shop sendBuyItemName={getAddItemName}/>            
-            
+            <ColorInterface show={true}/>
             <div className="givemethemoney">
                 {/* <BtnPress btnTxt={'깁미 더 머니'} func={giveMeTheMoney}/> */}
             </div>
