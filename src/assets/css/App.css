@@ -282,6 +282,9 @@ ul, ol {
 .content.dewi {
   background: url(/public/img/bg/bg-Renes.png) no-repeat center center/cover;
 }
+.content.merchant-peeroo {
+  background: url(/public/img/bg/bg-Belfast.png) no-repeat center center/cover;
+}
 .content.merchant-senoo {
   background: url(/public/img/bg/bg-Scathach.png) no-repeat center center/cover;
 }

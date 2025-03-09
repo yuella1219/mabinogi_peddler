@@ -48,164 +48,303 @@
 
 .skyGlass{
   --main:#51a5c4;
+  --main-blur:rgba(81, 165, 196, 0.9);
   --dark01:#1e7291;
+  --dark01-blur:rgba(30, 114, 145, 0.9);
   --dark02:#003f5e;
+  --dark02-blur:rgba(0, 63, 94, 0.9);
   --light01:#84d8f7;
+  --light01-blur:rgba(132, 216, 247, 0.9);
   --light02:#b7ffff;
+  --light02-blur:rgba(183, 255, 255, 0.9);
   --text:#05151b;
+  --text-blur:rgba(5, 21, 27, 0.9);
 }
+
 .electronic{
   --main:#353535;
+  --main-blur:rgba(53, 53, 53, 0.9);
   --light01:#f5e8e6;
+  --light01-blur:rgba(245, 232, 230, 0.9);
   --light02:#f7eeee;
+  --light02-blur:rgba(247, 238, 238, 0.9);
   --dark01:#ebd1ce;
+  --dark01-blur:rgba(235, 209, 206, 0.9);
   --dark02:#cd8b88;
+  --dark02-blur:rgba(205, 139, 136, 0.9);
   --deep:#aa4b45;
+  --deep-blur:rgba(170, 75, 69, 0.9);
   --select:#ebaab7;
+  --select-blur:rgba(235, 170, 183, 0.9);
   --text-dark:#89474a;
+  --text-dark-blur:rgba(137, 71, 74, 0.9);
   --text-light:#fff;
+  --text-light-blur:rgba(255, 255, 255, 0.9);
   --inner:#a08986;
+  --inner-blur:rgba(160, 137, 134, 0.9);
 }
+
 .dollPink{
   --main:#db8aa0;
+  --main-blur:rgba(219, 138, 160, 0.9);
   --light01:#f5e8e6;
+  --light01-blur:rgba(245, 232, 230, 0.9);
   --light02:#f7eeee;
+  --light02-blur:rgba(247, 238, 238, 0.9);
   --dark01:#ebd1ce;
+  --dark01-blur:rgba(235, 209, 206, 0.9);
   --dark02:#cd8b88;
+  --dark02-blur:rgba(205, 139, 136, 0.9);
   --deep:#aa4b45;
+  --deep-blur:rgba(170, 75, 69, 0.9);
   --select:#ebaab7;
+  --select-blur:rgba(235, 170, 183, 0.9);
   --text-dark:#89474a;
+  --text-dark-blur:rgba(137, 71, 74, 0.9);
   --text-light:#fff;
+  --text-light-blur:rgba(255, 255, 255, 0.9);
   --inner:#a08986;
+  --inner-blur:rgba(160, 137, 134, 0.9);
 }
 .transparentGray{
-  --main:#888888;
+  --main:#353535;
+  --main-blur:rgba(53, 53, 53, 0.9);
   --light01:#f5e8e6;
+  --light01-blur:rgba(245, 232, 230, 0.9);
   --light02:#f7eeee;
+  --light02-blur:rgba(247, 238, 238, 0.9);
   --dark01:#ebd1ce;
+  --dark01-blur:rgba(235, 209, 206, 0.9);
   --dark02:#cd8b88;
+  --dark02-blur:rgba(205, 139, 136, 0.9);
   --deep:#aa4b45;
+  --deep-blur:rgba(170, 75, 69, 0.9);
   --select:#ebaab7;
+  --select-blur:rgba(235, 170, 183, 0.9);
   --text-dark:#89474a;
+  --text-dark-blur:rgba(137, 71, 74, 0.9);
   --text-light:#fff;
+  --text-light-blur:rgba(255, 255, 255, 0.9);
   --inner:#a08986;
+  --inner-blur:rgba(160, 137, 134, 0.9);
 }
 .doNotCodingPlz{
-  --main:#9c3232;
-  --light01:#a3272f;
-  --light02:#f38c93;
-  --dark01:#fff;
-  --dark02:#fff;
-  --deep:#5e0e35;
-  --select:#fff;
-  --text:#ffc1cf;
-  --inner:#fff;
+  --main:#353535;
+  --main-blur:rgba(53, 53, 53, 0.9);
+  --light01:#f5e8e6;
+  --light01-blur:rgba(245, 232, 230, 0.9);
+  --light02:#f7eeee;
+  --light02-blur:rgba(247, 238, 238, 0.9);
+  --dark01:#ebd1ce;
+  --dark01-blur:rgba(235, 209, 206, 0.9);
+  --dark02:#cd8b88;
+  --dark02-blur:rgba(205, 139, 136, 0.9);
+  --deep:#aa4b45;
+  --deep-blur:rgba(170, 75, 69, 0.9);
+  --select:#ebaab7;
+  --select-blur:rgba(235, 170, 183, 0.9);
+  --text-dark:#89474a;
+  --text-dark-blur:rgba(137, 71, 74, 0.9);
+  --text-light:#fff;
+  --text-light-blur:rgba(255, 255, 255, 0.9);
+  --inner:#a08986;
+  --inner-blur:rgba(160, 137, 134, 0.9);
 }
 .ivory{
-  --main:#d6ccb9;
+  --main:#353535;
+  --main-blur:rgba(53, 53, 53, 0.9);
   --light01:#f5e8e6;
+  --light01-blur:rgba(245, 232, 230, 0.9);
   --light02:#f7eeee;
+  --light02-blur:rgba(247, 238, 238, 0.9);
   --dark01:#ebd1ce;
+  --dark01-blur:rgba(235, 209, 206, 0.9);
   --dark02:#cd8b88;
+  --dark02-blur:rgba(205, 139, 136, 0.9);
   --deep:#aa4b45;
+  --deep-blur:rgba(170, 75, 69, 0.9);
   --select:#ebaab7;
+  --select-blur:rgba(235, 170, 183, 0.9);
   --text-dark:#89474a;
+  --text-dark-blur:rgba(137, 71, 74, 0.9);
   --text-light:#fff;
+  --text-light-blur:rgba(255, 255, 255, 0.9);
   --inner:#a08986;
+  --inner-blur:rgba(160, 137, 134, 0.9);
 }
 .strawberryMilk{
-  --main:#f2e1df;
+  --main:#353535;
+  --main-blur:rgba(53, 53, 53, 0.9);
   --light01:#f5e8e6;
+  --light01-blur:rgba(245, 232, 230, 0.9);
   --light02:#f7eeee;
+  --light02-blur:rgba(247, 238, 238, 0.9);
   --dark01:#ebd1ce;
+  --dark01-blur:rgba(235, 209, 206, 0.9);
   --dark02:#cd8b88;
+  --dark02-blur:rgba(205, 139, 136, 0.9);
   --deep:#aa4b45;
+  --deep-blur:rgba(170, 75, 69, 0.9);
   --select:#ebaab7;
+  --select-blur:rgba(235, 170, 183, 0.9);
   --text-dark:#89474a;
+  --text-dark-blur:rgba(137, 71, 74, 0.9);
   --text-light:#fff;
+  --text-light-blur:rgba(255, 255, 255, 0.9);
   --inner:#a08986;
+  --inner-blur:rgba(160, 137, 134, 0.9);
 }
 .neonGreen{
-  --main:#1a6464;
+  --main:#353535;
+  --main-blur:rgba(53, 53, 53, 0.9);
   --light01:#f5e8e6;
+  --light01-blur:rgba(245, 232, 230, 0.9);
   --light02:#f7eeee;
+  --light02-blur:rgba(247, 238, 238, 0.9);
   --dark01:#ebd1ce;
+  --dark01-blur:rgba(235, 209, 206, 0.9);
   --dark02:#cd8b88;
+  --dark02-blur:rgba(205, 139, 136, 0.9);
   --deep:#aa4b45;
+  --deep-blur:rgba(170, 75, 69, 0.9);
   --select:#ebaab7;
+  --select-blur:rgba(235, 170, 183, 0.9);
   --text-dark:#89474a;
+  --text-dark-blur:rgba(137, 71, 74, 0.9);
   --text-light:#fff;
+  --text-light-blur:rgba(255, 255, 255, 0.9);
   --inner:#a08986;
+  --inner-blur:rgba(160, 137, 134, 0.9);
 }
 .neonPink{
-  --main:#842559;
+  --main:#353535;
+  --main-blur:rgba(53, 53, 53, 0.9);
   --light01:#f5e8e6;
+  --light01-blur:rgba(245, 232, 230, 0.9);
   --light02:#f7eeee;
+  --light02-blur:rgba(247, 238, 238, 0.9);
   --dark01:#ebd1ce;
+  --dark01-blur:rgba(235, 209, 206, 0.9);
   --dark02:#cd8b88;
+  --dark02-blur:rgba(205, 139, 136, 0.9);
   --deep:#aa4b45;
+  --deep-blur:rgba(170, 75, 69, 0.9);
   --select:#ebaab7;
+  --select-blur:rgba(235, 170, 183, 0.9);
   --text-dark:#89474a;
+  --text-dark-blur:rgba(137, 71, 74, 0.9);
   --text-light:#fff;
+  --text-light-blur:rgba(255, 255, 255, 0.9);
   --inner:#a08986;
+  --inner-blur:rgba(160, 137, 134, 0.9);
 }
 .limeOrange{
-  --main:#dfe671;
+  --main:#353535;
+  --main-blur:rgba(53, 53, 53, 0.9);
   --light01:#f5e8e6;
+  --light01-blur:rgba(245, 232, 230, 0.9);
   --light02:#f7eeee;
+  --light02-blur:rgba(247, 238, 238, 0.9);
   --dark01:#ebd1ce;
+  --dark01-blur:rgba(235, 209, 206, 0.9);
   --dark02:#cd8b88;
+  --dark02-blur:rgba(205, 139, 136, 0.9);
   --deep:#aa4b45;
+  --deep-blur:rgba(170, 75, 69, 0.9);
   --select:#ebaab7;
+  --select-blur:rgba(235, 170, 183, 0.9);
   --text-dark:#89474a;
+  --text-dark-blur:rgba(137, 71, 74, 0.9);
   --text-light:#fff;
+  --text-light-blur:rgba(255, 255, 255, 0.9);
   --inner:#a08986;
+  --inner-blur:rgba(160, 137, 134, 0.9);
 }
 .sandPink{
-  --main:#e5cfad;
+  --main:#353535;
+  --main-blur:rgba(53, 53, 53, 0.9);
   --light01:#f5e8e6;
+  --light01-blur:rgba(245, 232, 230, 0.9);
   --light02:#f7eeee;
+  --light02-blur:rgba(247, 238, 238, 0.9);
   --dark01:#ebd1ce;
+  --dark01-blur:rgba(235, 209, 206, 0.9);
   --dark02:#cd8b88;
+  --dark02-blur:rgba(205, 139, 136, 0.9);
   --deep:#aa4b45;
+  --deep-blur:rgba(170, 75, 69, 0.9);
   --select:#ebaab7;
+  --select-blur:rgba(235, 170, 183, 0.9);
   --text-dark:#89474a;
+  --text-dark-blur:rgba(137, 71, 74, 0.9);
   --text-light:#fff;
+  --text-light-blur:rgba(255, 255, 255, 0.9);
   --inner:#a08986;
+  --inner-blur:rgba(160, 137, 134, 0.9);
 }
 .newYorkMan{
-  --main:#dee5e0;
+  --main:#353535;
+  --main-blur:rgba(53, 53, 53, 0.9);
   --light01:#f5e8e6;
+  --light01-blur:rgba(245, 232, 230, 0.9);
   --light02:#f7eeee;
+  --light02-blur:rgba(247, 238, 238, 0.9);
   --dark01:#ebd1ce;
+  --dark01-blur:rgba(235, 209, 206, 0.9);
   --dark02:#cd8b88;
+  --dark02-blur:rgba(205, 139, 136, 0.9);
   --deep:#aa4b45;
+  --deep-blur:rgba(170, 75, 69, 0.9);
   --select:#ebaab7;
+  --select-blur:rgba(235, 170, 183, 0.9);
   --text-dark:#89474a;
+  --text-dark-blur:rgba(137, 71, 74, 0.9);
   --text-light:#fff;
+  --text-light-blur:rgba(255, 255, 255, 0.9);
   --inner:#a08986;
+  --inner-blur:rgba(160, 137, 134, 0.9);
 }
 .mustard{
-  --main:#eae28a;
+  --main:#353535;
+  --main-blur:rgba(53, 53, 53, 0.9);
   --light01:#f5e8e6;
+  --light01-blur:rgba(245, 232, 230, 0.9);
   --light02:#f7eeee;
+  --light02-blur:rgba(247, 238, 238, 0.9);
   --dark01:#ebd1ce;
+  --dark01-blur:rgba(235, 209, 206, 0.9);
   --dark02:#cd8b88;
+  --dark02-blur:rgba(205, 139, 136, 0.9);
   --deep:#aa4b45;
+  --deep-blur:rgba(170, 75, 69, 0.9);
   --select:#ebaab7;
+  --select-blur:rgba(235, 170, 183, 0.9);
   --text-dark:#89474a;
+  --text-dark-blur:rgba(137, 71, 74, 0.9);
   --text-light:#fff;
+  --text-light-blur:rgba(255, 255, 255, 0.9);
   --inner:#a08986;
+  --inner-blur:rgba(160, 137, 134, 0.9);
 }
 .ladecaBlue{
-  --main:#cde5e5;
+  --main:#353535;
+  --main-blur:rgba(53, 53, 53, 0.9);
   --light01:#f5e8e6;
+  --light01-blur:rgba(245, 232, 230, 0.9);
   --light02:#f7eeee;
+  --light02-blur:rgba(247, 238, 238, 0.9);
   --dark01:#ebd1ce;
+  --dark01-blur:rgba(235, 209, 206, 0.9);
   --dark02:#cd8b88;
+  --dark02-blur:rgba(205, 139, 136, 0.9);
   --deep:#aa4b45;
+  --deep-blur:rgba(170, 75, 69, 0.9);
   --select:#ebaab7;
+  --select-blur:rgba(235, 170, 183, 0.9);
   --text-dark:#89474a;
+  --text-dark-blur:rgba(137, 71, 74, 0.9);
   --text-light:#fff;
+  --text-light-blur:rgba(255, 255, 255, 0.9);
   --inner:#a08986;
+  --inner-blur:rgba(160, 137, 134, 0.9);
 }
