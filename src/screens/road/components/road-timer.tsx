@@ -27,6 +27,8 @@ export const RoadTimer = ({speed, arrive} : RoadTimerProps) =>{
         const _arriveDistance = ((_arriveShop?.pos.x || 0) + (_arriveShop?.pos.y || 0)) * 2;
 
         // 대륙이동 케이스 체크
+        // 지도상 위치값이랑 실제 이동값 로직 뜯어고쳐야 할듯... 엉엉
+        // 그거랑 이율계산값도
 
         // 북쪽으로 이동 시 목적지값이 -가 되는 경우 대비
         if(_prevDistance < _arriveDistance){

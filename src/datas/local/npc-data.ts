@@ -138,7 +138,7 @@ export const NpcData : NpcDataProps[] = [
         cont : 'uladh',
         pos : {x:48, y:24},
         img : '.',
-        txtScript:scriptDell,
+        txtScript:scriptMerchantImp,
     },
     {
         name : '상인 에루',
