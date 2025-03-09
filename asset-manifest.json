@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/mabinogi_peddler/static/css/main.0a20482a.css",
+    "main.css": "/mabinogi_peddler/static/css/main.74d78101.css",
     "main.js": "/mabinogi_peddler/static/js/main.7d78c935.js",
     "static/js/453.ed3810f9.chunk.js": "/mabinogi_peddler/static/js/453.ed3810f9.chunk.js",
     "static/media/bg-Dunbarton.png": "/mabinogi_peddler/static/media/bg-Dunbarton.fcf8a88b9ebc3df36b71.png",
@@ -25,12 +25,12 @@
     "static/media/bg-magmel.webp": "/mabinogi_peddler/static/media/bg-magmel.33f144c55a3f80ea4fdc.webp",
     "static/media/basic-character-transport.png": "/mabinogi_peddler/static/media/basic-character-transport.4ac84c19199715cf1510.png",
     "index.html": "/mabinogi_peddler/index.html",
-    "main.0a20482a.css.map": "/mabinogi_peddler/static/css/main.0a20482a.css.map",
+    "main.74d78101.css.map": "/mabinogi_peddler/static/css/main.74d78101.css.map",
     "main.7d78c935.js.map": "/mabinogi_peddler/static/js/main.7d78c935.js.map",
     "453.ed3810f9.chunk.js.map": "/mabinogi_peddler/static/js/453.ed3810f9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0a20482a.css",
+    "static/css/main.74d78101.css",
     "static/js/main.7d78c935.js"
   ]
 }
