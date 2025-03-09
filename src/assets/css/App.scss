@@ -474,7 +474,7 @@ ul, ol{list-style:none;}
     // opacity:0.3; //지우기
     .shop-header{
         padding:24px 48px;
-        background:var(--shop-header);
+        background:var(--shop-header-blur);
         border-top-left-radius:24px;
         border-top-right-radius:24px;
         border-bottom:2px solid var(--deep);
@@ -506,7 +506,7 @@ ul, ol{list-style:none;}
     }
     .inner{
         padding:24px 28px;
-        background:var(--main);
+        background:var(--main-blur);
     }
     .tab-body{
         position:relative;
@@ -518,7 +518,7 @@ ul, ol{list-style:none;}
         }
         .plaid-wrap{            
             position:absolute;
-            background:var(--inner);    
+            background:var(--inner-blur);    
             overflow:hidden;    
             top:24px;
             left:0;    
@@ -1098,7 +1098,7 @@ ul, ol{list-style:none;}
         border-radius:50px;
         padding:12px;
         border:1px solid var(--deep);
-        background:var(--light02);
+        background:var(--light02-blur);
     }
     .shop-btn{
         display:inline-flex;
@@ -1108,7 +1108,7 @@ ul, ol{list-style:none;}
         height:48px;
         border-style:none;
         border-radius:100%;
-        background:var(--main);
+        background:var(--main-blur);
         transition:all .2s;
         cursor:pointer;
         &:active{
