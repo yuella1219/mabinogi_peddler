@@ -98,7 +98,7 @@ export const NpcDialog = ({ buyState }: NpcProps) => {
                 if (charIndex < fullText.length) {
                     setText((prev) => prev + fullText[charIndex - 1]);
                     charIndex++;
-                    setTimeout(typeEffect, 50);
+                    setTimeout(typeEffect, 30);
                 }
             };
 
