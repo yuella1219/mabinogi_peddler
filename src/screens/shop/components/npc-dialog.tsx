@@ -82,7 +82,7 @@ export const NpcDialog = ({ buyState }: NpcProps) => {
         
         // 일정 시간이 지나면 다시 normalText 순환 시작
         setTimeout(() => {
-            setShopState('noraml');
+            setShopState('normal');
             changeNormalText(); // 다시 랜덤 대사 출력 시작
         }, 20000); // ✅ 20초 동안 구매 대사 유지
 
