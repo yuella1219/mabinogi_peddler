@@ -85,7 +85,7 @@ export const RoadPage = () =>{
     useEffect(()=>{
         if(arrive){
             setLoading(false);
-            navigate("/mabinogi_peddler");
+            navigate("/shop");
         }
     }, [arrive])
 
