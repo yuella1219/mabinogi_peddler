@@ -17,7 +17,7 @@ export const NpcPortrait = ({buyState} : NpcProps) =>{
 
     // 구매완료 이미지 출력용
     useEffect(()=>{
-        setPortraitCondition(buyState)
+        //setPortraitCondition(buyState)
     }, [buyState])
     
     return(

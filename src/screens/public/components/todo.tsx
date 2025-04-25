@@ -57,7 +57,7 @@ export const Todo = () =>{
             </p>
             <p className="complete">너 판매시스템 다 하면 이제 시스템 기획하고 디자인 해야된다 조졌다</p>
             <p className="complete">UI 으아악</p>
-            <p>
+            <p className="complete">
                 거리 이동 만들기 <br/>
                 화살표 누르고 있거나 마우스 누르고 있으면 빨리감기<br/>
                 오 이동수단은 이동속도 n배 하는걸로 하면 되나<br/>

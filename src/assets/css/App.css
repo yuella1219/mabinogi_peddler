@@ -1358,3 +1358,33 @@ ul, ol {
   color: var(--text-light);
   border-radius: 50px;
 }
+
+.testBox {
+  display: grid;
+  grid-template-columns: repeat(5, 300px);
+  grid-template-rows: repeat(5, 300px);
+  padding: 20px 0 0;
+}
+.testBox .box {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.testBox .box div:has(svg) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+}
+.testBox .nm {
+  font-size: 16px;
+  font-weight: bold;
+  padding: 0 8px;
+  margin: 0 0 12px;
+}
+.testBox .distance {
+  font-weight: bold;
+  padding: 0 8px;
+}
